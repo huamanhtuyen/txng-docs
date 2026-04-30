@@ -59,6 +59,7 @@ export default defineConfig({
           { text: 'API Reference', link: '/cong-nghe/api-reference' },
         ]
       },
+      { text: '📚 Từ viết tắt', link: '/tu-viet-tat' },
     ],
 
     // Sidebar
@@ -103,6 +104,18 @@ export default defineConfig({
             { text: 'Blockchain & TXNG', link: '/cong-nghe/blockchain' },
             { text: 'QR Code & RFID', link: '/cong-nghe/qr-rfid' },
             { text: 'API Reference', link: '/cong-nghe/api-reference' },
+          ]
+        }
+      ],
+      '/tu-viet-tat': [
+        {
+          text: '📚 Từ viết tắt & Thuật ngữ',
+          items: [
+            { text: 'A – C', link: '/tu-viet-tat#a' },
+            { text: 'D – G', link: '/tu-viet-tat#d' },
+            { text: 'H – M', link: '/tu-viet-tat#h' },
+            { text: 'N – R', link: '/tu-viet-tat#n' },
+            { text: 'S – X', link: '/tu-viet-tat#s' },
           ]
         }
       ],
