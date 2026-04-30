@@ -110,7 +110,7 @@ export default defineConfig({
 
     // Social links
     socialLinks: [
-      { icon: 'github', link: 'https://github.com' },
+      { icon: 'github', link: 'https://github.com/huamanhtuyen/txng-docs' },
     ],
 
     // Footer
@@ -147,7 +147,7 @@ export default defineConfig({
 
     // Edit link
     editLink: {
-      pattern: 'https://github.com/your-org/txng-docs/edit/main/docs/:path',
+      pattern: 'https://github.com/huamanhtuyen/txng-docs/edit/main/docs/:path',
       text: 'Chỉnh sửa trang này'
     },
 
