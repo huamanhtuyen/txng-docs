@@ -18,6 +18,10 @@ export default defineConfig({
   // Clean URLs
   cleanUrls: true,
 
+  // Bỏ qua dead links khi build — hữu ích khi đang soạn tài liệu dần dần
+  // Xem: https://vitepress.dev/reference/site-config#ignoredeadlinks
+  ignoreDeadLinks: true,
+
   // Theme config
   themeConfig: {
     logo: '/logo.svg',
