@@ -14,3 +14,10 @@ Từ nền tảng chuỗi khối, mã định danh sản phẩm, đến chứng 
 #NDA #Hiephoidulieuquocgia #Truyxuatnguongoc #Kinhtedulieu
 Ảnh: txng1.png, txng2.png, txng3.png, txng4.png
 
+
+# link tham khảo hệ thống truy xuất nguồn gốc thực phẩm
+https://www.te-food.vn/
+
+
+# link lấy ý kiến dự thảo nghị định
+https://mps.gov.vn/chinh-sach-phap-luat/lay-y-kien-du-thao/ho-so-du-thao-nghi-dinh-quy-dinh-ve-hoat-dong-dinh-danh-xac-thuc-truy-xuat-nguon-goc-san-pham-hang-hoa-1774862205?type=dang-lay-y-kien
