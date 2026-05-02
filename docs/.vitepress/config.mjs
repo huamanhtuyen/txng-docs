@@ -1,5 +1,22 @@
 import { defineConfig } from 'vitepress'
 
+// Plugin bỏ qua lỗi ảnh/media không tồn tại khi build
+// Hữu ích khi đang soạn tài liệu và ảnh chưa được upload
+const ignoreMissingAssets = {
+  name: 'ignore-missing-assets',
+  resolveId(id) {
+    // Bỏ qua tất cả asset không phải JS/CSS — kể cả ảnh, media, font, file Office...
+    if (/\.(png|jpe?g|gif|svg|webp|ico|bmp|tiff?|emf|wmf|pdf|doc[x]?|xls[x]?|ppt[x]?|mp4|mp3|wav|ogg|woff2?|ttf|eot)(\?.*)?$/.test(id)) {
+      return '\0virtual:missing-asset'
+    }
+  },
+  load(id) {
+    if (id === '\0virtual:missing-asset') {
+      return 'export default ""'
+    }
+  }
+}
+
 export default defineConfig({
   // Metadata
   title: 'TXNG - Truy Xuất Nguồn Gốc',
@@ -21,6 +38,11 @@ export default defineConfig({
   // Bỏ qua dead links khi build — hữu ích khi đang soạn tài liệu dần dần
   // Xem: https://vitepress.dev/reference/site-config#ignoredeadlinks
   ignoreDeadLinks: true,
+
+  // Vite config: bỏ qua ảnh/media không tồn tại khi build
+  vite: {
+    plugins: [ignoreMissingAssets]
+  },
 
   // Theme config
   themeConfig: {
