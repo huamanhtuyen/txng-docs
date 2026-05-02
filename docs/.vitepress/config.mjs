@@ -29,7 +29,7 @@ export default defineConfig({
 
     // Navigation bar
     nav: [
-      { text: '🏠 Trang chủ', link: '/' },
+
       {
         text: '📖 Giới thiệu',
         items: [
