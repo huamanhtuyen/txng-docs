@@ -64,6 +64,15 @@ export default defineConfig({
         ]
       },
       { text: '📚 Từ viết tắt', link: '/tu-viet-tat' },
+      {
+        text: '📁 Dự án',
+        items: [
+          { text: 'Tổng quan dự án', link: '/du-an/' },
+          { text: 'Khái niệm định danh & Truy xuất', link: '/du-an/khai-niem-dinh-danh-truy-xuat' },
+          { text: 'UID/DID TXNG', link: '/du-an/UIDDID-TXNG-noi-dung' },
+          { text: 'Phân tích đề xuất kỹ thuật', link: '/du-an/phan-tich-de-xuat-ky-thuat' },
+        ]
+      },
     ],
 
     // Sidebar
@@ -120,6 +129,17 @@ export default defineConfig({
             { text: 'H – M', link: '/tu-viet-tat#h' },
             { text: 'N – R', link: '/tu-viet-tat#n' },
             { text: 'S – X', link: '/tu-viet-tat#s' },
+          ]
+        }
+      ],
+      '/du-an/': [
+        {
+          text: '📁 Dự án TXNG',
+          items: [
+            { text: 'Tổng quan dự án', link: '/du-an/' },
+            { text: 'Khái niệm định danh & Truy xuất', link: '/du-an/khai-niem-dinh-danh-truy-xuat' },
+            { text: 'UID/DID TXNG', link: '/du-an/UIDDID-TXNG-noi-dung' },
+            { text: 'Phân tích đề xuất kỹ thuật', link: '/du-an/phan-tich-de-xuat-ky-thuat' },
           ]
         }
       ],
