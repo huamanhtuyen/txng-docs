@@ -21,3 +21,10 @@ https://www.te-food.vn/
 
 # link lấy ý kiến dự thảo nghị định
 https://mps.gov.vn/chinh-sach-phap-luat/lay-y-kien-du-thao/ho-so-du-thao-nghi-dinh-quy-dinh-ve-hoat-dong-dinh-danh-xac-thuc-truy-xuat-nguon-goc-san-pham-hang-hoa-1774862205?type=dang-lay-y-kien
+
+
+# dự án này định làm cho các mặt hàng:
+- Điện tử
+- Dệt may
+- Da giày
+- Hàng tiêu dùng

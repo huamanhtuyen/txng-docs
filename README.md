@@ -5,6 +5,7 @@
 ![TXNG Logo](docs/public/logo.svg)
 
 **Hệ thống tài liệu toàn diện về Truy xuất nguồn gốc hàng hóa, sản phẩm và chuỗi cung ứng tại Việt Nam.**
+Đây chỉ là bộ tài liệu của dự án Truy xuất nguồn gốc hàng hóa, sản phẩm và chuỗi cung ứng tại Việt Nam. Chứ không phải bộ mã nguồn hay ứng dụng gì của Truy xuất nguồn gốc hàng hóa, sản phẩm và chuỗi cung ứng tại Việt Nam
 
 [![VitePress](https://img.shields.io/badge/VitePress-1.6.4-646cff?logo=vite&logoColor=white)](https://vitepress.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](./LICENSE)
@@ -52,12 +53,12 @@ docs/
 
 ## 📜 Scripts
 
-| Lệnh | Mô tả |
-|------|-------|
-| `./dev.sh` | Chạy dev server, tự mở browser |
-| `./dev.sh 3000` | Chạy trên port tùy chọn |
-| `npm run docs:build` | Build production |
-| `npm run docs:preview` | Xem trước bản build |
+| Lệnh                   | Mô tả                          |
+| ---------------------- | ------------------------------ |
+| `./dev.sh`             | Chạy dev server, tự mở browser |
+| `./dev.sh 3000`        | Chạy trên port tùy chọn        |
+| `npm run docs:build`   | Build production               |
+| `npm run docs:preview` | Xem trước bản build            |
 
 ## 🤝 Đóng góp
 

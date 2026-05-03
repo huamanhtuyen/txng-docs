@@ -1,7 +1,7 @@
 # Phân Tích Phản Biện: Đề Xuất Kỹ Thuật Hệ Thống TXNG
 
 > **Góc nhìn:** Senior System Architect & Technical Reviewer  
-> **Tài liệu gốc:** `1. De xuat ky thuat_HT TXNG_20250707_23h.md`  
+> **Tài liệu gốc:** `1. De xuat ky thuat_HT TXNG_20250707_23h.docx`  
 > **Tổng vốn đầu tư:** 200 tỷ VND | **Giai đoạn 1:** 2025–2026
 
 ---
@@ -211,14 +211,14 @@ Chuyển phần này vào **Phụ lục** (Appendix). Phần thân tài liệu n
 
 ## PHẦN II — ĐIỂM MẠNH CẦN GHI NHẬN
 
-| Điểm mạnh | Đánh giá |
-|-----------|----------|
-| Phân tích hiện trạng hạ tầng | ✅ Tốt — có số liệu cụ thể về hạ tầng hiện hữu |
-| Mô tả chuỗi cung ứng 4 giai đoạn | ✅ Đầy đủ và rõ ràng |
-| Bảng OCR use-case theo từng giai đoạn | ✅ Thực tế, có thể dùng làm User Stories |
-| Kiến trúc phân tầng Microservices | ✅ Đúng hướng |
-| Tuân thủ các tiêu chuẩn pháp lý (TT02/2024, TT39/2017) | ✅ Đầy đủ tham chiếu pháp lý |
-| Yêu cầu phi chức năng (NFRs) | ✅ Có — nhưng còn thiếu SLA cụ thể (uptime %) |
+| Điểm mạnh                                              | Đánh giá                                      |
+| ------------------------------------------------------ | --------------------------------------------- |
+| Phân tích hiện trạng hạ tầng                           | ✅ Tốt — có số liệu cụ thể về hạ tầng hiện hữu |
+| Mô tả chuỗi cung ứng 4 giai đoạn                       | ✅ Đầy đủ và rõ ràng                           |
+| Bảng OCR use-case theo từng giai đoạn                  | ✅ Thực tế, có thể dùng làm User Stories       |
+| Kiến trúc phân tầng Microservices                      | ✅ Đúng hướng                                  |
+| Tuân thủ các tiêu chuẩn pháp lý (TT02/2024, TT39/2017) | ✅ Đầy đủ tham chiếu pháp lý                   |
+| Yêu cầu phi chức năng (NFRs)                           | ✅ Có — nhưng còn thiếu SLA cụ thể (uptime %)  |
 
 ---
 
