@@ -1,7 +1,7 @@
 # Nội Dung Khảo Sát Doanh Nghiệp
 ## Triển Khai Hệ Thống Truy Xuất Nguồn Gốc (TXNG) – Bộ Công Thương (Hệ thống mới 2027)
 
-> **Mục tiêu khảo sát:** Thu thập thông tin thực tiễn từ doanh nghiệp để thiết kế hệ thống TXNG phù hợp, khả thi và có giá trị thực sự với DN.  
+> **Mục tiêu khảo sát:** Thu thập thông tin thực tiễn từ doanh nghiệp để thiết kế hệ thống TXNG phù hợp, khả thi và có giá trị thực sự với doanh nghiệp (DN).  
 > **Thời gian khảo sát dự kiến:** 60–90 phút/doanh nghiệp  
 > **Đối tượng:** Lãnh đạo hoặc cán bộ phụ trách sản xuất / CNTT / pháp chế của doanh nghiệp
 
@@ -171,18 +171,18 @@
 
 - Với từng loại dữ liệu sau, DN đánh giá mức độ quan trọng:
 
-| Loại dữ liệu IoT | Không cần | Có thì tốt | Rất cần |
-| --- | :---: | :---: | :---: |
-| Nhiệt độ kho bảo quản (liên tục, có log) | | | |
-| Nhiệt độ trong quá trình vận chuyển | | | |
-| Thời điểm bắt đầu / kết thúc lô SX (timestamp tự động) | | | |
-| Khối lượng / thể tích nguyên liệu đầu vào (load cell) | | | |
-| Số lượng sản phẩm đi qua dây chuyền (counter sensor) | | | |
-| Vị trí xe vận chuyển hàng (GPS tracker) | | | |
-| Trạng thái mở/đóng cửa kho (door sensor) | | | |
-| Ảnh chụp sản phẩm / QR trên dây chuyền (camera + AI) | | | |
-| Đọc mã RFID tại cổng xuất/nhập kho | | | |
-| Dữ liệu kiểm nghiệm từ máy LIMS tự động | | | |
+| Loại dữ liệu IoT                                       | Không cần | Có thì tốt | Rất cần |
+| ------------------------------------------------------ | :-------: | :--------: | :-----: |
+| Nhiệt độ kho bảo quản (liên tục, có log)               |           |            |         |
+| Nhiệt độ trong quá trình vận chuyển                    |           |            |         |
+| Thời điểm bắt đầu / kết thúc lô SX (timestamp tự động) |           |            |         |
+| Khối lượng / thể tích nguyên liệu đầu vào (load cell)  |           |            |         |
+| Số lượng sản phẩm đi qua dây chuyền (counter sensor)   |           |            |         |
+| Vị trí xe vận chuyển hàng (GPS tracker)                |           |            |         |
+| Trạng thái mở/đóng cửa kho (door sensor)               |           |            |         |
+| Ảnh chụp sản phẩm / QR trên dây chuyền (camera + AI)   |           |            |         |
+| Đọc mã RFID tại cổng xuất/nhập kho                     |           |            |         |
+| Dữ liệu kiểm nghiệm từ máy LIMS tự động                |           |            |         |
 
 ### B5. Năng lực tiếp nhận và vận hành IoT
 
