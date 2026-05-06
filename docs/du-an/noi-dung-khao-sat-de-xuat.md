@@ -1,5 +1,5 @@
 # Nội Dung Khảo Sát Doanh Nghiệp
-## Triển Khai Hệ Thống Truy Xuất Nguồn Gốc – Bộ Công Thương (Hệ thống mới 2027)
+## Triển Khai Hệ Thống Truy Xuất Nguồn Gốc (TXNG) – Bộ Công Thương (Hệ thống mới 2027)
 
 > **Mục tiêu khảo sát:** Thu thập thông tin thực tiễn từ doanh nghiệp để thiết kế hệ thống TXNG phù hợp, khả thi và có giá trị thực sự với DN.  
 > **Thời gian khảo sát dự kiến:** 60–90 phút/doanh nghiệp  
@@ -39,7 +39,7 @@
 
 ## PHẦN II – CHUỖI CUNG ỨNG VÀ NGUỒN NGUYÊN LIỆU
 
-### 2.1 Chuỗi cung ứng đầu vào (upstream)
+### 2.1 Chuỗi cung ứng đầu vào
 
 - Doanh nghiệp có bao nhiêu nhà cung cấp nguyên liệu / bán thành phẩm?
   - Trong nước: _____ nhà cung cấp
@@ -104,7 +104,7 @@
 
 ---
 
-## PHẦN IV – CHUỖI PHÂN PHỐI VÀ ĐẦU RA (DOWNSTREAM)
+## PHẦN IV – CHUỖI PHÂN PHỐI VÀ ĐẦU RA
 
 ### 4.1 Kênh phân phối
 
@@ -208,7 +208,7 @@
 > *Hỏi để thiết kế giao diện phù hợp từng nhóm DN*
 
 - DN ưu tiên phương thức nhập liệu nào?
-  - [ ] Tích hợp tự động qua API (từ ERP/MES sang VeriGoods++)
+  - [ ] Tích hợp tự động qua API (từ thiết bị IoT, phần mềm ERP/MES)
   - [ ] Upload file Excel / CSV theo lô
   - [ ] Nhập tay trực tiếp trên cổng web
   - [ ] Ứng dụng mobile cho nhân viên tại hiện trường
@@ -230,6 +230,9 @@
   - [ ] Chứng nhận chất lượng
   - [ ] Nhà cung cấp nguyên liệu chính
   - [ ] Chỉ thông tin tối thiểu theo quy định
+  - [ ] Hình ảnh hoặc video sản phẩm
+  - [ ] Hình ảnh hoặc video quá trình sản xuất
+  - [ ] Các thông tin khác
 
 ---
 
@@ -249,9 +252,9 @@
 ### 8.2 Mô hình tham gia ưu tiên
 
 - DN muốn tham gia theo hình thức nào?
-  - [ ] Dùng nền tảng VeriGoods++ của Bộ Công Thương (hosted, DN không cần xây hệ thống)
-  - [ ] Xây hệ thống riêng, kết nối API sang VeriGoods++
-  - [ ] Dùng nền tảng bên thứ 3 (iCheck, TraceVerify...) tích hợp với VeriGoods++
+  - [ ] Dùng nền tảng (phần mềm) Truy xuất nguồn gốc của Bộ Công Thương (Doanh nghiệp không cần xây hệ thống)
+  - [ ] Xây dựng hệ thống riêng, kết nối sang hệ thống truy xuất nguồn gốc của Bộ Công Thương
+  - [ ] Dùng nền tảng bên thứ 3 (iCheck, TraceVerify...) tích hợp với Hệ thống truy xuất nguồn gốc của Bộ Công Thương. (Cái này bản chất là giải pháp đại lý dịch vụ truy xuất nguồn gốc, đây là 1 phương án cũng rất hay vì nó sẽ giảm áp lực triển khai cho doanh nghiệp đồng thời cũng là cánh tay đắc lực của cơ quan nhà nước)
 
 ### 8.3 Lộ trình phù hợp với DN
 
