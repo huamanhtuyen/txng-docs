@@ -339,6 +339,6 @@
 
 1. **Không hỏi dồn tất cả** – Ưu tiên những phần có độ ưu tiên "Bắt buộc" và "Cao" trước.
 2. **Ghi lại ngôn từ DN dùng** – Đây là dữ liệu định tính quý giá để thiết kế UX hệ thống.
-3. **Hỏi về nỗi đau (pain points)** trước khi giới thiệu giải pháp.
-4. **Quan sát hiện trường** (nếu được mời thăm nhà máy): chú ý dây chuyền đóng gói, hệ thống in nhãn, máy quét mã, quy trình nhập xuất kho.
+3. **Hỏi về nỗi đau (pain points)** trước khi giới thiệu giải pháp – tránh định kiến, thiên kiến kiểu 'hệ thống của chúng tôi rất tốt cho doanh nghiệp'.
+4. **Quan sát hiện trường** (nếu được mời thăm nhà máy): chú ý dây chuyền đóng gói, hệ thống in nhãn, máy quét mã, quy trình nhập xuất kho. Nói chung là hiểu rõ được quy trình và cách thức sản xuất thì rất tốt.
 5. **Phân biệt DN sản xuất và DN phân phối** – luồng dữ liệu TXNG khác nhau hoàn toàn.
