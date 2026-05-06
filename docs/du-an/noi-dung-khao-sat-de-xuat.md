@@ -3,7 +3,7 @@
 
 > **Mục tiêu khảo sát:** Thu thập thông tin thực tiễn từ doanh nghiệp để thiết kế hệ thống TXNG phù hợp, khả thi và có giá trị thực sự với doanh nghiệp (DN).  
 > **Thời gian khảo sát dự kiến:** 60–90 phút/doanh nghiệp  
-> **Đối tượng:** Lãnh đạo hoặc cán bộ phụ trách sản xuất / CNTT / pháp chế của doanh nghiệp
+> **Đối tượng:** Lãnh đạo hoặc cán bộ phụ trách sản xuất / Công nghệ thông tin (CNTT) / pháp chế của doanh nghiệp
 
 ---
 
@@ -19,12 +19,12 @@
 | Vốn điều lệ (khoảng)                  |                                               |
 | Số lượng nhân sự                      |                                               |
 | Nhóm sản phẩm thuộc phạm vi nghị định |                                               |
-| Mã HS chính của sản phẩm              |                                               |
+| Mã hàng hoá HS chính của sản phẩm     |                                               |
 | Thị trường tiêu thụ chính             | Nội địa / Xuất khẩu / Cả hai                  |
 
 ### 1.2 Mô hình kinh doanh (B2B hay B2C?)
 
-- [ ] **B2C** – Bán trực tiếp đến người tiêu dùng cuối (qua siêu thị, tạp hoá, TMĐT, cửa hàng)
+- [ ] **B2C** – Bán trực tiếp đến người tiêu dùng cuối (qua siêu thị, tạp hoá, Thương mại điện tử (TMĐT), cửa hàng)
 - [ ] **B2B** – Bán cho doanh nghiệp khác (theo đơn hàng, theo hợp đồng)
 - [ ] **Hỗn hợp** – Cả B2C và B2B
 
@@ -34,7 +34,9 @@
 - DN có chi phí quảng cáo / marketing hàng năm không? Khoảng bao nhiêu?
 - DN đang dùng kênh quảng bá nào? (mạng xã hội, TVC, KOL, sàn TMĐT...)
 - DN có muốn hệ thống TXNG hỗ trợ truyền thông sản phẩm tới NTD không?
-
+**Nếu B2B và xuất khẩu:** (Mục đích là giúp doanh nghiệp khớp luôn được yêu cầu truy xuất nguồn gốc của đối tác nước ngoài và đảm bảo được pháp lý của các nước mà xuất khẩu tới, có thể hiện tại chưa cần đáp ứng nhưng biết đâu tương lai cần đáp ứng và việc triển khai này của Bộ Công thương giúp đáp ứng tiêu chuẩn truy xuất nguồn gốc theo yêu cầu của các nước xuất khẩu tới luôn)
+- Thị trường xuất khẩu chính là các thị trường nào?
+- Các nước xuất khẩu có yêu cầu TXNG riêng không?
 ---
 
 ## PHẦN II – CHUỖI CUNG ỨNG VÀ NGUỒN NGUYÊN LIỆU
@@ -94,7 +96,7 @@
 
 - DN có đội ngũ CNTT nội bộ không? Quy mô?
 
-- Đường truyền internet tại nhà máy: tốc độ và độ ổn định ra sao?
+- Đường truyền internet tại nhà máy đang có hay chưa?
 
 ### 3.3 Thiết bị đọc mã hiện trường
 
@@ -360,7 +362,7 @@
 
 - Điều gì có thể khiến DN **chủ động** tham gia hệ thống TXNG? (chọn tối đa 3)
   - [ ] Yêu cầu pháp lý bắt buộc
-  - [ ] Tạo lợi thế cạnh tranh, tăng niềm tin NTD
+  - [ ] Tạo lợi thế cạnh tranh, tăng niềm tin người tiêu dùng (NTD)
   - [ ] Hỗ trợ xuất khẩu vào thị trường khó tính (EU, Mỹ, Nhật)
   - [ ] Được hỗ trợ quảng bá thương hiệu qua nền tảng của Bộ Công Thương
   - [ ] Giảm chi phí thu hồi hàng lỗi / xử lý khiếu nại
