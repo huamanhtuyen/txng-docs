@@ -1,4 +1,6 @@
 # Nội Dung Khảo Sát Doanh Nghiệp
+Phiên bản ngày 6/5/2027
+Người thực hiện: Tuyển + BA
 ## Triển Khai Hệ Thống Truy Xuất Nguồn Gốc (TXNG) – Bộ Công Thương (Hệ thống mới 2027)
 
 > **Mục tiêu khảo sát:** Thu thập thông tin thực tiễn từ doanh nghiệp để thiết kế hệ thống TXNG phù hợp, khả thi và có giá trị thực sự với doanh nghiệp (DN).  
