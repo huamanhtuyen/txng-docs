@@ -464,7 +464,92 @@ Người thực hiện: Tuyển + BA
 
 ---
 
-## PHẦN X – GHI CHÚ VÀ CAM KẾT
+## PHẦN X – THAM QUAN THỰC ĐỊA VÀ THU THẬP TƯ LIỆU
+
+> **Đề xuất với DN:** Ngoài buổi phỏng vấn, nhóm khảo sát mong muốn được tham quan trực tiếp nhà máy / kho hàng (nếu DN cho phép) để hiểu rõ quy trình thực tế và thu thập tư liệu phục vụ thiết kế hệ thống. **Mọi hình ảnh / video chỉ dùng nội bộ cho dự án, không công bố ra ngoài.**
+
+### 10.1 Đề xuất tham quan nhà máy / dây chuyền
+
+- [ ] DN đồng ý cho tham quan nhà máy / cơ sở sản xuất
+- [ ] DN đồng ý cho tham quan kho hàng / khu vực đóng gói
+- [ ] DN đồng ý nhưng yêu cầu ký **thỏa thuận bảo mật (NDA)** trước
+- [ ] DN chỉ cho tham quan một phần (ghi rõ phần nào): ___________
+- [ ] DN chưa đồng ý, cần xin phép thêm
+
+**Nếu được tham quan, nhóm khảo sát cần quan sát và ghi nhận:**
+
+| Hạng mục quan sát | Ghi chú thực địa |
+| --- | --- |
+| Sơ đồ mặt bằng nhà máy / kho | |
+| Dây chuyền sản xuất chính (mô tả các bước) | |
+| Hệ thống in nhãn / in ngày SX trên dây chuyền | |
+| Máy quét mã vạch / barcode hiện có | |
+| Quy trình đóng gói: từng cấp (unit → hộp → thùng → pallet) | |
+| Khu vực xuất nhập kho, cổng kiểm soát | |
+| Thiết bị cảm biến / IoT đang lắp đặt | |
+| Kho lạnh / điều kiện bảo quản đặc biệt (nếu có) | |
+| Phòng kiểm nghiệm / QC nội bộ | |
+
+### 10.2 Thu thập hình ảnh sản phẩm và quy cách đóng gói
+
+> *Mục tiêu: Xây dựng bộ tư liệu hình ảnh chuẩn để:*
+> - *Thiết kế giao diện trang thông tin sản phẩm hiển thị khi NTD quét QR*
+> - *Làm mẫu minh hoạ cho DN khác khi onboarding vào hệ thống*
+> - *Hiểu đúng tầng lớp đóng gói để thiết kế cấu trúc dữ liệu lot/serial phù hợp*
+
+**Danh mục hình ảnh / video cần thu thập (xin phép DN từng mục):**
+
+| STT | Nội dung cần thu thập | Hình thức | Đã xin phép | Ghi chú |
+| --- | --- | --- | :---: | --- |
+| 1 | Ảnh sản phẩm đơn lẻ (unit) – tất cả các quy cách | Ảnh tĩnh | ⬜ | Chụp nhiều góc |
+| 2 | Ảnh mặt nhãn sản phẩm – chính diện và mặt sau | Ảnh tĩnh | ⬜ | Rõ thông tin lô, HSD |
+| 3 | Ảnh hộp / thùng / carton đóng gói cấp 2, cấp 3 | Ảnh tĩnh | ⬜ | Kể cả mã vạch trên thùng |
+| 4 | Ảnh pallet đầy hàng (nếu có) | Ảnh tĩnh | ⬜ | |
+| 5 | Video dây chuyền đóng gói đang vận hành | Video | ⬜ | Không cần dài, 1–3 phút |
+| 6 | Video / ảnh quy trình in nhãn / dán tem trên dây chuyền | Video / ảnh | ⬜ | |
+| 7 | Ảnh kho hàng thực tế (kệ hàng, cách sắp xếp theo lô) | Ảnh tĩnh | ⬜ | |
+| 8 | Ảnh phiếu xuất kho / phiếu giao nhận hiện tại | Ảnh tĩnh | ⬜ | Che thông tin nhạy cảm nếu cần |
+| 9 | Video / ảnh quy trình kiểm tra chất lượng (QC) | Video / ảnh | ⬜ | |
+| 10 | Ảnh chứng nhận chất lượng / QCVN / ISO treo tại cơ sở | Ảnh tĩnh | ⬜ | |
+
+### 10.3 Tầng lớp đóng gói – Ghi nhận cấu trúc phân cấp
+
+> *Thông tin này rất quan trọng để thiết kế cấu trúc dữ liệu lô/serial trong hệ thống TXNG.*
+
+Cán bộ khảo sát vẽ / ghi lại sơ đồ phân cấp đóng gói của DN:
+
+```
+Cấp 1 – Đơn vị nhỏ nhất (unit/each):
+  Tên: _______________  |  Kích thước/trọng lượng: _______________
+  Mã vạch / QR hiện có: _______________
+
+Cấp 2 – Hộp / bao / túi (inner pack):
+  Số lượng unit/hộp: ___  |  Có mã vạch riêng không? ___
+
+Cấp 3 – Thùng / carton (outer carton):
+  Số hộp/thùng: ___  |  Có mã vạch riêng không? ___  |  Có số lô in trên thùng? ___
+
+Cấp 4 – Pallet (nếu có):
+  Số thùng/pallet: ___  |  Có nhãn pallet / SSCC không? ___
+```
+
+### 10.4 Quy cách phẩm chất – Ghi nhận đặc tính sản phẩm
+
+> *Những thông tin này sẽ được hiển thị trên trang tra cứu công khai khi NTD quét QR.*
+
+| Thông tin phẩm chất | Nội dung (cán bộ ghi lại hoặc chụp ảnh tài liệu) |
+| --- | --- |
+| Tiêu chuẩn / QCVN áp dụng | |
+| Thành phần chính của sản phẩm | |
+| Điều kiện bảo quản yêu cầu | |
+| Hạn sử dụng điển hình | |
+| Các chứng nhận đang có (ISO, HACCP, Organic...) | |
+| Thông tin dinh dưỡng / kỹ thuật nổi bật | |
+| Lưu ý an toàn / cảnh báo trên nhãn | |
+
+---
+
+## PHẦN XI – GHI CHÚ VÀ CAM KẾT
 
 ### Thông tin liên hệ đầu mối
 
