@@ -104,6 +104,124 @@
 
 ---
 
+## PHẦN III-B – KHẢ NĂNG TRIỂN KHAI THIẾT BỊ IoT TẠI HIỆN TRƯỜNG
+
+> **Mục tiêu:** Đánh giá mức độ sẵn sàng và phù hợp để triển khai cảm biến / thiết bị IoT nhằm tự động thu thập dữ liệu cho hệ thống TXNG, thay vì nhập tay hoàn toàn.
+
+### B1. Hiện trạng thiết bị và cảm biến
+
+- DN đã có thiết bị cảm biến nào trong nhà máy / kho chưa?
+  - [ ] Cảm biến nhiệt độ / độ ẩm (trong kho lạnh, phòng sạch...)
+  - [ ] Cảm biến áp suất / lưu lượng (trong dây chuyền SX)
+  - [ ] Camera giám sát dây chuyền
+  - [ ] Đầu đọc RFID tại cổng kho / dây chuyền
+  - [ ] Thiết bị cân trọng lượng tự động (load cell)
+  - [ ] Thiết bị GPS / định vị xe vận chuyển
+  - [ ] Chưa có thiết bị cảm biến nào
+
+- Các thiết bị hiện có có kết nối mạng / xuất dữ liệu số không?
+  - [ ] Có, kết nối LAN / WiFi và có phần mềm quản lý
+  - [ ] Có kết nối nhưng không tích hợp với phần mềm nào
+  - [ ] Thiết bị cũ, chỉ hiển thị chỉ số, không xuất dữ liệu số
+  - [ ] Chưa có
+
+- Trong kho lạnh / chuỗi lạnh (nếu có): nhiệt độ hiện đang được ghi nhận bằng cách nào?
+  - [ ] Cảm biến tự động ghi log liên tục
+  - [ ] Nhân viên đọc và ghi tay theo ca
+  - [ ] Chưa có theo dõi
+
+### B2. Quy trình sản xuất và các điểm cần thu thập dữ liệu tự động
+
+- Trong quy trình sản xuất, **bước nào DN muốn ghi nhận tự động** nhất? (chọn tối đa 3)
+  - [ ] Nhập nguyên liệu đầu vào (cân, đếm, kiểm tra)
+  - [ ] Bắt đầu / kết thúc một lô sản xuất
+  - [ ] Đóng gói và dán nhãn từng đơn vị sản phẩm
+  - [ ] Xuất kho thành phẩm
+  - [ ] Giao hàng cho nhà phân phối / điểm bán
+  - [ ] Giám sát điều kiện bảo quản (nhiệt độ, độ ẩm) liên tục
+  - [ ] Kiểm tra chất lượng / lấy mẫu kiểm nghiệm
+
+- Bước nào hiện đang **tốn thời gian nhập liệu thủ công nhất**?
+
+- Dây chuyền sản xuất có **điểm thắt cổ chai** (bottleneck) nào mà việc gắn thiết bị IoT có thể ảnh hưởng đến tốc độ sản xuất không?
+
+### B3. Hạ tầng mạng và kết nối tại hiện trường
+
+- Nhà máy / kho có phủ sóng WiFi không? Chất lượng thế nào?
+  - [ ] WiFi phủ toàn bộ, ổn định
+  - [ ] WiFi có nhưng yếu / gián đoạn ở một số khu vực
+  - [ ] Chỉ có mạng LAN cố định
+  - [ ] Không có mạng nào trong khu vực sản xuất
+
+- Môi trường sản xuất có yếu tố nào ảnh hưởng đến thiết bị điện tử không?
+  - [ ] Nhiệt độ cao (lò nung, hàn...)
+  - [ ] Độ ẩm cao (chế biến thực phẩm, đồ uống...)
+  - [ ] Bụi / hóa chất ăn mòn (hóa chất công nghiệp...)
+  - [ ] Rung động mạnh (máy móc hạng nặng...)
+  - [ ] Môi trường nguy hiểm cháy nổ (VLNCN, tiền chất...)
+  - [ ] Môi trường bình thường, không có yếu tố đặc biệt
+
+- Có điện 220V / 3 pha ổn định tại các vị trí cần gắn thiết bị không?
+
+- DN có thể chấp nhận gắn thiết bị IoT vào dây chuyền hiện có mà không cần dừng sản xuất để lắp đặt không?
+
+### B4. Các loại dữ liệu IoT có giá trị với TXNG
+
+> *Hỏi để xác định loại dữ liệu nào DN thực sự cần ghi nhận cho TXNG, tránh đầu tư IoT tràn lan không có giá trị.*
+
+- Với từng loại dữ liệu sau, DN đánh giá mức độ quan trọng:
+
+| Loại dữ liệu IoT | Không cần | Có thì tốt | Rất cần |
+| --- | :---: | :---: | :---: |
+| Nhiệt độ kho bảo quản (liên tục, có log) | | | |
+| Nhiệt độ trong quá trình vận chuyển | | | |
+| Thời điểm bắt đầu / kết thúc lô SX (timestamp tự động) | | | |
+| Khối lượng / thể tích nguyên liệu đầu vào (load cell) | | | |
+| Số lượng sản phẩm đi qua dây chuyền (counter sensor) | | | |
+| Vị trí xe vận chuyển hàng (GPS tracker) | | | |
+| Trạng thái mở/đóng cửa kho (door sensor) | | | |
+| Ảnh chụp sản phẩm / QR trên dây chuyền (camera + AI) | | | |
+| Đọc mã RFID tại cổng xuất/nhập kho | | | |
+| Dữ liệu kiểm nghiệm từ máy LIMS tự động | | | |
+
+### B5. Năng lực tiếp nhận và vận hành IoT
+
+- DN có kỹ sư / kỹ thuật viên có thể quản lý thiết bị IoT không?
+  - [ ] Có đội kỹ thuật nội bộ mạnh
+  - [ ] Có vài người biết cơ bản về điện / tự động hóa
+  - [ ] Không có, phải thuê ngoài hoàn toàn
+
+- DN ưu tiên mô hình triển khai IoT nào?
+  - [ ] **Mua thiết bị, tự vận hành** (chi phí một lần, DN tự quản lý)
+  - [ ] **Thuê thiết bị theo gói dịch vụ** (trả phí hàng tháng, nhà cung cấp bảo trì)
+  - [ ] **Tích hợp với thiết bị cũ đang có** (không mua thêm thiết bị mới)
+  - [ ] Chưa xác định
+
+- Mức đầu tư IoT DN có thể chấp nhận (cho toàn nhà máy / 1 cơ sở):
+  - [ ] Dưới 50 triệu VND
+  - [ ] 50 – 200 triệu VND
+  - [ ] 200 – 500 triệu VND
+  - [ ] Trên 500 triệu VND
+  - [ ] Chưa xác định ngân sách
+
+### B6. Kịch bản IoT đặc thù theo nhóm sản phẩm
+
+**Với đồ uống / sữa (chuỗi lạnh):**
+- Xe vận chuyển có hệ thống ghi nhiệt độ không? Dữ liệu đó đang lưu ở đâu?
+- Kho lạnh hiện tại có tự động cảnh báo khi nhiệt độ vượt ngưỡng không?
+- DN có muốn người tiêu dùng tra cứu lịch sử nhiệt độ vận chuyển của sản phẩm qua QR không?
+
+**Với hóa chất / tiền chất / VLNCN:**
+- Cân xuất kho hiện tại có ghi log số tự động không?
+- Cổng ra vào kho có hệ thống kiểm soát ra vào (access control) không?
+- DN có muốn tích hợp RFID để theo dõi từng thùng / container hóa chất theo thời gian thực không?
+
+**Với dầu thực vật:**
+- Dây chuyền chiết rót có flowmeter (đồng hồ đo lưu lượng) không? Dữ liệu có được ghi lại không?
+- Máy đóng gói có đếm số lượng chai / gói tự động không?
+
+---
+
 ## PHẦN IV – CHUỖI PHÂN PHỐI VÀ ĐẦU RA
 
 ### 4.1 Kênh phân phối
