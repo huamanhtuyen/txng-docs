@@ -372,11 +372,55 @@
 ### 8.2 Mô hình tham gia ưu tiên
 
 - DN muốn tham gia theo hình thức nào?
-  - [ ] Dùng nền tảng (phần mềm) Truy xuất nguồn gốc của Bộ Công Thương (Doanh nghiệp không cần xây hệ thống)
-  - [ ] Xây dựng hệ thống riêng, kết nối sang hệ thống truy xuất nguồn gốc của Bộ Công Thương
-  - [ ] Dùng nền tảng bên thứ 3 (iCheck, TraceVerify...) tích hợp với Hệ thống truy xuất nguồn gốc của Bộ Công Thương. (Cái này bản chất là giải pháp đại lý dịch vụ truy xuất nguồn gốc, đây là 1 phương án cũng rất hay vì nó sẽ giảm áp lực triển khai cho doanh nghiệp đồng thời cũng là cánh tay đắc lực của cơ quan nhà nước)
+  - [ ] **Tự kết nối trực tiếp** – Dùng nền tảng TXNG của Bộ Công Thương, DN tự thao tác (nhập liệu trực tiếp trên cổng web hoặc upload file)
+  - [ ] **Tích hợp kỹ thuật** – Xây dựng / mua hệ thống riêng, kết nối API vào hệ thống TXNG của Bộ Công Thương
+  - [ ] **Qua đại lý dịch vụ** – Sử dụng một đơn vị trung gian (công ty dịch vụ TXNG) thay mặt DN thực hiện kết nối, khai báo và vận hành trên hệ thống của Bộ Công Thương
 
-### 8.3 Lộ trình phù hợp với DN
+### 8.3 Thăm dò về mô hình Đại lý Dịch vụ TXNG
+
+> **Giải thích cho DN:** Tương tự như mô hình *đại lý thuế* (thay DN kê khai thuế) hay *đại lý hải quan* (thay DN làm thủ tục thông quan), mô hình **Đại lý Dịch vụ TXNG** là một đơn vị được Bộ Công Thương cấp phép, đứng ra hỗ trợ doanh nghiệp triển khai truy xuất nguồn gốc từ đầu đến cuối – từ onboarding, nhập dữ liệu, tích hợp hệ thống, đến vận hành hàng ngày – và chịu trách nhiệm báo cáo lên hệ thống quốc gia.
+
+- Nếu có mô hình **đại lý dịch vụ TXNG** như vậy, DN có quan tâm sử dụng không?
+  - [ ] Rất quan tâm – đây đúng là điều DN cần
+  - [ ] Có thể quan tâm – tùy thuộc vào chi phí và chất lượng dịch vụ
+  - [ ] Không quan tâm – DN tự làm được hoặc đã có hệ thống
+  - [ ] Chưa rõ, cần tìm hiểu thêm
+
+- Lý do DN **quan tâm** đến mô hình đại lý (nếu có)? (chọn các lý do phù hợp)
+  - [ ] DN không có nhân lực CNTT để tự triển khai
+  - [ ] Không muốn mất thời gian học hệ thống mới, muốn có người làm thay
+  - [ ] Muốn đảm bảo khai báo đúng yêu cầu pháp lý, tránh sai sót
+  - [ ] Chi phí thuê đại lý rẻ hơn tự xây hệ thống hoặc tuyển người
+  - [ ] Đại lý có thể hỗ trợ tích hợp với ERP / phần mềm đang dùng
+
+- Lý do DN **không quan tâm** đến mô hình đại lý (nếu có)?
+  - [ ] Lo ngại lộ thông tin sản xuất / kinh doanh cho bên thứ 3
+  - [ ] Không tin tưởng chất lượng dữ liệu nếu do bên ngoài nhập
+  - [ ] Muốn kiểm soát dữ liệu của mình trực tiếp
+  - [ ] DN đã có hệ thống / nhân lực tự làm được
+
+- **Mức phí dịch vụ** DN chấp nhận trả cho đại lý TXNG (hàng tháng hoặc hàng năm)?
+  - [ ] Dưới 2 triệu/tháng
+  - [ ] 2 – 5 triệu/tháng
+  - [ ] 5 – 15 triệu/tháng
+  - [ ] Trên 15 triệu/tháng
+  - [ ] Trả theo gói năm, không muốn trả tháng
+  - [ ] Chưa xác định
+
+- Đại lý dịch vụ TXNG cần cung cấp **những dịch vụ gì** thì DN mới tin dùng? (chọn tối đa 4)
+  - [ ] Tư vấn & hướng dẫn ban đầu (onboarding, thiết lập hồ sơ DN trên hệ thống)
+  - [ ] Nhập liệu / cập nhật dữ liệu sản phẩm, lô sản xuất thay DN
+  - [ ] Tích hợp với phần mềm ERP / kế toán đang dùng của DN
+  - [ ] Lắp đặt thiết bị IoT / máy quét mã tại hiện trường
+  - [ ] Hỗ trợ in tem QR / nhãn sản phẩm đúng chuẩn
+  - [ ] Giám sát và cảnh báo khi có sự cố dữ liệu
+  - [ ] Đại diện DN làm việc với cơ quan quản lý khi có yêu cầu hậu kiểm
+  - [ ] Báo cáo định kỳ tình trạng tuân thủ TXNG cho lãnh đạo DN
+
+- DN hiện có đang sử dụng **đơn vị dịch vụ CNTT bên ngoài** nào không? (ví dụ: đơn vị bảo trì phần mềm, đại lý kê khai thuế điện tử...)
+  - Nếu có: họ có thể kiêm nhiệm làm đại lý TXNG không?
+
+### 8.4 Lộ trình phù hợp với DN
 
 - DN cần bao lâu để sẵn sàng triển khai thực sự?
   - [ ] < 3 tháng   [ ] 3–6 tháng   [ ] 6–12 tháng   [ ] > 1 năm
