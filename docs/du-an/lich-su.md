@@ -1,0 +1,14 @@
+lịch sử dự án:
+1.⁠ ⁠Năm 2021 Cục QLTTTN đã triển khai hệ thống truy xuất nguồn gốc cho một số mặt hàng, nhưng ứng dụng chưa hiệu quả. Vậy khi thực hiện xây dựng dự án năm đợt này về mặt hồ sơ sẽ tiếp cận theo hướng nâng cấp dự án cũ đã triển khai?
+ 2.⁠ ⁠Cần nghiên cứu, phân tích các bài toàn TXNG đã triển khai thành công trên thế giới, đặc biệt là Trung Quốc đã làm thế nào? Cần thiết có thể cử người qua học tập, tìm hiểu họ đã làm thế nào (thông qua Cục Quản lý thị trường trong nước)
+ 3.⁠ ⁠Bối cảnh trong nước nghiên cứu các chỉ đạo của Chính phủ liên quan tới TXNG, các chỉ đạo của Bộ Công Thương,  các văn bản đang dự thảo nhằm nắm bắt định hướng, xu thế mà bài toán định hướng tới.
+ 4.⁠ ⁠C12 đang thực hiện xây dựng nền tảng về TXNG, cần nghiên cứu kỹ và trao đổi với C12 về giải pháp họ thực hiện từ đó đề xuất giải pháp cho hệ thống TXNG của Bộ Công Thương đảm chánh chồng chéo, thừa hưởng, tích hợp,…tuân thủ với C12 những gì sắp ban hành => Không gây chồng chéo, lãnh phí cho khách hàng, Dự án
+ 5.⁠ ⁠C12 xây dựng nền tảng về TXNG quốc gia, trong bối cảnh Chính phủ có chủ trương kia, Bộ Công Thương có chỉ đạo…mặt hàng rủi ro cao phải bắt buộc TXNG, mặt hàng rượu bia đưa vào nguy cơ rủi ro cao => Truy xuất nguồn gốc hàng hoá rủi ro cao, rượu bia là rất cần thiết.
+ 6.⁠ ⁠Tham gia vào chuỗi TXNG không chỉ khảo sát Cục Quản lý thị trường trong nước mà các đơn vị khác như Hải quan, Công an, Thuế,…có tham gia vào không? Hàng hoá liên quan tới doanh nghiệp, dự kiến làm những mặt hàng nào? Triển khai như thế nào?...
+ 7.⁠ ⁠Mô hình kiến trúc tổng thể, phải cụ thể đối với hệ thống này phục vụ được các đơn vị quản lý nhà nước, các cơ quan khác như Hải quan, Công an, Thuế,…có liên quan, có tích hợp, có chia sẻ gì không?
+ 8.⁠ ⁠Nghiên cứu, tham mưu, đề xuất về hành lang pháp lý để khi hệ thống triển khai thì các doanh nghiệp, các đơn vị có thể ứng dụng, triển khai được.
+ 9.⁠ ⁠Đối với người dân, người sử dụng hệ thống này sẽ dùng như thế nào? Cung cấp dịch vụ gì cho người dân khách hàng khi tham gia vào chuỗi cung ứng này. Làm thế nào để truy xuất được thông tin hàng hoá (bằng tem điện tử, mã hay các thức nào, truy xuất được những thông tin gì…)
+10.⁠ ⁠Hệ thống TXNG phục vụ cho ai? Những quan quản lý nhà nước nào? Doanh nghiệp, người tiêu dùng….Cần khảo sát các doanh nghiệp hiện nay họ đang làm TNXG thế nào? Khi áp dụng hệ thống này thì họ cần đầu tư những gì? Thay đổi gì? Khi hệ thống triển khai thì….?
+11.⁠ ⁠Khi hệ thống đã hoàn chỉnh sẵn sàng đi vào vận hành thì kế hoạch vận hành dự kiến như thế nào? Cơ quan chủ quản cần ban hành hành lang pháp lý gì? Cục QLTTTN có nhiệm vụ gì? Hỗ trợ các doanh nghiệp sử dụng và nhập dữ liệu ra sao? Sử dụng như thế nào?.... => Làm sao để doanh nghiệp tham gia vào hệ thống được
+12.⁠ ⁠Sau khi hệ thống đi vào sử dụng có hiệu quả, thì định hướng phát triển các dịch vụ tiếp theo của Thiên Hoàng là gì? 
+13.⁠ ⁠Nghiên cứu đưa các nội dung về kho dữ liệu, ứng dụng AI để phân tích, cảnh báo,…
