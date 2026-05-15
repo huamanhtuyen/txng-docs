@@ -209,15 +209,15 @@ AI phân tích:
 
 Để xác định chính xác:
 
-- ✅ Pallet nào cần recall
+- ✅ Pallet nào cần thu hồi
 - ✅ Pallet nào an toàn
 
 ### 📤 Đầu ra
 
 **Ví dụ:**
 
-> - 🎯 "Recall **12 pallet**"
-> - ✅ "Không cần recall toàn bộ lô"
+> - 🎯 "Thu hồi **12 pallet**"
+> - ✅ "Không cần thu hồi toàn bộ lô"
 ### 📊 Ví dụ Mockdata 1
 
 **Pallet & Kho lạnh:**
@@ -232,7 +232,7 @@ AI phân tích:
 
 **AI kết luận:**
 
-> 🎯 Chỉ recall **P001** và **P002**
+> 🎯 Chỉ thu hồi **P001** và **P002**
 ### 📊 Ví dụ Mockdata 2
 
 **Container & Sensor ammonia:**
