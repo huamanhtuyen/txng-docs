@@ -279,16 +279,16 @@ AI phát hiện:
 > 🔴 "Xác xuất hàng giả (khả năng là hàng giả): **96%**"
 ### 📊 Ví dụ 1
 
-**Serial & Quốc gia:**
+**Serial & Địa điểm bán:**
 
-| Serial | Quốc gia |
-|--------|----------|
-| SN555 | Việt Nam |
-| SN555 | Brazil |
+| Serial | Địa điểm bán |
+|--------|--------------|
+| SN555 | Nhà thuốc A - Hà Nội |
+| SN555 | Nhà thuốc B - Đà Nẵng |
 
 **AI phát hiện:**
 
-> 🚨 Cùng serial xuất hiện tại **2 nơi**
+> 🚨 Serial **SN555** xuất hiện tại **2 nhà thuốc** khác nhau → Khả năng cao là hàng giả
 ### 📊 Ví dụ 2
 
 **Nhà thuốc & Tỷ lệ scan:**
