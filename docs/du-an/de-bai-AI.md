@@ -59,7 +59,7 @@ AI có thể:
 > - **[CẢNH BÁO]** Container đi sai tuyến
 > - **[CẢNH BÁO]** Phát hiện điểm quét chưa từng xuất hiện
 > - **[CẢNH BÁO]** Serial xuất hiện tại quốc gia/địa điểm không hợp lệ
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Dữ liệu TXNG - Tuyến bình thường:**
 
@@ -85,7 +85,7 @@ AI có thể:
 
 - Lạng Sơn **không phải** điểm trung chuyển hợp lệ
 - **[CẢNH BÁO]** Nguy cơ hàng bị tuồn qua biên giới: **87%**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Dữ liệu serial:**
 
@@ -149,7 +149,7 @@ AI có thể:
 > - Thời hạn sử dụng còn **4 ngày**
 > - **[CẢNH BÁO]** Nguy cơ hỏng: **78%**
 > - **[CẢNH BÁO]** Container cần kiểm tra ngay
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Dữ liệu nhiệt độ:**
 
@@ -167,7 +167,7 @@ AI có thể:
 **Output:**
 
 > **[CẢNH BÁO]** Ước tính giảm hiệu lực, giảm tác dụng của vắc xin: **35%**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Xe lạnh:**
 
@@ -218,7 +218,7 @@ AI phân tích:
 
 > - **[THU HỒI]** Thu hồi **12 pallet**
 > - **[OK]** Không cần thu hồi toàn bộ lô
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Pallet & Kho lạnh:**
 
@@ -233,7 +233,7 @@ AI phân tích:
 **AI kết luận:**
 
 > **[THU HỒI]** Chỉ thu hồi **P001** và **P002**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Container & Cảm biến khí ammonia:**
 
@@ -277,7 +277,7 @@ AI phát hiện:
 **Ví dụ:**
 
 > **[CẢNH BÁO]** Xác xuất hàng giả (khả năng là hàng giả): **96%**
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Serial & Địa điểm bán:**
 
@@ -289,7 +289,7 @@ AI phát hiện:
 **AI phát hiện:**
 
 > **[CẢNH BÁO]** Serial **SN555** xuất hiện tại **2 nhà thuốc** khác nhau → Khả năng cao là hàng giả
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Nhà thuốc & Tỷ lệ scan:**
 
@@ -329,7 +329,7 @@ AI có thể:
 
 > **[CẢNH BÁO]** Lô hàng sẽ trễ **18 giờ**
 > **[ĐỀ XUẤT]** Nên đổi tuyến qua Singapore
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Tuyến & Delay trung bình:**
 
@@ -341,7 +341,7 @@ AI có thể:
 **AI đề xuất:**
 
 > **[ĐỀ XUẤT]** Ưu tiên phân phối qua Bắc Ninh để **giảm tắc nghẽn**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Kho & Tồn kho:**
 
@@ -383,7 +383,7 @@ AI có thể:
 **Ví dụ:**
 
 > **[CẢNH BÁO]** Nhà cung cấp **X** liên quan tới **78%** vụ ô nhiễm
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Supplier & Số vụ thu hồi:**
 
@@ -395,7 +395,7 @@ AI có thể:
 **AI đánh giá:**
 
 > **[CẢNH BÁO]** Nhà cung cấp **S001** có điểm rủi ro rất cao
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Graph phát hiện:**
 
@@ -433,7 +433,7 @@ Người dùng **không biết** viết query kỹ thuật.
 
 > Container đang ở Hải Phòng
 > **[CẢNH BÁO]** 3 lô hàng có nguy cơ cao
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Người dùng hỏi:**
 
@@ -445,7 +445,7 @@ Người dùng **không biết** viết query kỹ thuật.
 2. Trả về:
    - Kho Hải Phòng
    - Cập nhật 12 phút trước
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Người dùng hỏi:**
 
@@ -481,7 +481,7 @@ AI tạo:
 **Ví dụ:**
 
 > 10 triệu TXNG events giả lập
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **AI tạo:**
 
@@ -491,7 +491,7 @@ AI tạo:
 
 → Để train **anomaly model**.
 
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **AI mô phỏng:**
 
@@ -528,7 +528,7 @@ AI chạy trực tiếp trên **device cục bộ**:
 
 > **[CẢNH BÁO]** Cảnh báo tại kho số 4
 > **[CẢNH BÁO]** Pallet sai tuyến
-### 📊 Ví dụ 1
+### Ví dụ 1
 
 **Camera AI tại biên phát hiện:**
 
@@ -537,7 +537,7 @@ AI chạy trực tiếp trên **device cục bộ**:
 **Output:**
 
 > Bật còi cảnh báo **realtime**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **RFID reader phát hiện:**
 
@@ -554,7 +554,7 @@ AI chạy trực tiếp trên **device cục bộ**:
 
 Doanh nghiệp ngày càng phải báo cáo:
 
-- Phát thải CO₂
+- Phát thải CO2
 - Sự bền vững
 - Đánh giá sự bền vững theo tiêu chí ESG (môi trường, xã hội, quản trị)
 
@@ -562,7 +562,7 @@ Doanh nghiệp ngày càng phải báo cáo:
 
 AI tính:
 
-- CO₂ theo lô hàng
+- CO2 theo lô hàng
 - Phát thải theo nhà cung cấp
 - Tuyến vận chuyển tối ưu carbon
 
@@ -570,13 +570,13 @@ AI tính:
 
 **Ví dụ:**
 
-> Lô hàng tạo ra **1.8 tấn CO₂**
+> Lô hàng tạo ra **1.8 tấn CO2**
 > **[ĐỀ XUẤT]** Đổi tuyến giúp giảm **22%** phát thải
-### 📊 Ví dụ 1
+### Ví dụ 1
 
-**Tuyến & CO₂:**
+**Tuyến & CO2:**
 
-| Tuyến | CO₂ |
+| Tuyến | CO2 |
 |-------|-----|
 | Air freight | 4.2 tấn |
 | Sea freight | 1.1 tấn |
@@ -584,7 +584,7 @@ AI tính:
 **AI đề xuất:**
 
 > **[ĐỀ XUẤT]** Chuyển sang **sea freight**
-### 📊 Ví dụ 2
+### Ví dụ 2
 
 **Supplier & ESG score:**
 
