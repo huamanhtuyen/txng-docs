@@ -59,7 +59,7 @@ AI có thể:
 > - 🚨 "Container đi sai tuyến"
 > - 🚨 "Phát hiện điểm quét chưa từng xuất hiện"
 > - 🚨 "Serial xuất hiện tại quốc gia/địa điểm không hợp lệ"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Dữ liệu TXNG - Tuyến bình thường:**
 
@@ -85,7 +85,7 @@ AI có thể:
 
 - ❌ Lạng Sơn **không phải** điểm trung chuyển hợp lệ
 - ⚠️ Nguy cơ hàng bị tuồn qua biên giới: **87%**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Dữ liệu serial:**
 
@@ -149,7 +149,7 @@ AI có thể:
 > - ⏱️ "Thời hạn sử dụng còn **4 ngày**"
 > - ⚠️ "Nguy cơ hỏng: **78%**"
 > - 🚨 "Container cần kiểm tra ngay"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Dữ liệu nhiệt độ:**
 
@@ -167,7 +167,7 @@ AI có thể:
 **Output:**
 
 > ⚠️ "Ước tính giảm hiệu lực, giảm tác dụng của vắc xin: **35%**"
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Xe lạnh:**
 
@@ -218,7 +218,7 @@ AI phân tích:
 
 > - 🎯 "Thu hồi **12 pallet**"
 > - ✅ "Không cần thu hồi toàn bộ lô"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Pallet & Kho lạnh:**
 
@@ -233,7 +233,7 @@ AI phân tích:
 **AI kết luận:**
 
 > 🎯 Chỉ thu hồi **P001** và **P002**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Container & Cảm biến khí ammonia:**
 
@@ -277,7 +277,7 @@ AI phát hiện:
 **Ví dụ:**
 
 > 🔴 "Xác xuất hàng giả (khả năng là hàng giả): **96%**"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Serial & Quốc gia:**
 
@@ -289,7 +289,7 @@ AI phát hiện:
 **AI phát hiện:**
 
 > 🚨 Cùng serial xuất hiện tại **2 nơi**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Nhà thuốc & Tỷ lệ scan:**
 
@@ -329,7 +329,7 @@ AI có thể:
 
 > - ⚠️ "Lô hàng sẽ trễ **18 giờ**"
 > - 💡 "Nên đổi tuyến qua Singapore"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Tuyến & Delay trung bình:**
 
@@ -341,7 +341,7 @@ AI có thể:
 **AI đề xuất:**
 
 > 💡 Đổi tuyến để **giảm delay**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Kho & Tồn kho:**
 
@@ -383,7 +383,7 @@ AI có thể:
 **Ví dụ:**
 
 > 🔴 "Nhà cung cấp **X** liên quan tới **78%** vụ ô nhiễm"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Supplier & Số vụ thu hồi:**
 
@@ -395,7 +395,7 @@ AI có thể:
 **AI đánh giá:**
 
 > 🔴 Nhà cung cấp **S001** có điểm rủi ro rất cao **rất cao**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Graph phát hiện:**
 
@@ -433,7 +433,7 @@ Người dùng **không biết** viết query kỹ thuật.
 
 > - 📍 "Container đang ở Hải Phòng"
 > - ⚠️ "3 lo hàng có nguy cơ cao"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Người dùng hỏi:**
 
@@ -445,7 +445,7 @@ Người dùng **không biết** viết query kỹ thuật.
 2. Trả về:
    - 📍 Kho Hải Phòng
    - ⏱️ Cập nhật 12 phút trước
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Người dùng hỏi:**
 
@@ -481,7 +481,7 @@ AI tạo:
 **Ví dụ:**
 
 > 📈 10 triệu TXNG events giả lập
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **AI tạo:**
 
@@ -491,7 +491,7 @@ AI tạo:
 
 → Để train **anomaly model**.
 
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **AI mô phỏng:**
 
@@ -528,7 +528,7 @@ AI chạy trực tiếp trên **device cục bộ**:
 
 > - 🚨 "Cảnh báo tại kho số 4"
 > - ⚠️ "Pallet sai tuyến"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Camera AI tại biên phát hiện:**
 
@@ -537,7 +537,7 @@ AI chạy trực tiếp trên **device cục bộ**:
 **Output:**
 
 > 🔊 Bật còi cảnh báo **realtime**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **RFID reader phát hiện:**
 
@@ -572,7 +572,7 @@ AI tính:
 
 > - 📊 "Lô hàng  tạo ra **1.8 tấn CO₂**"
 > - 💡 "Đổi tuyến giúp giảm **22%** phát thải"
-### 📊 Ví dụ Mockdata 1
+### 📊 Ví dụ 1
 
 **Tuyến & CO₂:**
 
@@ -584,7 +584,7 @@ AI tính:
 **AI đề xuất:**
 
 > 💡 Chuyển sang **sea freight**
-### 📊 Ví dụ Mockdata 2
+### 📊 Ví dụ 2
 
 **Supplier & ESG score:**
 
