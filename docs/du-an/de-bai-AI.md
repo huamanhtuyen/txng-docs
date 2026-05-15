@@ -1,491 +1,598 @@
-# Đề bài cho AI trong dự án truy xuất nguồn gốc
-Tuyển
+# Đề bài cho AI trong Dự án Truy xuất Nguồn gốc (TXNG)
 
-## A. Phát hiện hàng hóa bị chuyển hướng bất thường (Diversion Detection)
-Bài toán là gì?
+> **Hứa Mạnh Tuyển**
+
+---
+
+## A. Phát hiện Hàng hóa Bị Chuyển Hướng Bất thường (Diversion Detection)
+
+### 📌 Bài toán là gì?
 
 Trong chuỗi cung ứng (supply chain), hàng hóa thường phải đi theo một tuyến đường đã được xác định trước.
 
-Ví dụ:
+**Ví dụ:**
 
+```
 Nhà máy → Kho trung chuyển → Nhà phân phối → Bệnh viện
+```
 
-Tuy nhiên trên thực tế có thể xảy ra:
+Tuy nhiên, trên thực tế có thể xảy ra:
 
-hàng bị bán lậu
-hàng bị tuồn ra ngoài
-hàng bị chuyển sang thị trường khác
-hàng giả chen vào chuỗi phân phối
+- 🚫 Hàng bị bán lậu
+- 🚫 Hàng bị tuồn ra ngoài
+- 🚫 Hàng bị chuyển sang thị trường khác
+- 🚫 Hàng giả chen vào chuỗi phân phối
 
-Hệ thống EPCIS ghi nhận toàn bộ:
+Hệ thống **TXNG** ghi nhận toàn bộ:
 
-thời gian
-địa điểm
-đơn vị quét
-mã sản phẩm
-mã lô
-serial number
+| Thông tin | Mô tả |
+|-----------|-------|
+| Thời gian | Timestamp của sự kiện |
+| Địa điểm | Vị trí quét/ghi nhận |
+| Đơn vị quét | Thiết bị/người thực hiện |
+| Mã sản phẩm | Product ID |
+| Mã lô | Batch/Lot number |
+| Serial number | Mã định danh duy nhất |
 
-AI có thể học từ:
+### 🤖 AI có thể học từ:
 
-tuyến vận chuyển bình thường
-thời gian giao hàng bình thường
-hành vi quét thông thường
+- ✅ Tuyến vận chuyển bình thường
+- ✅ Thời gian giao hàng bình thường
+- ✅ Hành vi quét thông thường
 
-để phát hiện bất thường (anomaly detection).
+→ **Mục tiêu:** Phát hiện bất thường (*Anomaly Detection*)
 
-Ứng dụng AI có thể làm được gì?
+### 🎯 Ứng dụng AI có thể làm được gì?
 
 AI có thể:
 
-phát hiện tuyến đường bất thường
-phát hiện điểm trung chuyển lạ
-phát hiện hành vi phân phối đáng ngờ
-cảnh báo nguy cơ hàng giả hoặc hàng bị tuồn
-Đầu ra (Output)
+- 🔍 Phát hiện tuyến đường bất thường
+- 🔍 Phát hiện điểm trung chuyển lạ
+- 🔍 Phát hiện hành vi phân phối đáng ngờ
+- 🔍 Cảnh báo nguy cơ hàng giả hoặc hàng bị tuồn
 
-Ví dụ đầu ra:
+### 📤 Đầu ra (Output)
 
-“Shipment có nguy cơ diversion 92%”
-“Container đi sai tuyến”
-“Phát hiện điểm quét chưa từng xuất hiện”
-“Serial xuất hiện tại quốc gia không hợp lệ”
-Ví dụ mockdata 1
-Dữ liệu EPCIS
-Thời gian	Địa điểm	Sự kiện
-08:00	Hamburg	Xuất kho
-14:00	Singapore	Trung chuyển
-18:00	Hải Phòng	Nhập khẩu
+**Ví dụ đầu ra:**
 
-Đây là tuyến bình thường.
+> - ⚠️ "Shipment có nguy cơ diversion **92%**"
+> - 🚨 "Container đi sai tuyến"
+> - 🚨 "Phát hiện điểm quét chưa từng xuất hiện"
+> - 🚨 "Serial xuất hiện tại quốc gia không hợp lệ"
+### 📊 Ví dụ Mockdata 1
 
-Trường hợp bất thường
-Thời gian	Địa điểm	Sự kiện
-08:00	Hamburg	Xuất kho
-14:00	Phnom Penh	Quét RFID
-22:00	Hải Phòng	Nhập khẩu
+**Dữ liệu TXNG - Tuyến bình thường:**
 
-AI phát hiện:
+| Thời gian | Địa điểm | Sự kiện |
+|-----------|----------|---------|
+| 08:00 | Hamburg | Xuất kho |
+| 14:00 | Singapore | Trung chuyển |
+| 18:00 | Hải Phòng | Nhập khẩu |
 
-Phnom Penh chưa từng nằm trong tuyến chính thức
-xác suất diversion: 89%
-Ví dụ mockdata 2
-Dữ liệu serial
-Serial	Địa điểm	Thời gian
-SN001	Hà Nội	09:00
-SN001	Bangkok	09:25
+✅ *Đây là tuyến bình thường.*
 
-AI phát hiện:
+---
 
-không thể vận chuyển trong 25 phút
-khả năng serial bị clone hoặc hàng giả
+**Trường hợp bất thường:**
 
-Output:
+| Thời gian | Địa điểm | Sự kiện |
+|-----------|----------|---------|
+| 08:00 | Hamburg | Xuất kho |
+| 14:00 | Phnom Penh | Quét RFID |
+| 22:00 | Hải Phòng | Nhập khẩu |
 
-“Counterfeit risk: HIGH”
-B. Giám sát chuỗi lạnh và dự đoán hỏng hóc (Cold Chain Monitoring & Predictive Spoilage)
-Bài toán là gì?
+**AI phát hiện:**
+
+- ❌ Phnom Penh **chưa từng** nằm trong tuyến chính thức
+- ⚠️ Xác suất diversion: **89%**
+### 📊 Ví dụ Mockdata 2
+
+**Dữ liệu serial:**
+
+| Serial | Địa điểm | Thời gian |
+|--------|----------|-----------|
+| SN001 | Hà Nội | 09:00 |
+| SN001 | Bangkok | 09:25 |
+
+**AI phát hiện:**
+
+- ❌ Không thể vận chuyển trong **25 phút**
+- 🚨 Khả năng serial bị **clone** hoặc hàng giả
+
+**Output:**
+
+> 🔴 "Counterfeit risk: **HIGH**"
+---
+
+## B. Giám sát Chuỗi lạnh & Dự đoán Hỏng hóc (Cold Chain Monitoring & Predictive Spoilage)
+
+### 📌 Bài toán là gì?
 
 Các sản phẩm như:
 
-vaccine
-sữa
-thực phẩm đông lạnh
-thuốc
+- 💉 Vaccine
+- 🥛 Sữa
+- 🧊 Thực phẩm đông lạnh
+- 💊 Thuốc
 
-phải được bảo quản ở nhiệt độ nhất định.
+Phải được bảo quản ở **nhiệt độ nhất định**.
 
 Nếu nhiệt độ vượt ngưỡng quá lâu:
 
-chất lượng giảm
-sản phẩm hỏng
-mất hiệu lực
+- ⚠️ Chất lượng giảm
+- ❌ Sản phẩm hỏng
+- ❌ Mất hiệu lực
 
-EPCIS 2.0 có thể lưu:
+**TXNG** có thể lưu:
 
-nhiệt độ
-độ ẩm
-rung lắc
-GPS
-thời gian
-AI có thể làm gì?
+| Dữ liệu | Mô tả |
+|---------|-------|
+| Nhiệt độ | Temperature reading |
+| Độ ẩm | Humidity level |
+| Rung lắc | Vibration/shock |
+| GPS | Vị trí địa lý |
+| Thời gian | Timestamp |
+
+### 🤖 AI có thể làm gì?
 
 AI có thể:
 
-dự đoán sản phẩm còn sử dụng được bao lâu
-đánh giá mức độ hỏng
-cảnh báo sớm
-tối ưu việc thu hồi
-Đầu ra
+- 📈 Dự đoán sản phẩm còn sử dụng được bao lâu
+- 📊 Đánh giá mức độ hỏng
+- 🚨 Cảnh báo sớm
+- 🔄 Tối ưu việc thu hồi
 
-Ví dụ:
+### 📤 Đầu ra
 
-“Shelf life còn 4 ngày”
-“Nguy cơ hỏng: 78%”
-“Container cần kiểm tra ngay”
-Ví dụ mockdata 1
-Thời gian	Nhiệt độ
-08:00	4°C
-09:00	5°C
-10:00	13°C
-11:00	14°C
+**Ví dụ:**
 
-AI học rằng:
+> - ⏱️ "Shelf life còn **4 ngày**"
+> - ⚠️ "Nguy cơ hỏng: **78%**"
+> - 🚨 "Container cần kiểm tra ngay"
+### 📊 Ví dụ Mockdata 1
 
-vaccine trên 8°C quá 60 phút sẽ giảm hiệu lực mạnh
+**Dữ liệu nhiệt độ:**
 
-Output:
+| Thời gian | Nhiệt độ |
+|-----------|----------|
+| 08:00 | 4°C |
+| 09:00 | 5°C |
+| 10:00 | 13°C |
+| 11:00 | 14°C |
 
-“Estimated potency loss: 35%”
-Ví dụ mockdata 2
-Xe lạnh	Độ rung	Nhiệt độ
-Truck-22	Cao	9°C
+**AI học rằng:**
 
-AI dự đoán:
+> Vaccine trên **8°C** quá **60 phút** sẽ giảm hiệu lực mạnh
 
-nguy cơ hỏng bao bì tăng
-tuổi thọ sản phẩm giảm 20%
-C. Thu hồi thông minh (Smart Recall)
-Bài toán là gì?
+**Output:**
+
+> ⚠️ "Estimated potency loss: **35%**"
+### 📊 Ví dụ Mockdata 2
+
+**Xe lạnh:**
+
+| Xe | Độ rung | Nhiệt độ |
+|----|---------|----------|
+| Truck-22 | Cao | 9°C |
+
+**AI dự đoán:**
+
+- ⚠️ Nguy cơ hỏng bao bì **tăng**
+- 📉 Tuổi thọ sản phẩm giảm **20%**
+---
+
+## C. Thu hồi Thông minh (Smart Recall)
+
+### 📌 Bài toán là gì?
 
 Khi phát hiện:
 
-nhiễm khuẩn
-lỗi sản xuất
-sai nhiệt độ
+- 🦠 Nhiễm khuẩn
+- 🔧 Lỗi sản xuất
+- 🌡️ Sai nhiệt độ
 
-doanh nghiệp thường phải thu hồi hàng loạt.
+Doanh nghiệp thường phải thu hồi hàng loạt.
 
-Nhưng thực tế:
+**Nhưng thực tế:**
 
-không phải tất cả sản phẩm đều bị ảnh hưởng.
-AI có thể làm gì?
+> Không phải tất cả sản phẩm đều bị ảnh hưởng.
+
+### 🤖 AI có thể làm gì?
 
 AI phân tích:
 
-lô hàng
-vị trí lưu kho
-thời gian tiếp xúc
-container dùng chung
-nhiệt độ
+- 📦 Lô hàng (batch/lot)
+- 📍 Vị trí lưu kho
+- ⏱️ Thời gian tiếp xúc
+- 🚛 Container dùng chung
+- 🌡️ Nhiệt độ
 
-để xác định chính xác:
+Để xác định chính xác:
 
-pallet nào cần recall
-pallet nào an toàn
-Đầu ra
+- ✅ Pallet nào cần recall
+- ✅ Pallet nào an toàn
 
-Ví dụ:
+### 📤 Đầu ra
 
-“Recall 12 pallet”
-“Không cần recall toàn bộ lô”
-Ví dụ mockdata 1
-Pallet	Kho lạnh
-P001	Zone A
-P002	Zone A
-P003	Zone B
+**Ví dụ:**
 
-Nhiễm khuẩn chỉ xảy ra tại Zone A.
+> - 🎯 "Recall **12 pallet**"
+> - ✅ "Không cần recall toàn bộ lô"
+### 📊 Ví dụ Mockdata 1
 
-AI kết luận:
+**Pallet & Kho lạnh:**
 
-chỉ recall P001 và P002
-Ví dụ mockdata 2
-Container	Sensor ammonia
-C001	Cao
-C002	Bình thường
+| Pallet | Kho lạnh |
+|--------|----------|
+| P001 | Zone A |
+| P002 | Zone A |
+| P003 | Zone B |
 
-AI xác định:
+**Nhiễm khuẩn chỉ xảy ra tại Zone A.**
 
-contamination chỉ nằm trong C001
-D. Phát hiện hàng giả (Counterfeit Detection)
-Bài toán là gì?
+**AI kết luận:**
+
+> 🎯 Chỉ recall **P001** và **P002**
+### 📊 Ví dụ Mockdata 2
+
+**Container & Sensor ammonia:**
+
+| Container | Sensor ammonia |
+|-----------|----------------|
+| C001 | Cao |
+| C002 | Bình thường |
+
+**AI xác định:**
+
+> 🎯 Contamination chỉ nằm trong **C001**
+---
+
+## D. Phát hiện Hàng giả (Counterfeit Detection)
+
+### 📌 Bài toán là gì?
 
 Hàng giả thường:
 
-clone serial
-dùng QR giả
-giả tuyến phân phối
+- 🔢 Clone serial
+- 📱 Dùng QR giả
+- 🗺️ Giả tuyến phân phối
 
-EPCIS giúp theo dõi:
+**TXNG** giúp theo dõi:
 
-nguồn gốc
-chuỗi sở hữu
-lịch sử quét
-AI có thể làm gì?
+- 📍 Nguồn gốc
+- 🔗 Chuỗi sở hữu
+- 📜 Lịch sử quét
 
-AI phát hiện:
-
-serial trùng lặp
-tốc độ di chuyển bất khả thi
-điểm quét lạ
-pattern phân phối bất thường
-Đầu ra
-
-Ví dụ:
-
-“Counterfeit probability: 96%”
-Ví dụ mockdata 1
-Serial	Quốc gia
-SN555	Việt Nam
-SN555	Brazil
+### 🤖 AI có thể làm gì?
 
 AI phát hiện:
 
-cùng serial xuất hiện tại 2 nơi
-Ví dụ mockdata 2
-Nhà thuốc	Tỷ lệ scan
-A	20/ngày
-B	5000/ngày
+- 🔍 Serial trùng lặp
+- 🔍 Tốc độ di chuyển bất khả thi
+- 🔍 Điểm quét lạ
+- 🔍 Pattern phân phối bất thường
 
-AI đánh giá:
+### 📤 Đầu ra
 
-Nhà thuốc B có hành vi bất thường
-E. Tối ưu chuỗi cung ứng (Supply Chain Optimization)
-Bài toán là gì?
+**Ví dụ:**
+
+> 🔴 "Counterfeit probability: **96%**"
+### 📊 Ví dụ Mockdata 1
+
+**Serial & Quốc gia:**
+
+| Serial | Quốc gia |
+|--------|----------|
+| SN555 | Việt Nam |
+| SN555 | Brazil |
+
+**AI phát hiện:**
+
+> 🚨 Cùng serial xuất hiện tại **2 nơi**
+### 📊 Ví dụ Mockdata 2
+
+**Nhà thuốc & Tỷ lệ scan:**
+
+| Nhà thuốc | Tỷ lệ scan |
+|-----------|------------|
+| A | 20/ngày |
+| B | 5000/ngày |
+
+**AI đánh giá:**
+
+> ⚠️ Nhà thuốc **B** có hành vi **bất thường**
+---
+
+## E. Tối ưu Chuỗi cung ứng (Supply Chain Optimization)
+
+### 📌 Bài toán là gì?
 
 Doanh nghiệp muốn:
 
-giao nhanh hơn
-giảm tồn kho
-giảm tắc nghẽn
-giảm chi phí logistics
-AI có thể làm gì?
+- ⚡ Giao nhanh hơn
+- 📉 Giảm tồn kho
+- 🚫 Giảm tắc nghẽn
+- 💰 Giảm chi phí logistics
+
+### 🤖 AI có thể làm gì?
 
 AI có thể:
 
-dự đoán ETA (Estimated Time Arrival)
-dự đoán delay
-tối ưu tuyến đường
-tối ưu tồn kho
-Đầu ra
+- ⏱️ Dự đoán ETA (*Estimated Time Arrival*)
+- ⚠️ Dự đoán delay
+- 🗺️ Tối ưu tuyến đường
+- 📦 Tối ưu tồn kho
 
-Ví dụ:
+### 📤 Đầu ra
 
-“Shipment sẽ trễ 18 giờ”
-“Nên đổi tuyến qua Singapore”
-Ví dụ mockdata 1
-Tuyến	Delay trung bình
-Shanghai → Hải Phòng	4h
-Shanghai → Singapore → Hải Phòng	1h
+**Ví dụ:**
 
-AI đề xuất:
+> - ⚠️ "Shipment sẽ trễ **18 giờ**"
+> - 💡 "Nên đổi tuyến qua Singapore"
+### 📊 Ví dụ Mockdata 1
 
-đổi tuyến để giảm delay
-Ví dụ mockdata 2
-Kho	Tồn kho
-Hải Phòng	95%
-Đà Nẵng	22%
+**Tuyến & Delay trung bình:**
 
-AI đề xuất:
+| Tuyến | Delay trung bình |
+|-------|------------------|
+| Shanghai → Hải Phòng | 4h |
+| Shanghai → Singapore → Hải Phòng | 1h |
 
-chuyển hàng sang Đà Nẵng
-F. AI đồ thị và knowledge graph (Graph AI)
-Bài toán là gì?
+**AI đề xuất:**
 
-Chuỗi cung ứng thực chất là một mạng lưới quan hệ:
+> 💡 Đổi tuyến để **giảm delay**
+### 📊 Ví dụ Mockdata 2
 
-nhà máy
-container
-tàu
-kho
-nhà phân phối
-pallet
+**Kho & Tồn kho:**
 
-AI dạng graph có thể phân tích toàn bộ mạng lưới này.
+| Kho | Tồn kho |
+|-----|---------|
+| Hải Phòng | 95% |
+| Đà Nẵng | 22% |
 
-AI có thể làm gì?
+**AI đề xuất:**
+
+> 💡 Chuyển hàng sang **Đà Nẵng**
+---
+
+## F. AI Đồ thị & Knowledge Graph (Graph AI)
+
+### 📌 Bài toán là gì?
+
+Chuỗi cung ứng thực chất là một **mạng lưới quan hệ**:
+
+- 🏭 Nhà máy
+- 🚛 Container
+- 🚢 Tàu
+- 🏢 Kho
+- 🤝 Nhà phân phối
+- 📦 Pallet
+
+AI dạng graph có thể phân tích **toàn bộ mạng lưới** này.
+
+### 🤖 AI có thể làm gì?
 
 AI có thể:
 
-phát hiện trung tâm rủi ro
-phát hiện đường lây nhiễm
-phát hiện supplier nguy hiểm
-Đầu ra
+- 🎯 Phát hiện trung tâm rủi ro
+- 🦠 Phát hiện đường lây nhiễm
+- ⚠️ Phát hiện supplier nguy hiểm
 
-Ví dụ:
+### 📤 Đầu ra
 
-“Supplier X liên quan tới 78% vụ contamination”
-Ví dụ mockdata 1
-Supplier	Số recall
-S001	15
-S002	1
+**Ví dụ:**
 
-AI đánh giá:
+> 🔴 "Supplier **X** liên quan tới **78%** vụ contamination"
+### 📊 Ví dụ Mockdata 1
 
-Supplier S001 có risk score rất cao
-Ví dụ mockdata 2
+**Supplier & Số recall:**
 
-Graph phát hiện:
+| Supplier | Số recall |
+|----------|-----------|
+| S001 | 15 |
+| S002 | 1 |
 
-90% lô lỗi đều đi qua Warehouse-WH7
+**AI đánh giá:**
 
-AI cảnh báo:
+> 🔴 Supplier **S001** có risk score **rất cao**
+### 📊 Ví dụ Mockdata 2
 
-kho WH7 có nguy cơ contamination
-G. AI Agent và LLM cho truy vấn chuỗi cung ứng
-Bài toán là gì?
+**Graph phát hiện:**
 
-Dữ liệu EPCIS thường:
+> ⚠️ **90%** lô lỗi đều đi qua **Warehouse-WH7**
 
-rất lớn
-khó truy vấn
-nhiều event
+**AI cảnh báo:**
 
-Người dùng không biết viết query kỹ thuật.
+> 🚨 Kho **WH7** có nguy cơ contamination
+---
 
-AI có thể làm gì?
+## G. AI Agent & LLM cho Truy vấn Chuỗi cung ứng
 
-LLM có thể:
+### 📌 Bài toán là gì?
 
-hiểu tiếng người
-chuyển thành EPCIS query
-tóm tắt chuỗi sự kiện
-giải thích bất thường
-Đầu ra
+Dữ liệu TXNG thường:
 
-Ví dụ:
+- 📊 Rất lớn
+- 🔍 Khó truy vấn
+- 📝 Nhiều event
 
-“Container đang ở Hải Phòng”
-“3 shipment có nguy cơ cao”
-Ví dụ mockdata 1
+Người dùng **không biết** viết query kỹ thuật.
 
-Người dùng hỏi:
+### 🤖 AI có thể làm gì?
 
-“Lô vaccine ABC hiện ở đâu?”
+**LLM** có thể:
 
-AI:
+- 💬 Hiểu tiếng người
+- 🔁 Chuyển thành TXNG query
+- 📋 Tóm tắt chuỗi sự kiện
+- 💡 Giải thích bất thường
 
-query EPCIS
-trả về:
-Kho Hải Phòng
-cập nhật 12 phút trước
-Ví dụ mockdata 2
+### 📤 Đầu ra
 
-Người dùng hỏi:
+**Ví dụ:**
 
-“Container nào có nhiệt độ nguy hiểm trong 24 giờ qua?”
+> - 📍 "Container đang ở Hải Phòng"
+> - ⚠️ "3 shipment có nguy cơ cao"
+### 📊 Ví dụ Mockdata 1
 
-AI:
+**Người dùng hỏi:**
 
-lọc sensor events
-trả về danh sách container rủi ro
-H. Sinh dữ liệu mô phỏng (Synthetic Data Generation)
-Bài toán là gì?
+> "Lô vaccine ABC hiện ở đâu?"
+
+**AI:**
+
+1. Query TXNG
+2. Trả về:
+   - 📍 Kho Hải Phòng
+   - ⏱️ Cập nhật 12 phút trước
+### 📊 Ví dụ Mockdata 2
+
+**Người dùng hỏi:**
+
+> "Container nào có nhiệt độ nguy hiểm trong 24 giờ qua?"
+
+**AI:**
+
+1. Lọc sensor events
+2. Trả về danh sách container rủi ro
+---
+
+## H. Sinh Dữ liệu Mô phỏng (Synthetic Data Generation)
+
+### 📌 Bài toán là gì?
 
 Dữ liệu supply-chain thật:
 
-khó xin
-nhạy cảm
-thiếu trường hợp lỗi
-AI có thể làm gì?
+- 🔒 Khó xin
+- ⚠️ Nhạy cảm
+- ❌ Thiếu trường hợp lỗi
+
+### 🤖 AI có thể làm gì?
 
 AI tạo:
 
-dữ liệu EPCIS giả lập
-mô phỏng tấn công
-mô phỏng contamination
-mô phỏng logistics
-Đầu ra
+- 📊 Dữ liệu TXNG giả lập
+- 🎭 Mô phỏng tấn công
+- 🦠 Mô phỏng contamination
+- 🚛 Mô phỏng logistics
 
-Ví dụ:
+### 📤 Đầu ra
 
-10 triệu EPCIS events giả lập
-Ví dụ mockdata 1
+**Ví dụ:**
 
-AI tạo:
+> 📈 10 triệu TXNG events giả lập
+### 📊 Ví dụ Mockdata 1
 
-1000 container
-5% bị delay
-2% bị mất nhiệt độ
+**AI tạo:**
 
-để train anomaly model.
+- 🚛 1000 container
+- ⏱️ 5% bị delay
+- 🌡️ 2% bị mất nhiệt độ
 
-Ví dụ mockdata 2
+→ Để train **anomaly model**.
 
-AI mô phỏng:
+### 📊 Ví dụ Mockdata 2
 
-hacker clone serial RFID
+**AI mô phỏng:**
 
-để test hệ thống chống hàng giả.
+- 🔓 Hacker clone serial RFID
 
-I. Edge AI và IoT AI
-Bài toán là gì?
+→ Để test hệ thống **chống hàng giả**.
 
-Một số quyết định phải xử lý ngay tại:
+---
 
-kho
-gateway
-RFID reader
-camera edge
+## I. Edge AI & IoT AI
 
-không thể chờ cloud xử lý.
+### 📌 Bài toán là gì?
 
-AI có thể làm gì?
+Một số quyết định phải xử lý **ngay tại**:
 
-AI chạy trực tiếp trên edge device:
+- 🏢 Kho
+- 🌐 Gateway
+- 📡 RFID reader
+- 📹 Camera edge
 
-phát hiện nhiệt độ bất thường
-phát hiện pallet sai vị trí
-nhận diện container mở trái phép
-Đầu ra
+→ **Không thể** chờ cloud xử lý.
 
-Ví dụ:
+### 🤖 AI có thể làm gì?
 
-“Alarm tại kho số 4”
-“Pallet sai tuyến”
-Ví dụ mockdata 1
+AI chạy trực tiếp trên **edge device**:
 
-Camera edge AI phát hiện:
+- 🌡️ Phát hiện nhiệt độ bất thường
+- 📦 Phát hiện pallet sai vị trí
+- 🔓 Nhận diện container mở trái phép
 
-pallet đi vào khu vực cấm
+### 📤 Đầu ra
 
-Output:
+**Ví dụ:**
 
-bật còi cảnh báo realtime
-Ví dụ mockdata 2
+> - 🚨 "Alarm tại kho số 4"
+> - ⚠️ "Pallet sai tuyến"
+### 📊 Ví dụ Mockdata 1
 
-RFID reader phát hiện:
+**Camera edge AI phát hiện:**
 
-pallet xuất hiện sai dock
+- 🚫 Pallet đi vào khu vực cấm
 
-AI:
+**Output:**
 
-chặn xuất kho tự động
-J. AI cho ESG và Carbon Footprint
-Bài toán là gì?
+> 🔊 Bật còi cảnh báo **realtime**
+### 📊 Ví dụ Mockdata 2
+
+**RFID reader phát hiện:**
+
+- 📦 Pallet xuất hiện sai dock
+
+**AI:**
+
+> 🚫 Chặn xuất kho **tự động**
+---
+
+## J. AI cho ESG & Carbon Footprint
+
+### 📌 Bài toán là gì?
 
 Doanh nghiệp ngày càng phải báo cáo:
 
-phát thải CO₂
-sustainability
-ESG compliance
-AI có thể làm gì?
+- 🌍 Phát thải CO₂
+- ♻️ Sustainability
+- 📋 ESG compliance
+
+### 🤖 AI có thể làm gì?
 
 AI tính:
 
-CO₂ theo shipment
-phát thải theo supplier
-tuyến vận chuyển tối ưu carbon
-Đầu ra
+- 🚛 CO₂ theo shipment
+- 🏭 Phát thải theo supplier
+- 🗺️ Tuyến vận chuyển tối ưu carbon
 
-Ví dụ:
+### 📤 Đầu ra
 
-“Shipment tạo ra 1.8 tấn CO₂”
-“Đổi tuyến giúp giảm 22% phát thải”
-Ví dụ mockdata 1
-Tuyến	CO₂
-Air freight	4.2 tấn
-Sea freight	1.1 tấn
+**Ví dụ:**
 
-AI đề xuất:
+> - 📊 "Shipment tạo ra **1.8 tấn CO₂**"
+> - 💡 "Đổi tuyến giúp giảm **22%** phát thải"
+### 📊 Ví dụ Mockdata 1
 
-chuyển sang sea freight
-Ví dụ mockdata 2
-Supplier	ESG score
-S001	92
-S002	41
+**Tuyến & CO₂:**
 
-AI khuyến nghị:
+| Tuyến | CO₂ |
+|-------|-----|
+| Air freight | 4.2 tấn |
+| Sea freight | 1.1 tấn |
 
-ưu tiên Supplier S001 trong đấu thầu.
+**AI đề xuất:**
+
+> 💡 Chuyển sang **sea freight**
+### 📊 Ví dụ Mockdata 2
+
+**Supplier & ESG score:**
+
+| Supplier | ESG score |
+|----------|-----------|
+| S001 | 92 |
+| S002 | 41 |
+
+**AI khuyến nghị:**
+
+> ✅ Ưu tiên Supplier **S001** trong đấu thầu.
