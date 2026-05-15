@@ -65,9 +65,9 @@ AI có thể:
 
 | Thời gian | Địa điểm | Sự kiện |
 |-----------|----------|---------|
-| 08:00 | Hamburg | Xuất kho |
-| 14:00 | Singapore | Trung chuyển |
-| 18:00 | Hải Phòng | Nhập khẩu |
+| 06:00 | Cảng Hải Phòng | Nhập cảng |
+| 12:00 | Kho Hà Nội | Trung chuyển |
+| 16:00 | Kho Bắc Ninh | Phân phối |
 
 ✅ *Đây là tuyến bình thường.*
 
@@ -77,14 +77,14 @@ AI có thể:
 
 | Thời gian | Địa điểm | Sự kiện |
 |-----------|----------|---------|
-| 08:00 | Hamburg | Xuất kho |
-| 14:00 | Phnom Penh | Quét RFID |
-| 22:00 | Hải Phòng | Nhập khẩu |
+| 06:00 | Cảng Hải Phòng | Nhập cảng |
+| 12:00 | Kho Lạng Sơn | Quét RFID |
+| 16:00 | Kho Bắc Ninh | Phân phối |
 
 **AI phát hiện:**
 
-- ❌ Phnom Penh **chưa từng** nằm trong tuyến chính thức
-- ⚠️ Xác suất diversion: **89%**
+- ❌ Lạng Sơn **không phải** điểm trung chuyển hợp lệ
+- ⚠️ Nguy cơ hàng bị tuồn qua biên giới: **87%**
 ### 📊 Ví dụ Mockdata 2
 
 **Dữ liệu serial:**
