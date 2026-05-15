@@ -91,17 +91,17 @@ AI có thể:
 
 | Serial | Địa điểm | Thời gian |
 |--------|----------|-----------|
-| SN001 | Hà Nội | 09:00 |
-| SN001 | Bangkok | 09:25 |
+| SN001 | Kho Bắc Ninh | 14:00 |
+| SN001 | Kho Hải Phòng | 14:15 |
 
 **AI phát hiện:**
 
-- ❌ Không thể vận chuyển trong **25 phút**
-- 🚨 Khả năng serial bị **clone** hoặc hàng giả
+- ❌ Khoảng cách Bắc Ninh → Hải Phòng không thể đi trong **15 phút** với xe container
+- 🚨 Serial bị **trùng lặp** hoặc **sao chép**
 
 **Output:**
 
-> 🔴 "Nguy cơ hàng giả: **Cao**"
+> 🔴 "Cảnh báo: Serial **SN001** xuất hiện bất thường"
 ---
 
 ## B. Giám sát Chuỗi lạnh & Dự đoán Hỏng hóc (Cold Chain Monitoring & Predictive Spoilage)
