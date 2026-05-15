@@ -335,12 +335,12 @@ AI có thể:
 
 | Tuyến | Delay trung bình |
 |-------|------------------|
-| Shanghai → Hải Phòng | 4h |
-| Shanghai → Singapore → Hải Phòng | 1h |
+| Cảng Hải Phòng → Hà Nội | 4h |
+| Cảng Hải Phòng → Bắc Ninh | 2h |
 
 **AI đề xuất:**
 
-> 💡 Đổi tuyến để **giảm delay**
+> 💡 Ưu tiên phân phối qua Bắc Ninh để **giảm tắc nghẽn**
 ### 📊 Ví dụ 2
 
 **Kho & Tồn kho:**
@@ -355,7 +355,7 @@ AI có thể:
 > 💡 Chuyển hàng sang **Đà Nẵng**
 ---
 
-## F. AI Đồ thị & Knowledge Graph (Graph AI)
+## F. AI Đồ thị & Đồ thị tri thức Knowledge Graph (Graph AI)
 
 ### 📌 Bài toán là gì?
 
