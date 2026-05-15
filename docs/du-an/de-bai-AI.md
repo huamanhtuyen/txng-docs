@@ -101,7 +101,7 @@ AI có thể:
 
 **Output:**
 
-> 🔴 "Counterfeit risk: **HIGH**"
+> 🔴 "Nguy cơ hàng giả: **Cao**"
 ---
 
 ## B. Giám sát Chuỗi lạnh & Dự đoán Hỏng hóc (Cold Chain Monitoring & Predictive Spoilage)
