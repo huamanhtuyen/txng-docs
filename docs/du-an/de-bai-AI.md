@@ -55,7 +55,7 @@ AI có thể:
 
 **Ví dụ đầu ra:**
 
-> - ⚠️ "Shipment có nguy cơ diversion **92%**"
+> - ⚠️ "Lô hàng có nguy cơ bị chuyển hướng **92%**"
 > - 🚨 "Container đi sai tuyến"
 > - 🚨 "Phát hiện điểm quét chưa từng xuất hiện"
 > - 🚨 "Serial xuất hiện tại quốc gia không hợp lệ"
