@@ -146,7 +146,7 @@ AI có thể:
 
 **Ví dụ:**
 
-> - ⏱️ "Shelf life còn **4 ngày**"
+> - ⏱️ "Thời hạn sử dụng còn **4 ngày**"
 > - ⚠️ "Nguy cơ hỏng: **78%**"
 > - 🚨 "Container cần kiểm tra ngay"
 ### 📊 Ví dụ Mockdata 1
@@ -166,7 +166,7 @@ AI có thể:
 
 **Output:**
 
-> ⚠️ "Estimated potency loss: **35%**"
+> ⚠️ "Ước tính giảm hiệu lực, giảm tác dụng của vắc xin: **35%**"
 ### 📊 Ví dụ Mockdata 2
 
 **Xe lạnh:**
