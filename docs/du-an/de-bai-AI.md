@@ -58,7 +58,7 @@ AI có thể:
 > - ⚠️ "Lô hàng có nguy cơ bị chuyển hướng **92%**"
 > - 🚨 "Container đi sai tuyến"
 > - 🚨 "Phát hiện điểm quét chưa từng xuất hiện"
-> - 🚨 "Serial xuất hiện tại quốc gia không hợp lệ"
+> - 🚨 "Serial xuất hiện tại quốc gia/địa điểm không hợp lệ"
 ### 📊 Ví dụ Mockdata 1
 
 **Dữ liệu TXNG - Tuyến bình thường:**
