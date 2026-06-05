@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ Thống Truy Xuất Nguồn Gốc Sản Phẩm Công Nghiệp | Bộ Công Thương</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8f0fe;
+    --primary-dark: #0d3a9e;
+    --accent: #0ea5e9;
+    --accent2: #7c3aed;
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --text-dark: #0f172a;
+    --text-mid: #334155;
+    --text-light: #64748b;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 4px 24px rgba(26,86,219,0.08);
+    --shadow-lg: 0 8px 40px rgba(26,86,219,0.14);
+    --gradient-hero: linear-gradient(135deg, #1a56db 0%, #0ea5e9 100%);
+    --gradient-card: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: #e8edf3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ─── NAVIGATION ─── */
+  .nav-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-logo span { color: var(--text-mid); font-weight: 500; }
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 18px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .nav-btn.secondary {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .nav-btn.secondary:hover { background: #d4e3fd; }
+  .slide-counter {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  /* ─── SLIDES CONTAINER ─── */
+  .slides-wrapper {
+    margin-top: 64px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 24px 16px 48px;
+  }
+
+  .slide {
+    display: none;
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    min-height: 620px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+  }
+  .slide.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SLIDE TYPES ─── */
+
+  /* COVER */
+  .slide-cover {
+    background: var(--gradient-hero);
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 60px;
+    position: relative;
+  }
+  .slide-cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cover-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .cover-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.18;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    max-width: 820px;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 44px;
+    font-weight: 400;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .cover-footer {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cover-badge .icon { font-size: 20px; }
+
+  /* CONTENT SLIDE HEADER */
+  .slide-header {
+    background: var(--gradient-hero);
+    padding: 28px 40px 24px;
+    position: relative;
+  }
+  .slide-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1a56db, #0ea5e9, transparent);
+  }
+  .slide-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .slide-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.3;
+  }
+  .slide-title em {
+    color: #a5d8ff;
+    font-style: normal;
+  }
+  .slide-body {
+    padding: 32px 40px 36px;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    gap: 16px;
+  }
+  .cards-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .cards-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .cards-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  .card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(26,86,219,0.1);
+    transform: translateY(-2px);
+  }
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+  }
+  .card-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* HIGHLIGHT CARD */
+  .card-highlight {
+    background: linear-gradient(135deg, #1a56db 0%, #0d7cdf 100%);
+    border-color: transparent;
+    color: white;
+  }
+  .card-highlight .card-title { color: rgba(255,255,255,0.85); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .card-highlight .card-value { font-size: 28px; font-weight: 800; color: white; }
+  .card-highlight .card-text { color: rgba(255,255,255,0.75); }
+
+  /* PILL TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .tag {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag.green { background: #d1fae5; color: #065f46; }
+  .tag.orange { background: #fef3c7; color: #92400e; }
+  .tag.purple { background: #ede9fe; color: #5b21b6; }
+  .tag.red { background: #fee2e2; color: #991b1b; }
+  .tag.sky { background: #e0f2fe; color: #075985; }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* TIMELINE / STEPS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: all 0.2s;
+  }
+  .step:hover { border-color: var(--primary); box-shadow: 0 2px 12px rgba(26,86,219,0.08); }
+  .step-num {
+    background: var(--gradient-hero);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .step-content {}
+  .step-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 3px; }
+  .step-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* INFO ROW */
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+  }
+  .info-row strong { color: var(--text-dark); }
+  .info-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .compare-table thead tr {
+    background: var(--gradient-hero);
+    color: white;
+  }
+  .compare-table th {
+    padding: 12px 14px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .compare-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:nth-child(even) td { background: #f8faff; }
+  .compare-table tr:hover td { background: var(--primary-light); }
+  .compare-table .old { color: #94a3b8; }
+  .compare-table .new { color: var(--success); font-weight: 600; }
+  .compare-table .feature-col { font-weight: 600; color: var(--text-dark); }
+  .badge-new {
+    background: var(--success);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .badge-improved {
+    background: var(--warning);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  /* INFRA BLOCK */
+  .infra-block {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+  }
+  .infra-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .infra-row:hover { background: rgba(255,255,255,0.1); }
+  .infra-row:last-child { margin-bottom: 0; }
+  .infra-icon { font-size: 22px; flex-shrink: 0; }
+  .infra-name { font-size: 13px; font-weight: 700; color: #e2e8f0; flex: 1; }
+  .infra-spec { font-size: 12px; color: #94a3b8; }
+  .infra-chip {
+    background: rgba(14,165,233,0.2);
+    color: #38bdf8;
+    border: 1px solid rgba(14,165,233,0.3);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ARCHITECTURE DIAGRAM */
+  .arch-layer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .arch-label {
+    width: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-align: right;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .arch-boxes {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  .arch-box {
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .arch-box.blue { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #bfdbfe; }
+  .arch-box.teal { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+  .arch-box.purple { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+  .arch-box.orange { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .arch-box.dark { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+  .arch-box.red { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+  .arch-connector {
+    width: 100px;
+    text-align: center;
+    flex-shrink: 0;
+    color: #94a3b8;
+    font-size: 18px;
+  }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .flow-box {
+    background: var(--primary-light);
+    border: 1.5px solid #bfdbfe;
+    color: var(--primary-dark);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .flow-arrow {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* CHECKLIST */
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .check-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+  /* AGENT BOX */
+  .agent-box {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    border-radius: 14px;
+    padding: 20px 22px;
+    color: white;
+  }
+  .agent-box .agent-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .agent-box .agent-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1.5px solid #bfdbfe;
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .highlight-box-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* PAGE NUMBERS (slide dots) */
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 0 4px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dot.active {
+    background: var(--primary);
+    width: 24px;
+  }
+
+  /* BIG STAT */
+  .big-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .big-stat {
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .big-stat:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .big-stat-icon { font-size: 26px; margin-bottom: 6px; }
+  .big-stat-value { font-size: 20px; font-weight: 800; color: var(--primary); }
+  .big-stat-label { font-size: 12px; color: var(--text-light); font-weight: 500; margin-top: 3px; }
+
+  /* LAW BOX */
+  .law-list { display: flex; flex-direction: column; gap: 7px; }
+  .law-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .law-item .law-badge {
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .ic-blue { background: var(--primary-light); }
+  .ic-green { background: #d1fae5; }
+  .ic-orange { background: #fef3c7; }
+  .ic-purple { background: #ede9fe; }
+  .ic-red { background: #fee2e2; }
+  .ic-sky { background: #e0f2fe; }
+
+  /* SCROLLABLE AREA */
+  .scroll-area {
+    max-height: 430px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .scroll-area::-webkit-scrollbar { width: 4px; }
+  .scroll-area::-webkit-scrollbar-track { background: transparent; }
+  .scroll-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .cards-grid-2, .cards-grid-3, .cards-grid-4, .two-col, .three-col, .big-stat-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .slide-body { padding: 20px; }
+    .cover-title { font-size: 28px; }
+    .slide-header { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <div class="nav-logo">
+    🏛️ <span>Bộ Công Thương – Cục Quản lý &amp; PTTTTN</span>
+  </div>
+  <div class="nav-controls">
+    <button class="nav-btn secondary" id="prevBtn" onclick="changeSlide(-1)">← Trước</button>
+    <span class="slide-counter" id="slideCounter">1 / 7</span>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Tiếp →</button>
+  </div>
+</div>
+
+<div class="slides-wrapper">
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 1: COVER
+  ══════════════════════════════════════════════ -->
+  <div class="slide active" id="slide-1">
+    <div class="slide-cover">
+      <div class="cover-tag">🏛️ Cục Quản lý và Phát triển Thị trường trong nước – Bộ Công Thương</div>
+      <h1 class="cover-title">Hệ Thống Truy Xuất Nguồn Gốc Sản Phẩm Công Nghiệp</h1>
+      <p class="cover-subtitle">Giới thiệu tổng quan hệ thống TXNG thuộc các lĩnh vực công nghiệp ưu tiên phát triển – Ứng dụng GS1 EPCIS 2.0 · AI · Blockchain</p>
+      <div class="cover-footer">
+        <div class="cover-badge"><span class="icon">🗂️</span> Báo cáo Nghiên cứu Khả thi 2026</div>
+        <div class="cover-badge"><span class="icon">💰</span> Tổng đầu tư: 200 tỷ đồng</div>
+        <div class="cover-badge"><span class="icon">📅</span> Triển khai: Năm 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 2: TỔNG QUAN MÔ HÌNH TỔNG THỂ
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-header">
+      <div class="slide-num">Slide 01</div>
+      <div class="slide-title">Giới thiệu tổng quan <em>Mô hình tổng thể</em></div>
+    </div>
+    <div class="slide-body">
+
+      <div class="two-col" style="margin-bottom:20px;">
+        <div>
+          <div class="section-label">Kiến trúc phân tầng</div>
+          <div class="arch-layer">
+            <div class="arch-label">Người dùng</div>
+            <div class="arch-boxes">
+              <div class="arch-box blue">👤 Người tiêu dùng</div>
+              <div class="arch-box blue">🏭 Doanh nghiệp</div>
+              <div class="arch-box blue">🏛️ Cơ quan QL</div>
+              <div class="arch-box blue">🤝 Đại lý TXNG</div>
+            </div>
+          </div>
+          <div class="arch-layer" style="margin-top:6px;">
+            <div class="arch-label">Giao tiếp</div>
+            <div class="arch-boxes">
+              <div class="arch-box teal">🌐 Web</div>
+              <div class="arch-box teal">📱 Mobile</div>
+              <div class="arch-box teal">🔌 API</div>
+              <div class="arch-box teal">📊 Tablet</div>
+            </div>
+          </div>
+          <div class="arch-layer" style="margin-top:6px;">
+            <div class="arch-label">Ứng dụng</div>
+            <div class="arch-boxes">
+              <div class="arch-box orange">📦 Quản lý SP/HH</div>
+              <div class="arch-box orange">🔗 Chuỗi cung ứng</div>
+              <div class="arch-box orange">📋 Sự kiện TXNG</div>
+              <div class="arch-box orange">📊 Báo cáo/Thống kê</div>
+            </div>
+          </div>
+          <div class="arch-layer" style="margin-top:6px;">
+            <div class="arch-label">AI Layer</div>
+            <div class="arch-boxes">
+              <div class="arch-box purple">🤖 Phát hiện hàng giả</div>
+              <div class="arch-box purple">📈 Phân tích chuỗi</div>
+              <div class="arch-box purple">⚠️ Cảnh báo rủi ro</div>
+            </div>
+          </div>
+          <div class="arch-layer" style="margin-top:6px;">
+            <div class="arch-label">Dữ liệu</div>
+            <div class="arch-boxes">
+              <div class="arch-box dark">🗃️ CSDL TXNG</div>
+              <div class="arch-box dark">🔗 Blockchain</div>
+              <div class="arch-box dark">🧠 Vector DB</div>
+              <div class="arch-box dark">📂 Object Storage</div>
+            </div>
+          </div>
+          <div class="arch-layer" style="margin-top:6px;">
+            <div class="arch-label">Hạ tầng</div>
+            <div class="arch-boxes">
+              <div class="arch-box red">🖥️ Máy chủ NV</div>
+              <div class="arch-box red">🧠 AI/GPU</div>
+              <div class="arch-box red">🔒 Bảo mật</div>
+              <div class="arch-box red">💾 Lưu trữ</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Nền tảng công nghệ cốt lõi</div>
+          <div class="cards-grid" style="gap:10px;">
+            <div class="card" style="padding:14px;">
+              <div class="card-icon">🌐</div>
+              <div class="card-title">GS1 EPCIS 2.0</div>
+              <div class="card-text">Chuẩn quốc tế về ghi nhận sự kiện chuỗi cung ứng (5W+1H). RESTful API, JSON-LD, hỗ trợ IoT native.</div>
+            </div>
+            <div class="card" style="padding:14px;">
+              <div class="card-icon">🔗</div>
+              <div class="card-title">Blockchain Hyperledger Fabric</div>
+              <div class="card-text">Neo hash sự kiện on-chain. Chống giả mạo dữ liệu. Permissioned, không gas fee.</div>
+            </div>
+            <div class="card" style="padding:14px;">
+              <div class="card-icon">🤖</div>
+              <div class="card-title">AI/ML Phát hiện hàng giả</div>
+              <div class="card-text">Isolation Forest + Autoencoder. Phát hiện serial trùng, tuyến bất thường, mô hình gian lận.</div>
+            </div>
+            <div class="card" style="padding:14px;">
+              <div class="card-icon">📡</div>
+              <div class="card-title">IoT Data Integration</div>
+              <div class="card-text">Tiếp nhận dữ liệu cảm biến nhiệt độ, độ ẩm, GPS thông qua sensor element của EPCIS 2.0.</div>
+            </div>
+          </div>
+          <div class="highlight-box" style="margin-top:14px;">
+            <div class="highlight-box-title">🔗 Kết nối quốc gia</div>
+            <div class="tags">
+              <span class="tag">Cổng TXNG Quốc gia</span>
+              <span class="tag sky">Nền tảng Chuỗi khối QG</span>
+              <span class="tag green">CSDL Đăng ký Doanh nghiệp</span>
+              <span class="tag purple">Hải quan / Thuế</span>
+              <span class="tag orange">Bộ Công an / Định danh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="big-stat-grid">
+        <div class="big-stat">
+          <div class="big-stat-icon">🏭</div>
+          <div class="big-stat-value">5+</div>
+          <div class="big-stat-label">Nhóm hàng hóa trọng điểm</div>
+        </div>
+        <div class="big-stat">
+          <div class="big-stat-icon">🤝</div>
+          <div class="big-stat-value">4</div>
+          <div class="big-stat-label">Nhóm người dùng</div>
+        </div>
+        <div class="big-stat">
+          <div class="big-stat-icon">⚙️</div>
+          <div class="big-stat-value">Microservices</div>
+          <div class="big-stat-label">Kiến trúc hiện đại</div>
+        </div>
+        <div class="big-stat">
+          <div class="big-stat-icon">🌏</div>
+          <div class="big-stat-value">EVFTA · CPTPP</div>
+          <div class="big-stat-label">Đáp ứng hiệp định quốc tế</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 3: CÀI ĐẶT TẬP TRUNG TẠI BCT
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-header">
+      <div class="slide-num">Slide 02</div>
+      <div class="slide-title">Hệ thống <em>cài đặt tập trung tại BCT</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="two-col">
+        <div>
+          <div class="section-label">Địa điểm triển khai</div>
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div><strong>Cục Quản lý & Phát triển Thị trường trong nước</strong><br>91 Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội</div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">☁️</span>
+            <div><strong>Mô hình:</strong> Private Cloud tập trung + Trung tâm dữ liệu dự phòng (DRC)</div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">🌐</span>
+            <div><strong>Kết nối:</strong> Các đơn vị địa phương, doanh nghiệp toàn quốc kết nối qua Internet bảo mật (HTTPS/SSL)</div>
+          </div>
+
+          <div class="section-label" style="margin-top:20px;">Thành phần hệ thống tại trung tâm</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">⚖️</div>
+              <div class="step-content">
+                <div class="step-title">Hệ thống cân bằng tải (Load Balancer)</div>
+                <div class="step-text">Phân phối yêu cầu đồng đều đến các máy chủ ứng dụng, đảm bảo sẵn sàng cao (HA Cluster).</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">💻</div>
+              <div class="step-content">
+                <div class="step-title">Cụm máy chủ ứng dụng (Microservices)</div>
+                <div class="step-text">Xử lý nghiệp vụ TXNG: quản lý sự kiện EPCIS, kê khai, tra cứu, báo cáo, API tích hợp.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">🗄️</div>
+              <div class="step-content">
+                <div class="step-title">Cụm máy chủ Cơ sở dữ liệu</div>
+                <div class="step-text">PostgreSQL (nghiệp vụ chính) + OpenSearch (sự kiện EPCIS) + MinIO (object storage) + Redis (cache).</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">🤖</div>
+              <div class="step-content">
+                <div class="step-title">Máy chủ AI / GPU (NVIDIA H200)</div>
+                <div class="step-text">Phát hiện hàng giả, phân tích chuỗi cung ứng, cảnh báo rủi ro bằng Machine Learning.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">🔗</div>
+              <div class="step-content">
+                <div class="step-title">Cụm Blockchain (Hyperledger Fabric)</div>
+                <div class="step-text">Neo hash sự kiện TXNG on-chain, đảm bảo tính bất biến và chống giả mạo dữ liệu.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Mô hình luồng dữ liệu</div>
+          <div style="background: linear-gradient(135deg, #f8faff 0%, #eff6ff 100%); border: 1px solid #bfdbfe; border-radius: 14px; padding: 18px;">
+            <div style="font-size:12px; color:var(--text-light); margin-bottom:12px; font-weight:600;">📌 Luồng ghi nhận sự kiện TXNG</div>
+            <div class="flow">
+              <div class="flow-box" style="font-size:12px;">DN / IoT<br>ghi nhận</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box" style="background:#d1fae5;border-color:#a7f3d0;color:#065f46;font-size:12px;">Apache<br>Kafka</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box" style="font-size:12px;">Quarkus<br>Adapter</div>
+            </div>
+            <div class="flow" style="justify-content:center;">
+              <div class="flow-arrow" style="transform:rotate(90deg);">↓</div>
+            </div>
+            <div class="flow">
+              <div class="flow-box" style="background:#ede9fe;border-color:#ddd6fe;color:#5b21b6;font-size:12px;">OpenSearch<br>(off-chain)</div>
+              <div class="flow-arrow">+</div>
+              <div class="flow-box" style="background:#1e293b;border-color:#334155;color:#e2e8f0;font-size:12px;">Hyperledger<br>Fabric (hash)</div>
+            </div>
+            <div style="height:12px;"></div>
+            <div style="font-size:12px; color:var(--text-light); margin-bottom:10px; font-weight:600;">📌 Luồng xác minh tính toàn vẹn</div>
+            <div class="flow">
+              <div class="flow-box" style="font-size:12px;">Truy vấn<br>OpenSearch</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box" style="font-size:12px;">Tính hash<br>SHA-256</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-box" style="background:#d1fae5;border-color:#a7f3d0;color:#065f46;font-size:12px;">So sánh<br>Blockchain</div>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:20px;">Bảo mật hệ thống</div>
+          <div class="cards-grid cards-grid-2" style="gap:10px;">
+            <div class="card" style="padding:12px;">
+              <div class="card-icon" style="font-size:20px;">🛡️</div>
+              <div class="card-title" style="font-size:12px;">Next-Gen Firewall</div>
+              <div class="card-text" style="font-size:11px;">Tường lửa HA, IPS/IDS, VPN, Anti-Malware</div>
+            </div>
+            <div class="card" style="padding:12px;">
+              <div class="card-icon" style="font-size:20px;">🌊</div>
+              <div class="card-title" style="font-size:12px;">Anti-DDoS & WAF</div>
+              <div class="card-text" style="font-size:11px;">Bảo vệ tầng L3/L4, Web Application Firewall</div>
+            </div>
+            <div class="card" style="padding:12px;">
+              <div class="card-icon" style="font-size:20px;">👁️</div>
+              <div class="card-title" style="font-size:12px;">Cloud SOC</div>
+              <div class="card-text" style="font-size:11px;">Giám sát ATTT 24/7, SIEM, phân tích sự kiện</div>
+            </div>
+            <div class="card" style="padding:12px;">
+              <div class="card-icon" style="font-size:20px;">🔐</div>
+              <div class="card-title" style="font-size:12px;">MFA & RBAC</div>
+              <div class="card-text" style="font-size:11px;">Xác thực đa yếu tố, phân quyền theo vai trò</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 4: GIẢI QUYẾT VẤN ĐỀ GÌ
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-header">
+      <div class="slide-num">Slide 03</div>
+      <div class="slide-title">Hệ thống <em>giải quyết những vấn đề gì?</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="three-col">
+
+        <!-- CỘT 1: PHÁP LÝ -->
+        <div>
+          <div class="section-label">Đáp ứng pháp lý & quy định</div>
+          <div class="law-list">
+            <div class="law-item">
+              <span class="law-badge">TT 11/2026</span>
+              Thông tư 11/2026/TT-BCT: Truy xuất nguồn gốc thực phẩm thuộc phạm vi quản lý của Bộ Công Thương
+            </div>
+            <div class="law-item">
+              <span class="law-badge">NĐ 37/2026</span>
+              Nghị định 37/2026/NĐ-CP: Định danh, xác thực và truy xuất nguồn gốc sản phẩm, hàng hóa
+            </div>
+            <div class="law-item">
+              <span class="law-badge">TT 02/2024</span>
+              Thông tư 02/2024/TT-BKHCN: Quản lý truy xuất nguồn gốc sản phẩm, hàng hóa
+            </div>
+            <div class="law-item">
+              <span class="law-badge">NĐ 278/2025</span>
+              Nghị định 278/2025/NĐ-CP: Kết nối, chia sẻ dữ liệu bắt buộc giữa các cơ quan
+            </div>
+            <div class="law-item">
+              <span class="law-badge">QĐ 11/2026</span>
+              BCT chủ trì xây dựng, vận hành hệ thống TXNG các lĩnh vực CN ưu tiên
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="section-label">Chuẩn quốc tế</div>
+            <div class="info-row">
+              <span class="info-icon">🌐</span>
+              <div><strong>GS1 EPCIS 2.0</strong> – Chuẩn sự kiện chuỗi cung ứng quốc tế</div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">📋</span>
+              <div><strong>30 TCVN</strong> – Tiêu chuẩn quốc gia về TXNG đã công bố</div>
+            </div>
+            <div class="info-row">
+              <span class="info-icon">🤝</span>
+              <div><strong>EVFTA · CPTPP</strong> – Đáp ứng quy tắc xuất xứ hàng hóa XK</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT 2: NGHIỆP VỤ -->
+        <div>
+          <div class="section-label">Giải quyết bài toán nghiệp vụ</div>
+          <div class="steps">
+            <div class="step">
+              <div class="icon-circle ic-blue">🔍</div>
+              <div class="step-content">
+                <div class="step-title">Truy xuất toàn chuỗi cung ứng</div>
+                <div class="step-text">Ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng theo 5W+1H.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon-circle ic-red">🚫</div>
+              <div class="step-content">
+                <div class="step-title">Phòng chống hàng giả, hàng nhái</div>
+                <div class="step-text">AI phát hiện serial trùng, tuyến phân phối bất thường, mã QR giả mạo theo thời gian thực.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon-circle ic-green">🔗</div>
+              <div class="step-content">
+                <div class="step-title">Kết nối liên thông đa ngành</div>
+                <div class="step-text">Tích hợp với CSDL doanh nghiệp, hải quan, thuế, Bộ Công an, Cổng TXNG Quốc gia.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon-circle ic-orange">📊</div>
+              <div class="step-content">
+                <div class="step-title">Phân tích, cảnh báo rủi ro</div>
+                <div class="step-text">Dashboard giám sát thị trường, phát hiện bất thường, hỗ trợ hậu kiểm và điều tra vi phạm.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="icon-circle ic-purple">🛡️</div>
+              <div class="step-content">
+                <div class="step-title">Đảm bảo toàn vẹn dữ liệu</div>
+                <div class="step-text">Blockchain neo hash sự kiện, mọi hành vi sửa đổi trái phép bị phát hiện ngay lập tức.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT 3: LỢI ÍCH -->
+        <div>
+          <div class="section-label">Lợi ích đa chiều</div>
+          <div class="card" style="margin-bottom:10px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #bfdbfe;">
+            <div class="card-icon">🏛️</div>
+            <div class="card-title" style="color:var(--primary-dark);">Cơ quan Nhà nước</div>
+            <div class="card-text">Công cụ giám sát thị trường mạnh mẽ, hậu kiểm tự động, phát hiện sớm vi phạm, thống kê chính sách chính xác.</div>
+          </div>
+          <div class="card" style="margin-bottom:10px; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #bbf7d0;">
+            <div class="card-icon">🏭</div>
+            <div class="card-title" style="color:#065f46;">Doanh nghiệp</div>
+            <div class="card-text">Khẳng định uy tín thương hiệu, tiếp cận thị trường xuất khẩu, phân biệt với hàng giả, tối ưu hóa chuỗi cung ứng.</div>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #fdf4ff, #fae8ff); border-color: #e9d5ff;">
+            <div class="card-icon">👥</div>
+            <div class="card-title" style="color:#6b21a8;">Người tiêu dùng</div>
+            <div class="card-text">Tra cứu nguồn gốc qua QR Code, biết rõ hành trình sản phẩm, gửi phản ánh vi phạm trực tiếp tới cơ quan quản lý.</div>
+          </div>
+
+          <div class="highlight-box" style="margin-top:14px;">
+            <div class="highlight-box-title">📌 Phạm vi hàng hóa trọng điểm</div>
+            <div class="tags">
+              <span class="tag orange">Tiền chất thuốc nổ</span>
+              <span class="tag">Đồ uống có/không cồn</span>
+              <span class="tag green">Sữa & sản phẩm sữa</span>
+              <span class="tag purple">Dầu thực vật</span>
+              <span class="tag sky">Hóa chất công nghiệp</span>
+              <span class="tag red">Nguyên liệu thuốc lá</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 5: HẠ TẦNG ĐẦU TƯ
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-header">
+      <div class="slide-num">Slide 04</div>
+      <div class="slide-title">Hạ tầng CNTT <em>được đầu tư</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="two-col">
+        <div>
+          <div class="section-label">Máy chủ nghiệp vụ (Private Cloud)</div>
+          <div class="infra-block" style="margin-bottom:16px;">
+            <div class="infra-row">
+              <div class="infra-icon">🖥️</div>
+              <div>
+                <div class="infra-name">Private Cloud – Tính toán</div>
+                <div class="infra-spec">628 vCPU · 2.752 GB RAM</div>
+              </div>
+              <div class="infra-chip">Năm 1–2</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">💾</div>
+              <div>
+                <div class="infra-name">Lưu trữ SSD Cloud (dung lượng cao)</div>
+                <div class="infra-spec">75 TB – Dữ liệu nghiệp vụ + EPCIS</div>
+              </div>
+              <div class="infra-chip">SSD</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">⚡</div>
+              <div>
+                <div class="infra-name">Lưu trữ NVMe – Blockchain</div>
+                <div class="infra-spec">8 TB NVMe tốc độ cao – Hyperledger Fabric</div>
+              </div>
+              <div class="infra-chip">NVMe</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🗄️</div>
+              <div>
+                <div class="infra-name">SAN / All-Flash Array độc lập</div>
+                <div class="infra-spec">Hệ thống lưu trữ hiệu năng cao, dự phòng</div>
+              </div>
+              <div class="infra-chip">HA</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🌐</div>
+              <div>
+                <div class="infra-name">Đường truyền Internet (HA)</div>
+                <div class="infra-spec">Băng thông QT/TN + 16 IP tĩnh dự phòng</div>
+              </div>
+              <div class="infra-chip">Redundant</div>
+            </div>
+          </div>
+
+          <div class="section-label">Máy chủ AI (GPU NVIDIA H200)</div>
+          <div class="infra-block">
+            <div class="infra-row">
+              <div class="infra-icon">🧠</div>
+              <div>
+                <div class="infra-name">GPU Server Gói 1 (H200_GPU1)</div>
+                <div class="infra-spec">16 vCPU · 384 GB RAM · 3TB SSD · 1× NVIDIA H200 141GB</div>
+              </div>
+              <div class="infra-chip">AI Tier 1</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🧠</div>
+              <div>
+                <div class="infra-name">GPU Server Gói 2 (H200_GPU2)</div>
+                <div class="infra-spec">32 vCPU · 384 GB RAM · 6TB SSD · 2× NVIDIA H200 141GB</div>
+              </div>
+              <div class="infra-chip">AI Tier 2</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Bảo mật & Giám sát (Chuẩn Cấp độ 3)</div>
+          <div class="infra-block" style="margin-bottom:16px;">
+            <div class="infra-row">
+              <div class="infra-icon">🛡️</div>
+              <div>
+                <div class="infra-name">Tường lửa ảo hóa chuyên dụng (HA)</div>
+                <div class="infra-spec">FortiGate VCF04-Platinum: FW, IPS, VPN, Anti-Malware, Sandbox</div>
+              </div>
+              <div class="infra-chip">Next-Gen</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🌊</div>
+              <div>
+                <div class="infra-name">Dịch vụ Anti-DDoS</div>
+                <div class="infra-spec">Chống tấn công L3/L4, bảo vệ tối đa 2Gbps, 32 IP public</div>
+              </div>
+              <div class="infra-chip">DDoS</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🔒</div>
+              <div>
+                <div class="infra-name">WAF – Web Application Firewall</div>
+                <div class="infra-spec">Chống SQLi, XSS, bảo vệ API và ứng dụng web</div>
+              </div>
+              <div class="infra-chip">WAF</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">👁️</div>
+              <div>
+                <div class="infra-name">Cloud SOC – Giám sát ATTT 24/7</div>
+                <div class="infra-spec">SIEM, phân tích hành vi, phát hiện APT, DDoS</div>
+              </div>
+              <div class="infra-chip">SOC</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🛡️</div>
+              <div>
+                <div class="infra-name">Endpoint Security for VM</div>
+                <div class="infra-spec">44 máy chủ, hỗ trợ Container (Kubernetes)</div>
+              </div>
+              <div class="infra-chip">EDR</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">📱</div>
+              <div>
+                <div class="infra-name">DLP – Chống lộ lọt dữ liệu</div>
+                <div class="infra-spec">50 licenses, kiểm soát dữ liệu nhạy cảm</div>
+              </div>
+              <div class="infra-chip">DLP</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">💾</div>
+              <div>
+                <div class="infra-name">Cloud Backup</div>
+                <div class="infra-spec">44 máy chủ · 75TB dung lượng backup định kỳ</div>
+              </div>
+              <div class="infra-chip">Backup</div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">📊 Tóm tắt đầu tư hạ tầng</div>
+            <div class="tags">
+              <span class="tag">44 máy chủ ảo</span>
+              <span class="tag sky">628 vCPU nghiệp vụ</span>
+              <span class="tag purple">3× GPU NVIDIA H200</span>
+              <span class="tag orange">83 TB lưu trữ</span>
+              <span class="tag green">Cấp độ bảo mật 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 6: DOANH NGHIỆP CẦN LÀM GÌ?
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-6">
+    <div class="slide-header">
+      <div class="slide-num">Slide 05</div>
+      <div class="slide-title">Doanh nghiệp <em>cần làm gì để tham gia hệ thống?</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="two-col">
+        <div>
+          <!-- KEY MESSAGE -->
+          <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #86efac; border-radius: 16px; padding: 18px 20px; margin-bottom: 20px; text-align:center;">
+            <div style="font-size:32px; margin-bottom:8px;">✅</div>
+            <div style="font-size: 18px; font-weight: 800; color: #15803d; margin-bottom:6px;">Doanh nghiệp KHÔNG cần đầu tư thêm trang thiết bị!</div>
+            <div style="font-size: 13px; color: #166534; line-height:1.6;">Toàn bộ hạ tầng hệ thống do Bộ Công Thương đầu tư và vận hành tập trung. DN chỉ cần kết nối qua Internet.</div>
+          </div>
+
+          <div class="section-label">Các bước doanh nghiệp tham gia</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <div class="step-title">Đăng ký tài khoản trên Cổng doanh nghiệp</div>
+                <div class="step-text">Sử dụng máy tính có Internet, đăng ký tại trang web của hệ thống TXNG BCT. Cung cấp thông tin doanh nghiệp, mã số thuế, ngành hàng.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <div class="step-title">Kê khai thông tin sản phẩm & chuỗi cung ứng</div>
+                <div class="step-text">Nhập thông tin sản phẩm, lô hàng, các sự kiện trong chuỗi (sản xuất, đóng gói, xuất kho, vận chuyển...) lên hệ thống. Có thể dùng app mobile để kê khai ngoài thực địa.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <div class="step-title">Nhận mã định danh & in tem QR Code</div>
+                <div class="step-text">Hệ thống cấp mã xác thực, mã QR động theo chuẩn GS1 Digital Link. DN in tem/nhãn dán lên sản phẩm.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <div class="step-title">Tích hợp API (tùy chọn nâng cao)</div>
+                <div class="step-text">DN có hệ thống ERP/WMS riêng có thể tích hợp API để dữ liệu tự động đồng bộ sang hệ thống TXNG mà không cần nhập tay.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- AGENT BOX -->
+          <div class="agent-box" style="margin-bottom:16px;">
+            <div class="agent-title">🤝 Vai trò Đại lý TXNG – Hỗ trợ doanh nghiệp nhỏ</div>
+            <div class="agent-item">
+              <span>📋</span>
+              <span><strong>Đại lý triển khai</strong> được BCT ủy quyền, thay mặt DN thực hiện các thủ tục đăng ký, kê khai thông tin ban đầu.</span>
+            </div>
+            <div class="agent-item">
+              <span>🏭</span>
+              <span><strong>Hỗ trợ tại chỗ</strong> cho DN vừa và nhỏ, cơ sở sản xuất chưa có nhân sự CNTT chuyên trách.</span>
+            </div>
+            <div class="agent-item">
+              <span>📱</span>
+              <span><strong>Cài đặt & hướng dẫn</strong> sử dụng app mobile kê khai sự kiện tại nhà xưởng, kho bãi, điểm phân phối.</span>
+            </div>
+            <div class="agent-item">
+              <span>🔧</span>
+              <span><strong>Hỗ trợ kỹ thuật</strong> tích hợp API với hệ thống nội bộ của DN (ERP, WMS, phần mềm sản xuất).</span>
+            </div>
+            <div class="agent-item">
+              <span>🎓</span>
+              <span><strong>Đào tạo nghiệp vụ</strong> TXNG cho nhân viên DN theo quy trình chuẩn của Bộ Công Thương.</span>
+            </div>
+          </div>
+
+          <div class="section-label">Phân loại doanh nghiệp tham gia</div>
+          <div class="cards-grid cards-grid-2" style="gap:10px;">
+            <div class="card" style="padding:14px; border-color: #bfdbfe; background: linear-gradient(135deg,#eff6ff,#dbeafe);">
+              <div class="card-icon" style="font-size:22px;">🏭</div>
+              <div class="card-title">Nhà sản xuất</div>
+              <div class="card-text" style="font-size:12px;">Kê khai từ nguyên liệu, quy trình SX, đóng gói, QC đến xuất xưởng.</div>
+            </div>
+            <div class="card" style="padding:14px; border-color: #a7f3d0; background: linear-gradient(135deg,#f0fdf4,#dcfce7);">
+              <div class="card-icon" style="font-size:22px;">🚚</div>
+              <div class="card-title">Logistics / Phân phối</div>
+              <div class="card-text" style="font-size:12px;">Ghi nhận sự kiện vận chuyển, nhập/xuất kho tại các điểm trung chuyển.</div>
+            </div>
+            <div class="card" style="padding:14px; border-color: #fde68a; background: linear-gradient(135deg,#fffbeb,#fef3c7);">
+              <div class="card-icon" style="font-size:22px;">🏪</div>
+              <div class="card-title">Nhà bán lẻ / Đại lý</div>
+              <div class="card-text" style="font-size:12px;">Xác nhận nhập hàng, ghi nhận điểm bán, tra cứu nguồn gốc khi cần.</div>
+            </div>
+            <div class="card" style="padding:14px; border-color: #ddd6fe; background: linear-gradient(135deg,#fdf4ff,#ede9fe);">
+              <div class="card-icon" style="font-size:22px;">📦</div>
+              <div class="card-title">Nhà nhập khẩu</div>
+              <div class="card-text" style="font-size:12px;">Khai báo hàng hóa NK, liên kết với hồ sơ hải quan và chứng từ xuất xứ.</div>
+            </div>
+          </div>
+
+          <div class="info-row" style="margin-top:14px; background: linear-gradient(135deg,#fef9c3,#fef08a20); border-color: #fde68a;">
+            <span class="info-icon">💡</span>
+            <div style="font-size:13px; color:var(--text-dark);"><strong>Yêu cầu tối thiểu:</strong> Máy tính / điện thoại + kết nối Internet. <strong>Hoàn toàn miễn phí</strong> cho DN khi tham gia hệ thống.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 7: ĐIỂM MỚI SO VỚI VERIGOODS
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-header">
+      <div class="slide-num">Slide 06</div>
+      <div class="slide-title">Điểm mới <em>so với hệ thống VeriGoods cũ</em></div>
+    </div>
+    <div class="slide-body">
+      <div style="margin-bottom:16px;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width:22%;">Tiêu chí</th>
+              <th style="width:38%;">🔵 VeriGoods (hệ thống cũ)</th>
+              <th style="width:40%;">🟢 Hệ thống TXNG mới 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-col">📋 Chuẩn dữ liệu</td>
+              <td class="old">❌ Tự định nghĩa schema, không chuẩn quốc tế, không liên thông với hệ thống nước ngoài</td>
+              <td class="new">✅ GS1 EPCIS 2.0 – Chuẩn quốc tế, tương thích FDA FSMA, EU Digital Product Passport, EVFTA/CPTPP <span class="badge-new">MỚI</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">🤝 Mô hình triển khai</td>
+              <td class="old">❌ BCT trực tiếp hỗ trợ DN, không có đơn vị trung gian, khó tiếp cận DN nhỏ</td>
+              <td class="new">✅ Có mạng lưới <strong>Đại lý TXNG</strong> được ủy quyền, hỗ trợ tại chỗ DN vừa và nhỏ trên toàn quốc <span class="badge-new">MỚI</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">🏭 Hỗ trợ đầu DN</td>
+              <td class="old">❌ DN nhập tay thông tin trên portal, chưa có API tích hợp hệ thống nội bộ</td>
+              <td class="new">✅ Tích hợp <strong>API/ERP</strong>, dữ liệu tự động đồng bộ từ hệ thống DN vào TXNG. Hỗ trợ JDBC/ODBC <span class="badge-improved">CẢI TIẾN</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">📡 Dữ liệu IoT</td>
+              <td class="old">❌ Không tiếp nhận dữ liệu cảm biến, chỉ nhận thông tin DN khai báo thủ công</td>
+              <td class="new">✅ Tiếp nhận <strong>dữ liệu IoT native</strong> (nhiệt độ, độ ẩm, GPS, ánh sáng...) qua EPCIS 2.0 Sensor Element <span class="badge-new">MỚI</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">🔗 Blockchain</td>
+              <td class="old">❌ Không có cơ chế chống giả mạo dữ liệu, thông tin DN khai báo không được xác thực độc lập</td>
+              <td class="new">✅ <strong>Hyperledger Fabric</strong> neo hash sự kiện on-chain. Mọi sửa đổi trái phép bị phát hiện ngay. Permissioned, không gas fee <span class="badge-new">MỚI</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">🤖 AI / Phát hiện gian lận</td>
+              <td class="old">❌ Chưa có công cụ AI, phát hiện vi phạm chủ yếu dựa vào báo cáo thủ công từ thị trường</td>
+              <td class="new">✅ <strong>Isolation Forest + Autoencoder</strong>: phát hiện serial trùng, tuyến bất thường, mô hình phân phối giả mạo. GPU NVIDIA H200 <span class="badge-new">MỚI</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">⚡ Tốc độ xử lý cao</td>
+              <td class="old">❌ Không hỗ trợ DN sản xuất tốc độ cao (hàng triệu sự kiện/ngày)</td>
+              <td class="new">✅ <strong>Apache Kafka</strong> xử lý hàng triệu sự kiện/giây. Phù hợp nhà máy sản xuất tự động hóa cao, dây chuyền liên tục 24/7 <span class="badge-improved">CẢI TIẾN</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">🌐 Phạm vi quản lý</td>
+              <td class="old">⚠️ Chỉ xác thực cấp sản phẩm/lô, chưa quản lý toàn chuỗi cung ứng, hạn chế nhóm hàng</td>
+              <td class="new">✅ Toàn chuỗi cung ứng đa tầng (multi-tier), đa nhóm ngành. Kết nối Cổng TXNG Quốc gia, CSDL Hải quan, Thuế, Bộ CA <span class="badge-improved">CẢI TIẾN</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cards-grid cards-grid-4" style="gap:12px;">
+        <div class="card" style="text-align:center; padding:16px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border-color:#bfdbfe;">
+          <div style="font-size:28px;">🌐</div>
+          <div style="font-size:13px; font-weight:800; color:var(--primary-dark); margin-top:6px;">Chuẩn Quốc tế</div>
+          <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">GS1 EPCIS 2.0 thay cho schema tự thiết kế</div>
+        </div>
+        <div class="card" style="text-align:center; padding:16px; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#bbf7d0;">
+          <div style="font-size:28px;">🤝</div>
+          <div style="font-size:13px; font-weight:800; color:#065f46; margin-top:6px;">Mạng lưới Đại lý</div>
+          <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">Hỗ trợ DN toàn quốc qua đại lý ủy quyền</div>
+        </div>
+        <div class="card" style="text-align:center; padding:16px; background:linear-gradient(135deg,#fdf4ff,#ede9fe); border-color:#ddd6fe;">
+          <div style="font-size:28px;">🔗 + 📡</div>
+          <div style="font-size:13px; font-weight:800; color:#5b21b6; margin-top:6px;">Blockchain & IoT</div>
+          <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">Bất biến dữ liệu + cảm biến thực tế</div>
+        </div>
+        <div class="card" style="text-align:center; padding:16px; background:linear-gradient(135deg,#fffbeb,#fef3c7); border-color:#fde68a;">
+          <div style="font-size:28px;">⚡ 🤖</div>
+          <div style="font-size:13px; font-weight:800; color:#92400e; margin-top:6px;">Tốc độ cao + AI</div>
+          <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">Kafka triệu sự kiện/s + ML phát hiện gian lận</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE DOTS -->
+  <div class="slide-dots" id="slideDots"></div>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 7;
+
+  // Build dots
+  const dotsContainer = document.getElementById('slideDots');
+  for (let i = 1; i <= totalSlides; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 1 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function goToSlide(n) {
+    document.getElementById('slide-' + currentSlide).classList.remove('active');
+    document.querySelectorAll('.dot')[currentSlide - 1].classList.remove('active');
+    currentSlide = Math.max(1, Math.min(n, totalSlides));
+    document.getElementById('slide-' + currentSlide).classList.add('active');
+    document.querySelectorAll('.dot')[currentSlide - 1].classList.add('active');
+    document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+    document.getElementById('prevBtn').disabled = currentSlide === 1;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+    window.scrollTo({ top: 64, behavior: 'smooth' });
+  }
+
+  function changeSlide(dir) {
+    goToSlide(currentSlide + dir);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+  });
+
+  // Init
+  document.getElementById('prevBtn').disabled = true;
+  goToSlide(1);
+</script>
+</body>
+</html>
