@@ -694,7 +694,7 @@
   </div>
   <div class="nav-controls">
     <button class="nav-btn secondary" id="prevBtn" onclick="changeSlide(-1)">← Trước</button>
-    <span class="slide-counter" id="slideCounter">1 / 7</span>
+    <span class="slide-counter" id="slideCounter">1 / 9</span>
     <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Tiếp →</button>
   </div>
 </div>
@@ -1452,13 +1452,258 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════
+       SLIDE 8: IoT TỰ ĐỘNG 100%
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-8">
+    <div class="slide-header">
+      <div class="slide-num">Slide 07</div>
+      <div class="slide-title">IoT tự động 100% – <em>Không cần kê khai thủ công</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="two-col">
+        <div>
+          <!-- KEY MESSAGE -->
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); border-radius: 16px; padding: 18px 20px; margin-bottom: 18px; color:white;">
+            <div style="font-size:13px; font-weight:700; color:#7dd3fc; margin-bottom:10px; text-transform:uppercase; letter-spacing:1px;">✅ Tính năng CỐT LÕI của GS1 EPCIS 2.0</div>
+            <div style="font-size:14px; line-height:1.7; color:#e2e8f0;">
+              EPCIS 2.0 (ra mắt 2022) bổ sung cấu trúc <strong style="color:#38bdf8;">SensorElement</strong> – cho phép thiết bị IoT tự động gửi dữ liệu cảm biến vào hệ thống <strong style="color:#34d399;">mà không cần con người nhập liệu.</strong>
+            </div>
+          </div>
+
+          <div class="section-label">Tại sao nâng cấp lên EPCIS 2.0?</div>
+          <div class="steps">
+            <div class="step" style="border-color:#fecaca; background:linear-gradient(135deg,#fff5f5,#fee2e2);">
+              <div style="width:30px;height:30px;border-radius:8px;background:#dc2626;color:white;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">1.2</div>
+              <div class="step-content">
+                <div class="step-title" style="color:#991b1b;">EPCIS 1.2 (cũ) – Hạn chế</div>
+                <div class="step-text">Chỉ dùng XML/SOAP nặng nề. Không hỗ trợ IoT. Không có mô hình dữ liệu cảm biến. Không tương thích web hiện đại. Khó tích hợp với hệ thống mới.</div>
+              </div>
+            </div>
+            <div class="step" style="border-color:#86efac; background:linear-gradient(135deg,#f0fdf4,#dcfce7);">
+              <div style="width:30px;height:30px;border-radius:8px;background:#16a34a;color:white;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">2.0</div>
+              <div class="step-content">
+                <div class="step-title" style="color:#15803d;">EPCIS 2.0 (mới) – Vượt trội</div>
+                <div class="step-text">RESTful API + JSON/JSON-LD hiện đại. <strong>SensorElement</strong> nhận IoT native. GS1 Digital Link QR. Hỗ trợ FDA FSMA 204, EU DPP. Kafka-ready cho tốc độ cao.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-label" style="margin-top:18px;">Cấu trúc SensorElement trong EPCIS 2.0</div>
+          <div style="background:#0f172a; border-radius:12px; padding:16px; font-family:monospace; font-size:12px; line-height:1.6; overflow-x:auto;">
+            <div style="color:#7dd3fc;">{</div>
+            <div style="color:#a5f3fc; padding-left:14px;">"type": <span style="color:#86efac;">"ObjectEvent"</span>,</div>
+            <div style="color:#a5f3fc; padding-left:14px;">"epcList": [<span style="color:#fbbf24;">"urn:epc:id:sgtin:0614141.012345.SN001"</span>],</div>
+            <div style="color:#c4b5fd; padding-left:14px;">"sensorElementList": [{</div>
+            <div style="color:#a5f3fc; padding-left:28px;">"sensorMetadata": {"deviceID": <span style="color:#86efac;">"sensor:cold-room-A"</span>},</div>
+            <div style="color:#a5f3fc; padding-left:28px;">"sensorReport": [</div>
+            <div style="color:#fdba74; padding-left:42px;">{"type": <span style="color:#86efac;">"gs1:Temperature"</span>, "value": <span style="color:#7dd3fc;">4.2</span>, "uom": "CEL"},</div>
+            <div style="color:#fdba74; padding-left:42px;">{"type": <span style="color:#86efac;">"gs1:Humidity"</span>, "value": <span style="color:#7dd3fc;">68.5</span>, "uom": "A93"},</div>
+            <div style="color:#fdba74; padding-left:42px;">{"type": <span style="color:#86efac;">"gs1:AbsoluteHumidity"</span>, "value": <span style="color:#7dd3fc;">12.3</span>}</div>
+            <div style="color:#a5f3fc; padding-left:28px;">]</div>
+            <div style="color:#c4b5fd; padding-left:14px;">}]</div>
+            <div style="color:#7dd3fc;">}</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Thiết bị IoT gửi dữ liệu tự động</div>
+          <div class="infra-block">
+            <div class="infra-row">
+              <div class="infra-icon">📡</div>
+              <div>
+                <div class="infra-name">RFID Reader tại cổng kho</div>
+                <div class="infra-spec">Pallet đi qua → tự tạo ObjectEvent nhập/xuất kho</div>
+              </div>
+              <div class="infra-chip">100% tự động</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🌡️</div>
+              <div>
+                <div class="infra-name">Cảm biến nhiệt độ kho lạnh</div>
+                <div class="infra-spec">Ghi mỗi 5 phút → SensorElement nhiệt độ, độ ẩm, áp suất</div>
+              </div>
+              <div class="infra-chip">Realtime</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">📍</div>
+              <div>
+                <div class="infra-name">GPS Tracker trên xe tải</div>
+                <div class="infra-spec">Gửi tọa độ liên tục → SensorElement vị trí trong vận chuyển</div>
+              </div>
+              <div class="infra-chip">Live GPS</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">🏭</div>
+              <div>
+                <div class="infra-name">Camera AI + Barcode scanner trên dây chuyền</div>
+                <div class="infra-spec">Đọc mã → tự tạo TransformationEvent sản xuất (triệu SP/ngày)</div>
+              </div>
+              <div class="infra-chip">Tốc độ cao</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">⚖️</div>
+              <div>
+                <div class="infra-name">Cân điện tử thông minh</div>
+                <div class="infra-spec">Ghi trọng lượng lô hàng → SensorElement tự động</div>
+              </div>
+              <div class="infra-chip">Auto</div>
+            </div>
+            <div class="infra-row">
+              <div class="infra-icon">💡</div>
+              <div>
+                <div class="infra-name">Cảm biến ánh sáng / UV / rung động</div>
+                <div class="infra-spec">Theo dõi điều kiện lưu trữ dược phẩm, hóa chất nhạy cảm</div>
+              </div>
+              <div class="infra-chip">Sensor</div>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 14px; padding: 16px 18px; margin-top:16px;">
+            <div style="font-size:14px; font-weight:800; color:#15803d; margin-bottom:10px;">🔄 Luồng IoT → EPCIS hoàn toàn tự động</div>
+            <div class="flow" style="margin:0; gap:4px; flex-wrap:wrap;">
+              <div class="flow-box" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-size:12px;padding:7px 12px;">📡 IoT Device</div>
+              <div class="flow-arrow" style="color:#16a34a;">→</div>
+              <div class="flow-box" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-size:12px;padding:7px 12px;">REST API</div>
+              <div class="flow-arrow" style="color:#16a34a;">→</div>
+              <div class="flow-box" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-size:12px;padding:7px 12px;">Kafka Queue</div>
+              <div class="flow-arrow" style="color:#16a34a;">→</div>
+              <div class="flow-box" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-size:12px;padding:7px 12px;">EPCIS Event</div>
+              <div class="flow-arrow" style="color:#16a34a;">→</div>
+              <div class="flow-box" style="background:#dcfce7;border-color:#86efac;color:#15803d;font-size:12px;padding:7px 12px;">🔗 Blockchain</div>
+            </div>
+            <div style="font-size:12px; color:#166534; margin-top:10px;">⚡ <strong>Apache Kafka</strong> xử lý hàng triệu sự kiện IoT/giây – phù hợp nhà máy tự động hóa 24/7 tốc độ cao.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SLIDE 9: GTIN & GS1 DIGITAL LINK QR
+  ══════════════════════════════════════════════ -->
+  <div class="slide" id="slide-9">
+    <div class="slide-header">
+      <div class="slide-num">Slide 08</div>
+      <div class="slide-title">Định danh GS1 & <em>GS1 Digital Link QR Code</em></div>
+    </div>
+    <div class="slide-body">
+      <div class="two-col">
+        <div>
+          <div class="section-label">Phần 1 – Mã định danh (Identifier)</div>
+
+          <!-- GTIN EXPLANATION -->
+          <div style="background:linear-gradient(135deg,#1a56db,#0ea5e9); border-radius:14px; padding:16px 18px; color:white; margin-bottom:14px;">
+            <div style="font-size:14px; font-weight:800; margin-bottom:8px;">📦 GTIN – Global Trade Item Number là gì?</div>
+            <div style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.9);">
+              <strong style="color:#a5d8ff;">GTIN</strong> là mã số thương phẩm toàn cầu do tổ chức <strong style="color:#a5d8ff;">GS1</strong> cấp, định danh duy nhất cho <strong>một loại sản phẩm</strong> trên toàn thế giới. Chính là <strong style="color:#fde68a;">mã vạch EAN-13 (13 chữ số)</strong> bạn thấy trên mọi sản phẩm siêu thị hàng ngày.
+            </div>
+            <div style="margin-top:10px; background:rgba(0,0,0,0.2); border-radius:8px; padding:10px 14px; font-family:monospace; font-size:12px; color:#a5f3fc;">
+              Ví dụ: <strong style="color:white;">8 93850 71234 5</strong><br>
+              <span style="color:#fde68a;">89</span> = Việt Nam &nbsp;|&nbsp; <span style="color:#86efac;">38507</span> = Mã DN &nbsp;|&nbsp; <span style="color:#fdba74;">12345</span> = Mã SP &nbsp;|&nbsp; <span style="color:#f9a8d4;">5</span> = Check digit
+            </div>
+          </div>
+
+          <!-- IDENTIFIERS TABLE -->
+          <div class="section-label" style="margin-top:0;">Hệ thống mã định danh GS1 trong EPCIS</div>
+          <table style="width:100%; border-collapse:collapse; font-size:12px;">
+            <thead>
+              <tr style="background:var(--gradient-card);">
+                <th style="padding:8px 10px; text-align:left; font-weight:700; color:var(--primary-dark); border-bottom:2px solid var(--border);">Mã GS1</th>
+                <th style="padding:8px 10px; text-align:left; font-weight:700; color:var(--primary-dark); border-bottom:2px solid var(--border);">Định danh cho</th>
+                <th style="padding:8px 10px; text-align:left; font-weight:700; color:var(--primary-dark); border-bottom:2px solid var(--border);">Ví dụ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:8px 10px; font-weight:800; color:var(--primary);">GTIN</td>
+                <td style="padding:8px 10px; color:var(--text-mid);"><strong>Loại sản phẩm</strong> (SKU)</td>
+                <td style="padding:8px 10px; color:var(--text-light); font-family:monospace; font-size:11px;">8938507123456</td>
+              </tr>
+              <tr style="background:#f8faff; border-bottom:1px solid var(--border);">
+                <td style="padding:8px 10px; font-weight:800; color:var(--success);">SGTIN</td>
+                <td style="padding:8px 10px; color:var(--text-mid);"><strong>Từng sản phẩm riêng lẻ</strong> (GTIN + Serial)</td>
+                <td style="padding:8px 10px; color:var(--text-light); font-family:monospace; font-size:10px;">urn:epc:id:sgtin:0614141.012345.SN001</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:8px 10px; font-weight:800; color:#d97706;">SSCC</td>
+                <td style="padding:8px 10px; color:var(--text-mid);"><strong>Pallet / thùng logistics</strong></td>
+                <td style="padding:8px 10px; color:var(--text-light); font-family:monospace; font-size:11px;">urn:epc:id:sscc:0614141.1234567890</td>
+              </tr>
+              <tr style="background:#f8faff; border-bottom:1px solid var(--border);">
+                <td style="padding:8px 10px; font-weight:800; color:#7c3aed;">GLN</td>
+                <td style="padding:8px 10px; color:var(--text-mid);"><strong>Địa điểm</strong> (kho, nhà máy, cửa hàng)</td>
+                <td style="padding:8px 10px; color:var(--text-light); font-family:monospace; font-size:11px;">urn:epc:id:sgln:0614141.12345.0</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 10px; font-weight:800; color:#0ea5e9;">EPC</td>
+                <td style="padding:8px 10px; color:var(--text-mid);"><strong>Mã RFID tag</strong> (Electronic Product Code)</td>
+                <td style="padding:8px 10px; color:var(--text-light); font-family:monospace; font-size:11px;">urn:epc:id:sgtin:...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <div class="section-label">Phần 2 – Vật mang dữ liệu (Data Carrier)</div>
+
+          <div class="cards-grid cards-grid-2" style="gap:10px; margin-bottom:16px;">
+            <div class="card" style="padding:14px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border-color:#bfdbfe;">
+              <div style="font-size:24px; margin-bottom:6px;">▦</div>
+              <div class="card-title" style="color:var(--primary-dark);">GS1 QR Code<br><span style="color:var(--success); font-size:11px;">(Digital Link)</span></div>
+              <div class="card-text" style="font-size:11px;">Sản phẩm bán lẻ, thùng hàng. Quét bằng camera thường → mở trang TXNG ngay, không cần app.</div>
+            </div>
+            <div class="card" style="padding:14px; background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#bbf7d0;">
+              <div style="font-size:24px; margin-bottom:6px;">▌▌▌▌</div>
+              <div class="card-title" style="color:#065f46;">GS1-128 Barcode</div>
+              <div class="card-text" style="font-size:11px;">Thùng carton, pallet logistics. Kết hợp GTIN + lô + ngày SX. Máy quét kho đọc tốc độ cao.</div>
+            </div>
+            <div class="card" style="padding:14px; background:linear-gradient(135deg,#fffbeb,#fef3c7); border-color:#fde68a;">
+              <div style="font-size:24px; margin-bottom:6px;">▪▪▪</div>
+              <div class="card-title" style="color:#92400e;">GS1 DataMatrix</div>
+              <div class="card-text" style="font-size:11px;">Sản phẩm nhỏ (dược phẩm, linh kiện). Nhỏ hơn QR, chứa nhiều dữ liệu hơn barcode 1D.</div>
+            </div>
+            <div class="card" style="padding:14px; background:linear-gradient(135deg,#fdf4ff,#ede9fe); border-color:#ddd6fe;">
+              <div style="font-size:24px; margin-bottom:6px;">📶</div>
+              <div class="card-title" style="color:#5b21b6;">RFID EPC Tag</div>
+              <div class="card-text" style="font-size:11px;">Pallet/container cao cấp. Đọc hàng loạt không cần tầm nhìn thẳng. Không cần in, chỉ dán chip.</div>
+            </div>
+          </div>
+
+          <!-- GS1 DIGITAL LINK EXPLANATION -->
+          <div class="section-label">GS1 Digital Link – Công nghệ QR của openEPCIS</div>
+          <div style="background:#0f172a; border-radius:12px; padding:16px 18px; color:white;">
+            <div style="font-size:12px; color:#7dd3fc; font-weight:700; margin-bottom:10px;">🔗 Cấu trúc URL trong QR Code</div>
+            <div style="font-family:monospace; font-size:12px; background:rgba(255,255,255,0.06); border-radius:8px; padding:12px; line-height:1.8; word-break:break-all;">
+              <span style="color:#64748b;">https://</span><span style="color:#38bdf8;">txng.bct.gov.vn</span><span style="color:#64748b;">/</span><span style="color:#fbbf24;">01</span><span style="color:#64748b;">/</span><span style="color:#86efac;">08938507123456</span><span style="color:#64748b;">/</span><span style="color:#fbbf24;">21</span><span style="color:#64748b;">/</span><span style="color:#f9a8d4;">SN001234</span>
+              <div style="margin-top:8px; font-size:11px;">
+                <span style="color:#fbbf24;">01</span> = Application Identifier (GTIN) &nbsp;
+                <span style="color:#86efac;">08938507...</span> = GTIN-13<br>
+                <span style="color:#fbbf24;">21</span> = Application Identifier (Serial) &nbsp;
+                <span style="color:#f9a8d4;">SN001234</span> = Số serial
+              </div>
+            </div>
+            <div style="margin-top:12px; font-size:12px; line-height:1.7; color:#e2e8f0;">
+              📱 <strong style="color:#38bdf8;">Người tiêu dùng</strong> chỉ cần quét bằng camera điện thoại → trình duyệt tự mở trang <strong style="color:#34d399;">tra cứu nguồn gốc đầy đủ</strong> – lịch sử sự kiện EPCIS, xác minh Blockchain, dữ liệu IoT – <strong>không cần cài app.</strong>
+            </div>
+          </div>
+
+          <div class="info-row" style="margin-top:12px; background:linear-gradient(135deg,#fef9c3,#fef08a20); border-color:#fde68a;">
+            <span class="info-icon">💡</span>
+            <div style="font-size:12.5px; color:var(--text-dark);"><strong>openEPCIS</strong> lưu sự kiện theo EPC URN (SGTIN, SSCC...), in mã <strong>GS1 Digital Link QR</strong> lên sản phẩm/pallet. Quét QR → hệ thống tra cứu event EPCIS + xác minh hash Blockchain tức thì.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDE DOTS -->
   <div class="slide-dots" id="slideDots"></div>
 </div>
 
 <script>
   let currentSlide = 1;
-  const totalSlides = 7;
+  const totalSlides = 9;
 
   // Build dots
   const dotsContainer = document.getElementById('slideDots');
