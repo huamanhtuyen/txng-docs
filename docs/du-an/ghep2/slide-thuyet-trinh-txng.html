@@ -2193,20 +2193,24 @@
                 <td class="feature-col">📋 Chuẩn dữ liệu</td>
                 <td class="old">❌ Tự định nghĩa schema, không chuẩn quốc tế, không liên thông với hệ thống nước ngoài
                 </td>
-                <td class="new">✅ GS1 EPCIS 2.0 – Chuẩn quốc tế, tương thích FDA FSMA, EU Digital Product Passport,
-                  EVFTA/CPTPP <span class="badge-new">MỚI</span></td>
+                <td class="new">✅ Chuẩn dữ liệu quốc tế GS1 EPCIS 2.0 – tương thích quy định của Mỹ (FDA FSMA 204), Châu
+                  Âu (Hộ chiếu sản phẩm kỹ thuật số) và đáp ứng điều kiện xuất xứ hàng hóa theo hiệp định EVFTA, CPTPP
+                  <span class="badge-new">MỚI</span>
+                </td>
               </tr>
               <tr>
                 <td class="feature-col">🤝 Mô hình triển khai</td>
-                <td class="old">❌ BCT trực tiếp hỗ trợ DN, không có đơn vị trung gian, khó tiếp cận DN nhỏ</td>
-                <td class="new">✅ Có mạng lưới <strong>Đại lý TXNG</strong> được ủy quyền, hỗ trợ tại chỗ DN vừa và nhỏ
+                <td class="old">❌ BCT trực tiếp hỗ trợ DN, không có đơn vị trung gian, khó khăn về nhân sự triển khai,
+                  hỗ trợ, khó tiếp cận DN nhỏ</td>
+                <td class="new">✅ Có mạng lưới <strong>Đại lý TXNG (CNTT và Nghiệp vụ)</strong> được ủy quyền, hỗ trợ
+                  tại chỗ DN vừa và nhỏ
                   trên toàn quốc <span class="badge-new">MỚI</span></td>
               </tr>
               <tr>
                 <td class="feature-col">🏭 Hỗ trợ đầu DN</td>
-                <td class="old">❌ DN nhập tay thông tin trên portal, chưa có API tích hợp hệ thống nội bộ</td>
-                <td class="new">✅ Tích hợp <strong>API/ERP</strong>, dữ liệu tự động đồng bộ từ hệ thống DN vào TXNG. Hỗ
-                  trợ JDBC/ODBC <span class="badge-improved">CẢI TIẾN</span></td>
+                <td class="old">❌ DN nhập tay thông tin trên trang web, chưa có API tích hợp hệ thống nội bộ</td>
+                <td class="new">✅ Tích hợp <strong>API/ERP</strong>, dữ liệu tự động đồng bộ từ hệ thống DN vào
+                  TXNG.<span class="badge-improved">CẢI TIẾN</span></td>
               </tr>
               <tr>
                 <td class="feature-col">📡 Dữ liệu IoT</td>
@@ -2218,20 +2222,21 @@
                 <td class="feature-col">🔗 Blockchain</td>
                 <td class="old">❌ Không có cơ chế chống giả mạo dữ liệu, thông tin DN khai báo không được xác thực độc
                   lập</td>
-                <td class="new">✅ <strong>Hyperledger Fabric</strong> neo hash sự kiện on-chain. Mọi sửa đổi trái phép
-                  bị phát hiện ngay. Permissioned, không gas fee <span class="badge-new">MỚI</span></td>
+                <td class="new">✅ <strong>Hyperledger Fabric</strong> kiểm soát thông tin TXNG. Mọi sửa đổi trái phép
+                  bị phát hiện ngay. Blockchain có uỷ quyền, hoàn toàn không có chi phí mạng lưới <span
+                    class="badge-new">MỚI</span></td>
               </tr>
               <tr>
                 <td class="feature-col">🤖 AI / Phát hiện gian lận</td>
                 <td class="old">❌ Chưa có công cụ AI, phát hiện vi phạm chủ yếu dựa vào báo cáo thủ công từ thị trường
                 </td>
-                <td class="new">✅ <strong>Isolation Forest + Autoencoder</strong>: phát hiện serial trùng, tuyến bất
-                  thường, mô hình phân phối giả mạo. GPU NVIDIA H100 <span class="badge-new">MỚI</span></td>
+                <td class="new">✅ <strong>AI chuyên dụng</strong>: phát hiện serial trùng, tuyến bất
+                  thường, mô hình phân phối giả mạo. Phần cứng AI hàng đầu <span class="badge-new">MỚI</span></td>
               </tr>
               <tr>
                 <td class="feature-col">⚡ Tốc độ xử lý cao</td>
                 <td class="old">❌ Không hỗ trợ DN sản xuất tốc độ cao (hàng triệu sự kiện/ngày)</td>
-                <td class="new">✅ <strong>Apache Kafka</strong> xử lý hàng triệu sự kiện/giây. Phù hợp nhà máy sản xuất
+                <td class="new">✅ <strong>Trục tích hợp</strong> xử lý hàng triệu sự kiện/giây. Phù hợp nhà máy sản xuất
                   tự động hóa cao, dây chuyền liên tục 24/7 <span class="badge-improved">CẢI TIẾN</span></td>
               </tr>
               <tr>
@@ -2239,7 +2244,7 @@
                 <td class="old">⚠️ Chỉ xác thực cấp sản phẩm/lô, chưa quản lý toàn chuỗi cung ứng, hạn chế nhóm hàng
                 </td>
                 <td class="new">✅ Toàn chuỗi cung ứng đa tầng (multi-tier), đa nhóm ngành. Kết nối Cổng TXNG Quốc gia,
-                  CSDL Hải quan, Thuế, Bộ CA <span class="badge-improved">CẢI TIẾN</span></td>
+                  GS1 Việt Nam <span class="badge-improved">CẢI TIẾN</span></td>
               </tr>
             </tbody>
           </table>
@@ -2250,7 +2255,8 @@
             style="text-align:center; padding:16px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border-color:#bfdbfe;">
             <div style="font-size:28px;">🌐</div>
             <div style="font-size:13px; font-weight:800; color:var(--primary-dark); margin-top:6px;">Chuẩn Quốc tế</div>
-            <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">GS1 EPCIS 2.0 thay cho schema tự thiết
+            <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">GS1 EPCIS 2.0 thay cho cấu trúc tự
+              thiết
               kế</div>
           </div>
           <div class="card"
@@ -2271,7 +2277,7 @@
             style="text-align:center; padding:16px; background:linear-gradient(135deg,#fffbeb,#fef3c7); border-color:#fde68a;">
             <div style="font-size:28px;">⚡ 🤖</div>
             <div style="font-size:13px; font-weight:800; color:#92400e; margin-top:6px;">Tốc độ cao + AI</div>
-            <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">Kafka triệu sự kiện/s + ML phát hiện
+            <div style="font-size:11px; color:var(--text-mid); margin-top:4px;">Triệu sự kiện/s + ML phát hiện
               gian lận</div>
           </div>
         </div>
