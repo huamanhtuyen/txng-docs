@@ -53,7 +53,34 @@
     justify-content: space-between;
     padding: 10px 32px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: padding 0.25s, height 0.25s;
   }
+  .nav-bar.collapsed {
+    padding: 4px 16px;
+  }
+  .nav-bar.collapsed .nav-logo,
+  .nav-bar.collapsed .nav-page-btns,
+  .nav-bar.collapsed #prevBtn,
+  .nav-bar.collapsed #nextBtn {
+    display: none;
+  }
+  .nav-bar.collapsed .slide-counter {
+    font-size: 12px;
+  }
+  .nav-collapse-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 11px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-collapse-btn:hover { border-color: var(--primary); color: var(--primary); }
   .nav-logo {
     font-size: 13px;
     font-weight: 700;
@@ -867,7 +894,7 @@
 <body>
 
 <!-- NAV BAR -->
-<div class="nav-bar">
+<div class="nav-bar" id="navBar">
   <div class="nav-logo">
     🏛️ <span>Bộ Công Thương – Cục Quản lý &amp; PTTTTN</span>
   </div>
@@ -876,6 +903,7 @@
     <button class="nav-btn secondary" id="prevBtn" onclick="changeSlide(-1)">← Trước</button>
     <span class="slide-counter" id="slideCounter">1 / 10</span>
     <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Tiếp →</button>
+    <button class="nav-collapse-btn" id="collapseBtn" onclick="toggleNav()" title="Thu gọn thanh điều hướng (phím H)">Thu gọn ▴</button>
   </div>
 </div>
 
@@ -2157,7 +2185,17 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+    if (e.key === 'h' || e.key === 'H') toggleNav();
   });
+
+  // Navbar collapse toggle
+  function toggleNav() {
+    const bar = document.getElementById('navBar');
+    const btn = document.getElementById('collapseBtn');
+    const isCollapsed = bar.classList.toggle('collapsed');
+    btn.textContent = isCollapsed ? 'Mở rộng ▾' : 'Thu gọn ▴';
+    btn.title = isCollapsed ? 'Mở rộng thanh điều hướng (phím H)' : 'Thu gọn thanh điều hướng (phím H)';
+  }
 
   // Init
   document.getElementById('prevBtn').disabled = true;
