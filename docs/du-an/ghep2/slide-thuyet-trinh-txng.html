@@ -1029,11 +1029,13 @@
         <div>
           <div class="section-label">Nền tảng công nghệ cốt lõi</div>
           <div class="cards-grid" style="gap:10px;">
+            <!-- 1. IoT -->
             <div class="card" style="padding:14px; border-left: 3px solid #0ea5e9;">
               <div class="card-icon">📡</div>
               <div class="card-title">Tích hợp IoT</div>
               <div class="card-text">Tự động hoá <strong>100%</strong> – không bắt buộc kê khai thủ công. Đặc biệt hỗ trợ <strong>DN sản xuất tốc độ cao</strong> (bia, sữa, nước giải khát) qua chỉ tiêu thông tin cảm biến của chuẩn quốc tế EPCIS 2.0.</div>
             </div>
+            <!-- 2. EPCIS -->
             <div class="card" style="padding:14px;">
               <div class="card-icon">🌐</div>
               <div class="card-title">Chuẩn dữ liệu quốc tế GS1 EPCIS 2.0</div>
@@ -1042,15 +1044,33 @@
                 📌 <strong>EPCIS 2.0</strong> do tổ chức <strong>GS1</strong> toàn cầu (116 quốc gia thành viên) phát hành. Được áp dụng bắt buộc bởi 🇺🇸 Mỹ (FDA FSMA 204, 2026) và 🇪🇺 EU (Digital Product Passport). Chuẩn <em>de facto</em> trong chuỗi cung ứng quốc tế.
               </div>
             </div>
-            <div class="card" style="padding:14px;">
-              <div class="card-icon">🔗</div>
-              <div class="card-title">Blockchain Hyperledger Fabric</div>
-              <div class="card-text">Neo hash sự kiện on-chain. Chống giả mạo dữ liệu. Permissioned, không gas fee.</div>
-            </div>
+            <!-- 3. AI/ML -->
             <div class="card" style="padding:14px;">
               <div class="card-icon">🤖</div>
               <div class="card-title">AI/ML Phát hiện hàng giả</div>
-              <div class="card-text">Isolation Forest + Autoencoder. Phát hiện serial trùng, tuyến bất thường, mô hình gian lận.</div>
+              <div class="card-text">
+                <div style="display:flex; flex-direction:column; gap:4px; margin-top:2px;">
+                  <div style="font-weight:700; color:var(--primary-dark); font-size:12px;">🔍 Phát hiện hàng giả:</div>
+                  <div style="padding-left:10px;">• Serial trùng lặp</div>
+                  <div style="padding-left:10px;">• Di chuyển bất khả thi</div>
+                  <div style="padding-left:10px;">• Điểm quét lạ</div>
+                  <div style="font-weight:700; color:#b45309; font-size:12px; margin-top:4px;">⚠️ Cảnh báo bất thường:</div>
+                  <div style="padding-left:10px;">• Tỷ lệ quét tại 1 điểm bán cao bất thường</div>
+                </div>
+              </div>
+            </div>
+            <!-- 4. Blockchain -->
+            <div class="card" style="padding:14px;">
+              <div class="card-icon">🔗</div>
+              <div class="card-title">Công nghệ Blockchain</div>
+              <div class="card-text">
+                <div style="display:flex; flex-direction:column; gap:4px; margin-top:2px;">
+                  <div>✅ Chống giả mạo dữ liệu</div>
+                  <div>✅ Chỉ tham gia khi được uỷ quyền</div>
+                  <div>✅ Không có chi phí giao dịch</div>
+                  <div>✅ Hỗ trợ hợp đồng thông minh</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="highlight-box" style="margin-top:14px;">
@@ -1058,9 +1078,29 @@
             <div class="tags">
               <span class="tag">Cổng TXNG Quốc gia</span>
               <span class="tag sky">Nền tảng Chuỗi khối QG</span>
-              <span class="tag green">CSDL Đăng ký Doanh nghiệp</span>
-              <span class="tag purple">Hải quan / Thuế</span>
               <span class="tag orange">Bộ Công an / Định danh</span>
+              <div class="hover-card-wrapper" style="display:inline-flex;">
+                <span class="tag green" style="cursor:help;">GS1 Việt Nam ℹ️</span>
+                <div class="hover-card-popup-down" style="width:300px;">
+                  <div class="hcp-title">🏛️ GS1 Việt Nam</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#f0fdf4;">📍</div>
+                    <div><strong style="color:#065f46;">Tổ chức:</strong> Trung tâm Mã số Mã vạch Quốc gia – thành viên chính thức của GS1 toàn cầu tại Việt Nam.</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#f0fdf4;">🏢</div>
+                    <div><strong style="color:#065f46;">Quản lý:</strong> Trực thuộc <strong>Ủy ban Tiêu chuẩn Đo lường Chất lượng Quốc gia</strong> (trước đây là Tổng cục Tiêu chuẩn Đo lường Chất lượng – STAMEQ) – Bộ Khoa học và Công nghệ.</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#f0fdf4;">📌</div>
+                    <div><strong style="color:#065f46;">Địa chỉ:</strong> 8 Hoàng Quốc Việt, Cầu Giấy, Hà Nội.</div>
+                  </div>
+                  <div class="hcp-item" style="margin-bottom:0;">
+                    <div class="hcp-dot" style="background:#f0fdf4;">✅</div>
+                    <div><strong style="color:#065f46;">Chức năng:</strong> Cấp mã GTIN/GS1 cho DN Việt Nam, quản lý hệ thống mã số mã vạch quốc gia.</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1069,7 +1109,7 @@
       <div class="big-stat-grid">
         <div class="big-stat">
           <div class="big-stat-icon">🏭</div>
-          <div class="big-stat-value">5+</div>
+          <div class="big-stat-value">16</div>
           <div class="big-stat-label">Nhóm hàng hóa trọng điểm</div>
         </div>
         <div class="big-stat">
@@ -1084,7 +1124,34 @@
         </div>
         <div class="big-stat">
           <div class="big-stat-icon">🌏</div>
-          <div class="big-stat-value">EVFTA · CPTPP</div>
+          <div class="hover-card-wrapper" style="display:inline-flex; justify-content:center;">
+            <div class="big-stat-value" style="cursor:help;">EVFTA · CPTPP</div>
+            <div class="hover-card-popup" style="width:320px; bottom:calc(100% + 10px); top:auto; left:50%; transform:translateX(-50%) translateX(-6px); right:auto;">
+              <div class="hcp-title">🌏 Hiệp định Thương mại Quốc tế</div>
+              <div class="hcp-item">
+                <div class="hcp-dot" style="background:#eff6ff;">🇪🇺</div>
+                <div>
+                  <strong style="color:var(--primary-dark);">EVFTA</strong> – Hiệp định Thương mại Tự do Việt Nam – EU<br>
+                  <span style="font-size:11px; color:var(--text-light);">Hiệu lực từ 01/08/2020. Yêu cầu truy xuất nguồn gốc & quy tắc xuất xứ cho hàng XK sang 27 nước EU.</span>
+                </div>
+              </div>
+              <div class="hcp-item" style="margin-bottom:0; align-items:flex-start;">
+                <div class="hcp-dot" style="background:#f0fdf4;">🌏</div>
+                <div>
+                  <strong style="color:#065f46;">CPTPP</strong> – Hiệp định Đối tác Toàn diện và Tiến bộ xuyên Thái Bình Dương<br>
+                  <span style="font-size:11px; color:var(--text-light);">Hiệu lực với VN từ 14/01/2019. 11 quốc gia: Nhật, Canada, Úc, Mexico, Chile, Peru, Singapore, Malaysia, Brunei, New Zealand, VN.</span>
+                  <div style="margin-top:8px; display:flex; flex-direction:column; gap:4px;">
+                    <div style="font-size:11px; color:#065f46; font-weight:700;">📋 4 yêu cầu liên quan TXNG:</div>
+                    <div style="font-size:11px; color:var(--text-mid); padding-left:8px; line-height:1.5;">① <strong>Quy tắc xuất xứ (RoO):</strong> Chứng minh nguồn gốc NL & tỷ lệ nội địa hóa đủ điều kiện hưởng thuế ưu đãi.</div>
+                    <div style="font-size:11px; color:var(--text-mid); padding-left:8px; line-height:1.5;">② <strong>Tự chứng nhận xuất xứ:</strong> DN tự khai, phải lưu hồ sơ chuỗi cung ứng <strong>tối thiểu 5 năm</strong>.</div>
+                    <div style="font-size:11px; color:var(--text-mid); padding-left:8px; line-height:1.5;">③ <strong>SPS (Chương 7):</strong> Minh bạch nguồn gốc thực phẩm, nguyên liệu đầu vào.</div>
+                    <div style="font-size:11px; color:var(--text-mid); padding-left:8px; line-height:1.5;">④ <strong>Ghi nhãn hàng hóa:</strong> Thông tin xuất xứ rõ ràng – kết nối với mã QR TXNG.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="hcp-note">📌 Hệ thống TXNG BCT giúp DN đáp ứng quy tắc xuất xứ hàng hóa xuất khẩu theo cả 2 hiệp định.</div>
+            </div>
+          </div>
           <div class="big-stat-label">Đáp ứng hiệp định quốc tế</div>
         </div>
       </div>
