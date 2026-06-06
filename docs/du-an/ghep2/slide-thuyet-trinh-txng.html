@@ -1259,24 +1259,18 @@
             <div class="flow">
               <div class="flow-box" style="font-size:12px;">DN / IoT<br>ghi nhận</div>
               <div class="flow-arrow">→</div>
-              <div class="flow-box" style="background:#d1fae5;border-color:#a7f3d0;color:#065f46;font-size:12px;">Apache<br>Kafka</div>
+              <div class="flow-box" style="background:#d1fae5;border-color:#a7f3d0;color:#065f46;font-size:12px;">Trục<br>tích hợp</div>
               <div class="flow-arrow">→</div>
-              <div class="flow-box" style="font-size:12px;">Quarkus<br>Adapter</div>
-            </div>
-            <div class="flow" style="justify-content:center;">
-              <div class="flow-arrow" style="transform:rotate(90deg);">↓</div>
-            </div>
-            <div class="flow">
-              <div class="flow-box" style="background:#ede9fe;border-color:#ddd6fe;color:#5b21b6;font-size:12px;">OpenSearch<br>(off-chain)</div>
+              <div class="flow-box" style="background:#ede9fe;border-color:#ddd6fe;color:#5b21b6;font-size:12px;">CSDL<br>Sự kiện</div>
               <div class="flow-arrow">+</div>
-              <div class="flow-box" style="background:#1e293b;border-color:#334155;color:#e2e8f0;font-size:12px;">Hyperledger<br>Fabric (hash)</div>
+              <div class="flow-box" style="background:#1e293b;border-color:#334155;color:#e2e8f0;font-size:12px;">Blockchain</div>
             </div>
             <div style="height:12px;"></div>
             <div style="font-size:12px; color:var(--text-light); margin-bottom:10px; font-weight:600;">📌 Luồng xác minh tính toàn vẹn</div>
             <div class="flow">
-              <div class="flow-box" style="font-size:12px;">Truy vấn<br>OpenSearch</div>
+              <div class="flow-box" style="font-size:12px;">Truy vấn<br>sự kiện</div>
               <div class="flow-arrow">→</div>
-              <div class="flow-box" style="font-size:12px;">Tính hash<br>SHA-256</div>
+              <div class="flow-box" style="font-size:12px;">Tính toán<br>toàn vẹn</div>
               <div class="flow-arrow">→</div>
               <div class="flow-box" style="background:#d1fae5;border-color:#a7f3d0;color:#065f46;font-size:12px;">So sánh<br>Blockchain</div>
             </div>
@@ -1286,22 +1280,22 @@
           <div class="cards-grid cards-grid-2" style="gap:10px;">
             <div class="card" style="padding:12px;">
               <div class="card-icon" style="font-size:20px;">🛡️</div>
-              <div class="card-title" style="font-size:12px;">Next-Gen Firewall</div>
+              <div class="card-title" style="font-size:12px;">Công nghệ tường lửa</div>
               <div class="card-text" style="font-size:11px;">Tường lửa HA, IPS/IDS, VPN, Anti-Malware</div>
             </div>
             <div class="card" style="padding:12px;">
               <div class="card-icon" style="font-size:20px;">🌊</div>
-              <div class="card-title" style="font-size:12px;">Anti-DDoS & WAF</div>
+              <div class="card-title" style="font-size:12px;">Công nghệ chống tấn công mạng</div>
               <div class="card-text" style="font-size:11px;">Bảo vệ tầng L3/L4, Web Application Firewall</div>
             </div>
             <div class="card" style="padding:12px;">
               <div class="card-icon" style="font-size:20px;">👁️</div>
-              <div class="card-title" style="font-size:12px;">Cloud SOC</div>
+              <div class="card-title" style="font-size:12px;">Công nghệ giám sát</div>
               <div class="card-text" style="font-size:11px;">Giám sát ATTT 24/7, SIEM, phân tích sự kiện</div>
             </div>
             <div class="card" style="padding:12px;">
               <div class="card-icon" style="font-size:20px;">🔐</div>
-              <div class="card-title" style="font-size:12px;">MFA & RBAC</div>
+              <div class="card-title" style="font-size:12px;">Công nghệ xác thực</div>
               <div class="card-text" style="font-size:11px;">Xác thực đa yếu tố, phân quyền theo vai trò</div>
             </div>
           </div>
@@ -1547,7 +1541,7 @@
             <div class="infra-row">
               <div class="infra-icon">👁️</div>
               <div>
-                <div class="infra-name">Cloud SOC – Giám sát ATTT 24/7</div>
+                <div class="infra-name">Công nghệ giám sát – Giám sát ATTT 24/7</div>
                 <div class="infra-spec">SIEM, phân tích hành vi, phát hiện APT, DDoS</div>
               </div>
               <div class="infra-chip">SOC</div>
@@ -1769,7 +1763,7 @@
             <tr>
               <td class="feature-col">📡 Dữ liệu IoT</td>
               <td class="old">❌ Không tiếp nhận dữ liệu cảm biến, chỉ nhận thông tin DN khai báo thủ công</td>
-              <td class="new">✅ Tiếp nhận <strong>dữ liệu IoT native</strong> (nhiệt độ, độ ẩm, GPS, ánh sáng...) qua EPCIS 2.0 Sensor Element <span class="badge-new">MỚI</span></td>
+              <td class="new">✅ Tiếp nhận <strong>dữ liệu IoT sản xuất tốc độ cao</strong> (nhiệt độ, độ ẩm, GPS, ánh sáng...) qua EPCIS 2.0 Sensor Element <span class="badge-new">MỚI</span></td>
             </tr>
             <tr>
               <td class="feature-col">🔗 Blockchain</td>
@@ -1852,7 +1846,7 @@
               <div style="width:30px;height:30px;border-radius:8px;background:#16a34a;color:white;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">2.0</div>
               <div class="step-content">
                 <div class="step-title" style="color:#15803d;">EPCIS 2.0 (mới) – Vượt trội</div>
-                <div class="step-text">RESTful API + JSON/JSON-LD hiện đại. <strong>SensorElement</strong> nhận IoT native. GS1 Digital Link QR. Hỗ trợ FDA FSMA 204, EU DPP. Kafka-ready cho tốc độ cao.</div>
+                <div class="step-text">RESTful API + JSON/JSON-LD hiện đại. <strong>SensorElement</strong> nhận IoT sản xuất tốc độ cao. GS1 Digital Link QR. Hỗ trợ FDA FSMA 204, EU DPP. Kafka-ready cho tốc độ cao.</div>
               </div>
             </div>
           </div>
@@ -1971,7 +1965,7 @@
           <span style="font-size:22px; flex-shrink:0;">💡</span>
           <div style="font-size:13px; color:#e2e8f0; line-height:1.6;">
             <strong style="color:#38bdf8;">Nếu dùng EPCIS 1.2 (cũ):</strong> DN phải nhập tay từng lô hàng → không thể áp dụng cho DN tốc độ cao → thất bại triển khai.<br>
-            <strong style="color:#34d399;">Với EPCIS 2.0 + IoT native:</strong> DN sản xuất nước ngọt, sữa, bia <strong style="color:white;">không thay đổi dây chuyền</strong>, chỉ kết nối thiết bị IoT sẵn có vào hệ thống TXNG qua REST API → triển khai trong vài ngày.
+            <strong style="color:#34d399;">Với EPCIS 2.0 + IoT sản xuất tốc độ cao:</strong> DN sản xuất nước ngọt, sữa, bia <strong style="color:white;">không thay đổi dây chuyền</strong>, chỉ kết nối thiết bị IoT sẵn có vào hệ thống TXNG qua REST API → triển khai trong vài ngày.
           </div>
         </div>
       </div>
