@@ -581,24 +581,67 @@
     gap: 6px;
   }
 
-  /* PAGE NUMBERS (slide dots) */
+  /* PAGE NUMBERS – numbered buttons */
   .slide-dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    padding: 16px 0 4px;
+    gap: 6px;
+    padding: 14px 0 6px;
+    flex-wrap: wrap;
   }
   .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 100px;
-    background: var(--border);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: white;
+    border: 1.5px solid var(--border);
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
+  .dot:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(26,86,219,0.12); }
   .dot.active {
-    background: var(--primary);
-    width: 24px;
+    background: var(--gradient-hero);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 3px 12px rgba(26,86,219,0.3);
+    transform: translateY(-1px);
+  }
+  /* Mini numbered nav for header */
+  .nav-page-btns {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-page-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: var(--primary-light);
+    border: 1.5px solid var(--border);
+    color: var(--text-light);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+  }
+  .nav-page-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .nav-page-btn.active {
+    background: var(--gradient-hero);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 2px 8px rgba(26,86,219,0.25);
   }
 
   /* BIG STAT */
@@ -693,8 +736,9 @@
     🏛️ <span>Bộ Công Thương – Cục Quản lý &amp; PTTTTN</span>
   </div>
   <div class="nav-controls">
+    <div class="nav-page-btns" id="navPageBtns"></div>
     <button class="nav-btn secondary" id="prevBtn" onclick="changeSlide(-1)">← Trước</button>
-    <span class="slide-counter" id="slideCounter">1 / 9</span>
+    <span class="slide-counter" id="slideCounter">1 / 10</span>
     <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Tiếp →</button>
   </div>
 </div>
@@ -1811,21 +1855,35 @@
   let currentSlide = 1;
   const totalSlides = 10;
 
-  // Build dots
+  // Build bottom numbered dots
   const dotsContainer = document.getElementById('slideDots');
+  // Build top mini nav buttons
+  const navBtnsContainer = document.getElementById('navPageBtns');
+
   for (let i = 1; i <= totalSlides; i++) {
-    const dot = document.createElement('div');
+    // Bottom dot (numbered)
+    const dot = document.createElement('button');
     dot.className = 'dot' + (i === 1 ? ' active' : '');
+    dot.textContent = i;
     dot.onclick = () => goToSlide(i);
     dotsContainer.appendChild(dot);
+
+    // Top mini button
+    const navBtn = document.createElement('button');
+    navBtn.className = 'nav-page-btn' + (i === 1 ? ' active' : '');
+    navBtn.textContent = i;
+    navBtn.onclick = () => goToSlide(i);
+    navBtnsContainer.appendChild(navBtn);
   }
 
   function goToSlide(n) {
     document.getElementById('slide-' + currentSlide).classList.remove('active');
     document.querySelectorAll('.dot')[currentSlide - 1].classList.remove('active');
+    document.querySelectorAll('.nav-page-btn')[currentSlide - 1].classList.remove('active');
     currentSlide = Math.max(1, Math.min(n, totalSlides));
     document.getElementById('slide-' + currentSlide).classList.add('active');
     document.querySelectorAll('.dot')[currentSlide - 1].classList.add('active');
+    document.querySelectorAll('.nav-page-btn')[currentSlide - 1].classList.add('active');
     document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
     document.getElementById('prevBtn').disabled = currentSlide === 1;
     document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
