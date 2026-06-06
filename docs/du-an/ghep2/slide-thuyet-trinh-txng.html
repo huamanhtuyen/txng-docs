@@ -1326,62 +1326,107 @@
             <div class="arch-layer" style="margin-top:6px;">
               <div class="arch-label">AI Layer</div>
               <div class="arch-boxes">
-                <div class="arch-box purple">🤖 Phát hiện hàng giả</div>
-                <div class="arch-box purple">📈 Phân tích chuỗi</div>
-                <div class="arch-box purple">⚠️ Cảnh báo rủi ro</div>
+
+                <!-- 1. Phát hiện hàng giả -->
                 <div class="hover-card-wrapper">
-                  <div class="arch-box purple" style="cursor:help;">🔢 Serial trùng lặp</div>
-                  <div class="hover-card-popup-down">
-                    <div class="hcp-title">🔢 Serial trùng lặp</div>
+                  <div class="arch-box purple" style="cursor:help;">🔍 Phát hiện hàng giả</div>
+                  <div class="hover-card-popup-down" style="width:300px;">
+                    <div class="hcp-title">🔍 Phát hiện hàng giả</div>
                     <div class="hcp-item">
                       <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
-                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Cùng một serial number xuất
-                        hiện tại <strong>nhiều địa điểm khác nhau</strong> trong cùng khoảng thời gian.<br><span
-                          style="color:#7c3aed; font-style:italic;">Ví dụ: SN555 xuất hiện tại Hà Nội và Đà Nẵng cùng
-                          lúc.</span></div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Serial <strong>SN555</strong> xuất hiện tại Hà Nội và Đà Nẵng cùng lúc → xác suất hàng giả: <strong style="color:#7c3aed;">96%</strong></div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">📊</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Điểm bán quét <strong>5.000 lần/ngày</strong> thay vì 20 lần bình thường → cảnh báo hành vi bất thường.</div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 2. Phát hiện tuyến bất thường -->
                 <div class="hover-card-wrapper">
-                  <div class="arch-box purple" style="cursor:help;">🚀 Di chuyển bất khả thi</div>
-                  <div class="hover-card-popup-down">
-                    <div class="hcp-title">🚀 Tốc độ di chuyển bất khả thi</div>
+                  <div class="arch-box purple" style="cursor:help;">🚨 Tuyến bất thường</div>
+                  <div class="hover-card-popup-down" style="width:310px;">
+                    <div class="hcp-title">🚨 Phát hiện tuyến bất thường</div>
                     <div class="hcp-item">
-                      <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
-                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Serial xuất hiện tại hai địa
-                        điểm <strong>xa nhau trong thời gian quá ngắn</strong>.<br><span
-                          style="color:#7c3aed; font-style:italic;">Ví dụ: Bắc Ninh → Hải Phòng trong 15 phút – bất khả
-                          thi với xe container.</span></div>
+                      <div class="hcp-dot" style="background:#ede9fe;">🚀</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>SN001</strong>: Bắc Ninh → Hải Phòng trong <strong>15 phút</strong> – bất khả thi với xe container → nghi sao chép RFID.</div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">📍</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Hàng đi qua <strong>Lạng Sơn</strong> – không phải điểm hợp lệ → nguy cơ bị tuồn qua biên giới: <strong style="color:#7c3aed;">87%</strong>.</div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 3. Giám sát điều kiện vận chuyển -->
                 <div class="hover-card-wrapper">
-                  <div class="arch-box purple" style="cursor:help;">📍 Điểm quét lạ</div>
-                  <div class="hover-card-popup-down">
-                    <div class="hcp-title">📍 Điểm quét lạ</div>
+                  <div class="arch-box purple" style="cursor:help;">🌡️ Giám sát vận chuyển</div>
+                  <div class="hover-card-popup-down" style="width:310px;">
+                    <div class="hcp-title">🌡️ Giám sát điều kiện vận chuyển</div>
                     <div class="hcp-item">
-                      <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
-                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Serial được quét tại
-                        <strong>vị trí chưa từng xuất hiện</strong> trong tuyến phân phối hợp lệ đã đăng ký.
-                      </div>
+                      <div class="hcp-dot" style="background:#ede9fe;">🥛</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Sữa lên men yêu cầu bảo quản <strong>2–6°C</strong>. Cảm biến IoT phát hiện xe lạnh vượt ngưỡng <strong>60 phút liên tục</strong> → AI cảnh báo ngay.</div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">✅</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">AI xác định chính xác <strong>pallet nào cần thu hồi</strong> – không thu hồi toàn bộ lô, tiết kiệm chi phí đáng kể.</div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 4. Chấm điểm rủi ro -->
                 <div class="hover-card-wrapper">
-                  <div class="arch-box purple" style="cursor:help;">📊 Phân phối bất thường</div>
-                  <div class="hover-card-popup-down">
-                    <div class="hcp-title">📊 Mô hình phân phối bất thường</div>
+                  <div class="arch-box purple" style="cursor:help;">🎯 Chấm điểm rủi ro</div>
+                  <div class="hover-card-popup-down" style="width:300px;">
+                    <div class="hcp-title">🎯 Chấm điểm rủi ro</div>
                     <div class="hcp-item">
-                      <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
-                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Tỷ lệ quét/ngày tại một điểm
-                        bán <strong>cao đột biến</strong> so với mức bình thường.<br><span
-                          style="color:#7c3aed; font-style:italic;">Ví dụ: 5.000 scan/ngày thay vì 20 scan/ngày.</span>
-                      </div>
+                      <div class="hcp-dot" style="background:#ede9fe;">📈</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Mỗi lô hàng / DN / nhà cung cấp có <strong>điểm rủi ro 0–100</strong>. Supplier S001 liên quan 78% vụ ô nhiễm → xếp loại <strong style="color:#dc2626;">ĐỎ</strong>.</div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">🏭</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>90%</strong> lô lỗi đều đi qua kho WH7 → AI phát hiện và cảnh báo điểm tập trung rủi ro.</div>
                     </div>
                   </div>
                 </div>
+
+                <!-- 5. Đọc & xử lý hồ sơ -->
+                <div class="hover-card-wrapper">
+                  <div class="arch-box purple" style="cursor:help;">📄 Đọc & xử lý hồ sơ</div>
+                  <div class="hover-card-popup-down" style="width:300px;">
+                    <div class="hcp-title">📄 Đọc & xử lý hồ sơ tự động (OCR AI)</div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">🤖</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">AI tự động nhận dạng và trích xuất thông tin từ: chứng nhận xuất xứ (C/O), giấy kiểm định, nhãn hàng, hồ sơ hải quan.</div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">⚡</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Giảm <strong>~90% công nhập liệu thủ công</strong>, dữ liệu sẵn sàng trên hệ thống TXNG ngay lập tức.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6. Trợ lý AI tra cứu -->
+                <div class="hover-card-wrapper">
+                  <div class="arch-box purple" style="cursor:help;">💬 Trợ lý AI tra cứu</div>
+                  <div class="hover-card-popup-down" style="width:310px;">
+                    <div class="hcp-title">💬 Trợ lý AI tra cứu</div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">🗣️</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Hỏi: <em>"Lô sữa ABC hiện ở đâu?"</em> → AI query EPCIS → trả lời: <strong>"Kho Hải Phòng, cập nhật 12 phút trước."</strong></div>
+                    </div>
+                    <div class="hcp-item">
+                      <div class="hcp-dot" style="background:#ede9fe;">🔎</div>
+                      <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Hỏi: <em>"Xe lạnh nào nhiệt độ nguy hiểm hôm nay?"</em> → AI trả về danh sách rủi ro tức thì, không cần viết truy vấn kỹ thuật.</div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
+
+
             <div class="arch-layer" style="margin-top:6px;">
               <div class="arch-label">Dữ liệu</div>
               <div class="arch-boxes">
