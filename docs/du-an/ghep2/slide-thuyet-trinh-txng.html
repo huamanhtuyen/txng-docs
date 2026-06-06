@@ -685,6 +685,37 @@
     font-style: italic;
     line-height: 1.5;
   }
+  /* Popup variant: mở xuống dưới */
+  .hover-card-popup-down {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    width: 290px;
+    box-shadow: 0 8px 32px rgba(26,86,219,0.15);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 1000;
+  }
+  .hover-card-wrapper:hover .hover-card-popup-down {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .hover-card-popup-down::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-bottom-color: white;
+    filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.06));
+  }
 
   /* PAGE NUMBERS – numbered buttons */
   .slide-dots {
@@ -934,6 +965,46 @@
               <div class="arch-box purple">🤖 Phát hiện hàng giả</div>
               <div class="arch-box purple">📈 Phân tích chuỗi</div>
               <div class="arch-box purple">⚠️ Cảnh báo rủi ro</div>
+              <div class="hover-card-wrapper">
+                <div class="arch-box purple" style="cursor:help;">🔢 Serial trùng lặp</div>
+                <div class="hover-card-popup-down">
+                  <div class="hcp-title">🔢 Serial trùng lặp</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Cùng một serial number xuất hiện tại <strong>nhiều địa điểm khác nhau</strong> trong cùng khoảng thời gian.<br><span style="color:#7c3aed; font-style:italic;">Ví dụ: SN555 xuất hiện tại Hà Nội và Đà Nẵng cùng lúc.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="hover-card-wrapper">
+                <div class="arch-box purple" style="cursor:help;">🚀 Di chuyển bất khả thi</div>
+                <div class="hover-card-popup-down">
+                  <div class="hcp-title">🚀 Tốc độ di chuyển bất khả thi</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Serial xuất hiện tại hai địa điểm <strong>xa nhau trong thời gian quá ngắn</strong>.<br><span style="color:#7c3aed; font-style:italic;">Ví dụ: Bắc Ninh → Hải Phòng trong 15 phút – bất khả thi với xe container.</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="hover-card-wrapper">
+                <div class="arch-box purple" style="cursor:help;">📍 Điểm quét lạ</div>
+                <div class="hover-card-popup-down">
+                  <div class="hcp-title">📍 Điểm quét lạ</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Serial được quét tại <strong>vị trí chưa từng xuất hiện</strong> trong tuyến phân phối hợp lệ đã đăng ký.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="hover-card-wrapper">
+                <div class="arch-box purple" style="cursor:help;">📊 Phân phối bất thường</div>
+                <div class="hover-card-popup-down">
+                  <div class="hcp-title">📊 Mô hình phân phối bất thường</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ede9fe;">⚠️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;">Tỷ lệ quét/ngày tại một điểm bán <strong>cao đột biến</strong> so với mức bình thường.<br><span style="color:#7c3aed; font-style:italic;">Ví dụ: 5.000 scan/ngày thay vì 20 scan/ngày.</span></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="arch-layer" style="margin-top:6px;">
