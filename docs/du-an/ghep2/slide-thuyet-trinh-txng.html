@@ -1205,11 +1205,11 @@
           </div>
           <div class="info-row">
             <span class="info-icon">☁️</span>
-            <div><strong>Mô hình:</strong> Private Cloud tập trung + Trung tâm dữ liệu dự phòng (DRC)</div>
+            <div><strong>Mô hình:</strong> Triển khai tập trung + Điện toán đám mây + Trung tâm dữ liệu dự phòng</div>
           </div>
           <div class="info-row">
             <span class="info-icon">🌐</span>
-            <div><strong>Kết nối:</strong> Các đơn vị địa phương, doanh nghiệp toàn quốc kết nối qua Internet bảo mật (HTTPS/SSL)</div>
+            <div><strong>Kết nối:</strong> Người sử dụng, doanh nghiệp toàn quốc kết nối qua Internet bảo mật đa phương thức: web, ứng dụng di động, IoT</div>
           </div>
 
           <div class="section-label" style="margin-top:20px;">Thành phần hệ thống tại trung tâm</div>
@@ -1217,14 +1217,14 @@
             <div class="step">
               <div class="step-num">⚖️</div>
               <div class="step-content">
-                <div class="step-title">Hệ thống cân bằng tải (Load Balancer)</div>
-                <div class="step-text">Phân phối yêu cầu đồng đều đến các máy chủ ứng dụng, đảm bảo sẵn sàng cao (HA Cluster).</div>
+                <div class="step-title">Hệ thống cân bằng tải</div>
+                <div class="step-text">Phân phối tải trọng kết nối, đặc biệt với các doanh nghiệp sản xuất hiệu năng cao</div>
               </div>
             </div>
             <div class="step">
               <div class="step-num">💻</div>
               <div class="step-content">
-                <div class="step-title">Cụm máy chủ ứng dụng (Microservices)</div>
+                <div class="step-title">Cụm máy chủ ứng dụng</div>
                 <div class="step-text">Xử lý nghiệp vụ TXNG: quản lý sự kiện EPCIS, kê khai, tra cứu, báo cáo, API tích hợp.</div>
               </div>
             </div>
@@ -1232,21 +1232,21 @@
               <div class="step-num">🗄️</div>
               <div class="step-content">
                 <div class="step-title">Cụm máy chủ Cơ sở dữ liệu</div>
-                <div class="step-text">PostgreSQL (nghiệp vụ chính) + OpenSearch (sự kiện EPCIS) + MinIO (object storage) + Redis (cache).</div>
+                <div class="step-text">CSDL nghiệp vụ chính + Sự kiện TXNG</div>
               </div>
             </div>
             <div class="step">
               <div class="step-num">🤖</div>
               <div class="step-content">
-                <div class="step-title">Máy chủ AI / GPU (NVIDIA H200)</div>
-                <div class="step-text">Phát hiện hàng giả, phân tích chuỗi cung ứng, cảnh báo rủi ro bằng Machine Learning.</div>
+                <div class="step-title">Máy chủ AI / GPU (NVIDIA H100)</div>
+                <div class="step-text">Phát hiện hàng giả, phân tích chuỗi cung ứng, cảnh báo rủi ro bằng công nghệ AI học máy.</div>
               </div>
             </div>
             <div class="step">
               <div class="step-num">🔗</div>
               <div class="step-content">
-                <div class="step-title">Cụm Blockchain (Hyperledger Fabric)</div>
-                <div class="step-text">Neo hash sự kiện TXNG on-chain, đảm bảo tính bất biến và chống giả mạo dữ liệu.</div>
+                <div class="step-title">Cụm Blockchain</div>
+                <div class="step-text">Đảm bảo sự kiện truy xuất nguồn gốc là bất biến và chống giả mạo dữ liệu.</div>
               </div>
             </div>
           </div>
@@ -1496,13 +1496,13 @@
             </div>
           </div>
 
-          <div class="section-label">Máy chủ AI (GPU NVIDIA H200)</div>
+          <div class="section-label">Máy chủ AI (GPU NVIDIA H100)</div>
           <div class="infra-block">
             <div class="infra-row">
               <div class="infra-icon">🧠</div>
               <div>
                 <div class="infra-name">GPU Server Gói 1 (H200_GPU1)</div>
-                <div class="infra-spec">16 vCPU · 384 GB RAM · 3TB SSD · 1× NVIDIA H200 141GB</div>
+                <div class="infra-spec">16 vCPU · 384 GB RAM · 3TB SSD · 1× NVIDIA H100 141GB</div>
               </div>
               <div class="infra-chip">AI Tier 1</div>
             </div>
@@ -1510,7 +1510,7 @@
               <div class="infra-icon">🧠</div>
               <div>
                 <div class="infra-name">GPU Server Gói 2 (H200_GPU2)</div>
-                <div class="infra-spec">32 vCPU · 384 GB RAM · 6TB SSD · 2× NVIDIA H200 141GB</div>
+                <div class="infra-spec">32 vCPU · 384 GB RAM · 6TB SSD · 2× NVIDIA H100 141GB</div>
               </div>
               <div class="infra-chip">AI Tier 2</div>
             </div>
@@ -1583,7 +1583,7 @@
             <div class="tags">
               <span class="tag">44 máy chủ ảo</span>
               <span class="tag sky">628 vCPU nghiệp vụ</span>
-              <span class="tag purple">3× GPU NVIDIA H200</span>
+              <span class="tag purple">3× GPU NVIDIA H100</span>
               <span class="tag orange">83 TB lưu trữ</span>
               <span class="tag green">Cấp độ bảo mật 3</span>
             </div>
@@ -1779,7 +1779,7 @@
             <tr>
               <td class="feature-col">🤖 AI / Phát hiện gian lận</td>
               <td class="old">❌ Chưa có công cụ AI, phát hiện vi phạm chủ yếu dựa vào báo cáo thủ công từ thị trường</td>
-              <td class="new">✅ <strong>Isolation Forest + Autoencoder</strong>: phát hiện serial trùng, tuyến bất thường, mô hình phân phối giả mạo. GPU NVIDIA H200 <span class="badge-new">MỚI</span></td>
+              <td class="new">✅ <strong>Isolation Forest + Autoencoder</strong>: phát hiện serial trùng, tuyến bất thường, mô hình phân phối giả mạo. GPU NVIDIA H100 <span class="badge-new">MỚI</span></td>
             </tr>
             <tr>
               <td class="feature-col">⚡ Tốc độ xử lý cao</td>
