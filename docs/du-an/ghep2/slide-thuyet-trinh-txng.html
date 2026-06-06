@@ -609,6 +609,84 @@
     opacity: 1;
   }
 
+  /* HOVER CARD POPUP */
+  .hover-card-wrapper {
+    position: relative;
+    display: inline-flex;
+  }
+  .hover-card-popup {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    width: 280px;
+    box-shadow: 0 8px 32px rgba(26,86,219,0.15);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translateX(-50%) translateY(6px);
+    z-index: 1000;
+  }
+  .hover-card-wrapper:hover .hover-card-popup {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .hover-card-popup::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: white;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.08));
+  }
+  .hcp-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hcp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .hcp-item:last-child { margin-bottom: 0; }
+  .hcp-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .hcp-note {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    font-size: 11px;
+    color: var(--text-light);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
   /* PAGE NUMBERS – numbered buttons */
   .slide-dots {
     display: flex;
@@ -816,7 +894,21 @@
               <div class="arch-box blue">👤 Người tiêu dùng</div>
               <div class="arch-box blue">🏭 Doanh nghiệp</div>
               <div class="arch-box blue">🏛️ Cơ quan QL</div>
-              <div class="arch-box blue">🤝 Đại lý TXNG</div>
+              <div class="hover-card-wrapper">
+                <div class="arch-box blue" style="cursor:help;">🤝 Đại lý TXNG</div>
+                <div class="hover-card-popup">
+                  <div class="hcp-title">🤝 Mô hình Đại lý TXNG</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#eff6ff;">💻</div>
+                    <div><strong style="color:var(--primary-dark);">Đại lý CNTT</strong><br>Hỗ trợ kết nối kỹ thuật, tích hợp API, triển khai hệ thống tại doanh nghiệp.</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#f0fdf4;">📋</div>
+                    <div><strong style="color:#065f46;">Đại lý Nghiệp vụ</strong><br>Hỗ trợ vận hành, khai báo dữ liệu, hướng dẫn quy trình TXNG cho DN.</div>
+                  </div>
+                  <div class="hcp-note">📌 Tham khảo mô hình đại lý của <strong>Hải quan</strong> và <strong>Thuế</strong> đang triển khai hiệu quả tại Việt Nam.</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="arch-layer" style="margin-top:6px;">
