@@ -55,7 +55,8 @@ Về mặt kiến trúc, hệ thống được tổ chức theo **5 lớp**. T�
 - **Lớp xử lý** – sử dụng trục tích hợp, có khả năng xử lý **hàng triệu sự kiện mỗi giây**, đảm bảo hệ thống không bị nghẽn dù có hàng nghìn doanh nghiệp kết nối đồng thời.
 
 
-- **Lớp AI** – đây là điểm nhấn của hệ thống. **AI chuyên dụng** của chúng ta có khả năng phát hiện hàng giả, phát hiện tuyến phân phối bất thường, giám sát điều kiện vận chuyển, và chấm điểm rủi ro cho từng lô hàng, từng nhà cung cấp.
+- **Lớp AI** – đây là điểm nhấn của hệ thống. **AI chuyên dụng** của chúng ta có khả năng phát hiện hàng giả, phát hiện tuyến phân phối bất thường, giám sát điều kiện vận chuyển, chấm điểm rủi ro cho từng lô hàng, từng nhà cung cấp, và trợ lý tra cứu AI.
+
 
 - **Lớp Blockchain** – mọi sự kiện truy xuất nguồn gốc đều được **niêm phong bằng Blockchain**. Có nghĩa là không ai có thể sửa lịch sử hàng hóa sau khi đã ghi nhận.
 
