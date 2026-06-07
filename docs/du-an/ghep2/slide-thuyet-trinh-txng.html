@@ -2106,146 +2106,80 @@
         <div class="slide-title">Giới thiệu giải pháp – <em>Hạ tầng CNTT được đầu tư</em></div>
       </div>
       <div class="slide-body">
-        <div class="two-col">
-          <div>
-            <div class="section-label">Máy chủ nghiệp vụ (Private Cloud)</div>
-            <div class="infra-block" style="margin-bottom:16px;">
-              <div class="infra-row">
-                <div class="infra-icon">🖥️</div>
-                <div>
-                  <div class="infra-name">Private Cloud – Tính toán</div>
-                  <div class="infra-spec">628 vCPU · 2.752 GB RAM</div>
-                </div>
-                <div class="infra-chip">Năm 1–2</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">💾</div>
-                <div>
-                  <div class="infra-name">Lưu trữ SSD Cloud (dung lượng cao)</div>
-                  <div class="infra-spec">75 TB – Dữ liệu nghiệp vụ + EPCIS</div>
-                </div>
-                <div class="infra-chip">SSD</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">⚡</div>
-                <div>
-                  <div class="infra-name">Lưu trữ NVMe – Blockchain</div>
-                  <div class="infra-spec">8 TB NVMe tốc độ cao – Hyperledger Fabric</div>
-                </div>
-                <div class="infra-chip">NVMe</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🗄️</div>
-                <div>
-                  <div class="infra-name">SAN / All-Flash Array độc lập</div>
-                  <div class="infra-spec">Hệ thống lưu trữ hiệu năng cao, dự phòng</div>
-                </div>
-                <div class="infra-chip">HA</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🌐</div>
-                <div>
-                  <div class="infra-name">Đường truyền Internet (HA)</div>
-                  <div class="infra-spec">Băng thông QT/TN + 16 IP tĩnh dự phòng</div>
-                </div>
-                <div class="infra-chip">Redundant</div>
-              </div>
-            </div>
 
-            <div class="section-label">Máy chủ AI (GPU NVIDIA H100)</div>
-            <div class="infra-block">
-              <div class="infra-row">
-                <div class="infra-icon">🧠</div>
-                <div>
-                  <div class="infra-name">GPU Server Gói 1 (H100_GPU1)</div>
-                  <div class="infra-spec">16 vCPU · 384 GB RAM · 3TB SSD · 1× NVIDIA H100 141GB</div>
-                </div>
-                <div class="infra-chip">AI Tier 1</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🧠</div>
-                <div>
-                  <div class="infra-name">GPU Server Gói 2 (H100_GPU2)</div>
-                  <div class="infra-spec">32 vCPU · 384 GB RAM · 6TB SSD · 2× NVIDIA H100 141GB</div>
-                </div>
-                <div class="infra-chip">AI Tier 2</div>
-              </div>
+        <!-- ═══ ĐIỂM NHẤN CHÍNH ═══ -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+
+          <!-- AI SERVER -->
+          <div style="background:linear-gradient(135deg,#0f172a,#1e1b4b); border-radius:18px; padding:22px 24px; color:white; position:relative; overflow:hidden;">
+            <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.08;">🧠</div>
+            <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#a78bfa; margin-bottom:8px;">Sức mạnh AI</div>
+            <div style="font-size:22px; font-weight:800; margin-bottom:6px; line-height:1.3;">Máy chủ AI chuyên dụng<br><span style="color:#c4b5fd;">NVIDIA H100</span></div>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.7; margin-bottom:14px;">Chip AI tiên tiến nhất hiện nay – cùng dòng với ChatGPT, xử lý hàng triệu sự kiện TXNG mỗi giây, phát hiện hàng giả & gian lận theo thời gian thực.</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <span style="background:rgba(167,139,250,0.2); border:1px solid #7c3aed; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600;">3× GPU H100 141GB</span>
+              <span style="background:rgba(167,139,250,0.2); border:1px solid #7c3aed; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600;">48 vCPU · 768GB RAM</span>
             </div>
           </div>
 
-          <div>
-            <div class="section-label">Bảo mật & Giám sát (Chuẩn Cấp độ 3)</div>
-            <div class="infra-block" style="margin-bottom:16px;">
-              <div class="infra-row">
-                <div class="infra-icon">🛡️</div>
-                <div>
-                  <div class="infra-name">Tường lửa ảo hóa chuyên dụng (HA)</div>
-                  <div class="infra-spec">FortiGate VCF04-Platinum: FW, IPS, VPN, Anti-Malware, Sandbox</div>
-                </div>
-                <div class="infra-chip">Next-Gen</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🌊</div>
-                <div>
-                  <div class="infra-name">Dịch vụ Anti-DDoS</div>
-                  <div class="infra-spec">Chống tấn công L3/L4, bảo vệ tối đa 2Gbps, 32 IP public</div>
-                </div>
-                <div class="infra-chip">DDoS</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🔒</div>
-                <div>
-                  <div class="infra-name">WAF – Web Application Firewall</div>
-                  <div class="infra-spec">Chống SQLi, XSS, bảo vệ API và ứng dụng web</div>
-                </div>
-                <div class="infra-chip">WAF</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">👁️</div>
-                <div>
-                  <div class="infra-name">Công nghệ giám sát – Giám sát ATTT 24/7</div>
-                  <div class="infra-spec">SIEM, phân tích hành vi, phát hiện APT, DDoS</div>
-                </div>
-                <div class="infra-chip">SOC</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">🛡️</div>
-                <div>
-                  <div class="infra-name">Endpoint Security for VM</div>
-                  <div class="infra-spec">44 máy chủ, hỗ trợ Container (Kubernetes)</div>
-                </div>
-                <div class="infra-chip">EDR</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">📱</div>
-                <div>
-                  <div class="infra-name">DLP – Chống lộ lọt dữ liệu</div>
-                  <div class="infra-spec">50 licenses, kiểm soát dữ liệu nhạy cảm</div>
-                </div>
-                <div class="infra-chip">DLP</div>
-              </div>
-              <div class="infra-row">
-                <div class="infra-icon">💾</div>
-                <div>
-                  <div class="infra-name">Cloud Backup</div>
-                  <div class="infra-spec">44 máy chủ · 75TB dung lượng backup định kỳ</div>
-                </div>
-                <div class="infra-chip">Backup</div>
-              </div>
+          <!-- PRIVATE CLOUD -->
+          <div style="background:linear-gradient(135deg,#0c4a6e,#0369a1); border-radius:18px; padding:22px 24px; color:white; position:relative; overflow:hidden;">
+            <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.08;">☁️</div>
+            <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#7dd3fc; margin-bottom:8px;">Nền tảng đám mây</div>
+            <div style="font-size:22px; font-weight:800; margin-bottom:6px; line-height:1.3;">Điện toán đám mây riêng<br><span style="color:#bae6fd;">Private Cloud BCT</span></div>
+            <div style="font-size:13px; color:#bfdbfe; line-height:1.7; margin-bottom:14px;">Hệ thống đám mây độc lập, dữ liệu hoàn toàn nằm trong hạ tầng Nhà nước – không phụ thuộc nước ngoài, đảm bảo chủ quyền số quốc gia.</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <span style="background:rgba(125,211,252,0.2); border:1px solid #0284c7; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600;">628 vCPU · 2.752GB RAM</span>
+              <span style="background:rgba(125,211,252,0.2); border:1px solid #0284c7; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600;">83 TB lưu trữ</span>
             </div>
+          </div>
 
-            <div class="highlight-box">
-              <div class="highlight-box-title">📊 Tóm tắt đầu tư hạ tầng</div>
-              <div class="tags">
-                <span class="tag">44 máy chủ ảo</span>
-                <span class="tag sky">628 vCPU nghiệp vụ</span>
-                <span class="tag purple">3× GPU NVIDIA H100</span>
-                <span class="tag orange">83 TB lưu trữ</span>
-                <span class="tag green">Cấp độ bảo mật 3</span>
-              </div>
-            </div>
+        </div>
+
+        <!-- ═══ 3 NĂNG LỰC CỐT LÕI ═══ -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:14px;">
+          <div style="background:linear-gradient(135deg,#fef9c3,#fef08a20); border:1.5px solid #fde68a; border-radius:14px; padding:14px 16px; text-align:center;">
+            <div style="font-size:26px; margin-bottom:6px;">🛡️</div>
+            <div style="font-size:12px; font-weight:700; color:#92400e; margin-bottom:4px;">Bảo mật Cấp độ 3</div>
+            <div style="font-size:11px; color:#78716c; line-height:1.5;">SOC giám sát 24/7 · Anti-DDoS · WAF · FortiGate HA</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7); border:1.5px solid #86efac; border-radius:14px; padding:14px 16px; text-align:center;">
+            <div style="font-size:26px; margin-bottom:6px;">🔗</div>
+            <div style="font-size:12px; font-weight:700; color:#14532d; margin-bottom:4px;">Blockchain bất biến</div>
+            <div style="font-size:11px; color:#4b5563; line-height:1.5;">8TB NVMe · Hyperledger Fabric · Mọi sự kiện TXNG được niêm phong</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#fff7ed,#ffedd5); border:1.5px solid #fdba74; border-radius:14px; padding:14px 16px; text-align:center;">
+            <div style="font-size:26px; margin-bottom:6px;">⚡</div>
+            <div style="font-size:12px; font-weight:700; color:#c2410c; margin-bottom:4px;">Hiệu năng cao</div>
+            <div style="font-size:11px; color:#4b5563; line-height:1.5;">44 máy chủ ảo · Dự phòng HA · Uptime 99.9%</div>
           </div>
         </div>
+
+        <!-- ═══ CHI TIẾT KỸ THUẬT (thu nhỏ, dùng khi cần) ═══ -->
+        <details style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:10px 16px;">
+          <summary style="font-size:11px; font-weight:700; color:#64748b; cursor:pointer; text-transform:uppercase; letter-spacing:1px; user-select:none;">📋 Chi tiết kỹ thuật đầy đủ (nhấn để xem)</summary>
+          <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:11px; color:#475569; line-height:1.7;">
+            <div>
+              <div style="font-weight:700; color:#334155; margin-bottom:4px;">☁️ Private Cloud – Tính toán</div>
+              <div>628 vCPU · 2.752 GB RAM · 75 TB SSD · 8 TB NVMe</div>
+              <div style="margin-top:6px; font-weight:700; color:#334155; margin-bottom:4px;">🧠 AI GPU Servers (NVIDIA H100)</div>
+              <div>Gói 1: 16 vCPU · 384 GB RAM · 1× H100 141GB</div>
+              <div>Gói 2: 32 vCPU · 384 GB RAM · 2× H100 141GB</div>
+              <div style="margin-top:6px; font-weight:700; color:#334155; margin-bottom:4px;">🌐 Đường truyền Internet (HA)</div>
+              <div>Băng thông QT/TN + 16 IP tĩnh dự phòng</div>
+            </div>
+            <div>
+              <div style="font-weight:700; color:#334155; margin-bottom:4px;">🛡️ Bảo mật & Giám sát</div>
+              <div>FortiGate VCF04: FW, IPS, VPN, Anti-Malware, Sandbox</div>
+              <div>Anti-DDoS L3/L4 · 2Gbps · 32 IP public</div>
+              <div>WAF · SIEM · APT Detection · SOC 24/7</div>
+              <div style="margin-top:6px; font-weight:700; color:#334155; margin-bottom:4px;">💾 Lưu trữ & Sao lưu</div>
+              <div>SAN/All-Flash Array HA · Cloud Backup 75TB · 44 VM</div>
+              <div>DLP 50 licenses · EDR Kubernetes-ready</div>
+            </div>
+          </div>
+        </details>
+
       </div>
     </div>
 
