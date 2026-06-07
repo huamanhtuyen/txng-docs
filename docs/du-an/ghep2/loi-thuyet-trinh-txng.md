@@ -91,12 +91,14 @@ Hệ thống được cập nhật và nâng cấp **một lần duy nhất ở 
 
 Tuy nhiên, chúng tôi cũng dự phòng cho trường hợp doanh nghiệp muốn **vận hành nội bộ** vì lý do bảo mật dữ liệu kinh doanh – hệ thống có thể triển khai theo mô hình **lai**, dữ liệu nhạy cảm lưu tại doanh nghiệp, chỉ đồng bộ sự kiện TXNG lên hệ thống Bộ.
 
-Tóm lại, mô hình này vừa **đảm bảo quản lý Nhà nước** vừa **linh hoạt cho doanh nghiệp**.
+Như vậy, với phương án triển khai này, vừa **đảm bảo quản lý Nhà nước** vừa **linh hoạt cho doanh nghiệp**.
+
 
 ---
 
 ## 🏭 SLIDE 7 – DOANH NGHIỆP CẦN LÀM GÌ ĐỂ THAM GIA?
-Thưa các anh chị, đây có lẽ là câu hỏi thực tế nhất: **Doanh nghiệp muốn tham gia thì cần làm gì?**
+Thưa các anh chị, một câu hỏi thực tế nhất là: **Doanh nghiệp muốn tham gia thì cần làm gì?**
+
 `[chỉ vào 3 ô cấp độ ở trên]`
 
 Câu trả lời là: **tùy theo quy mô và năng lực của doanh nghiệp**, chúng ta có **3 cấp độ tham gia**:
@@ -105,7 +107,8 @@ Câu trả lời là: **tùy theo quy mô và năng lực của doanh nghiệp**
 
 **Cấp độ 2 – Kết nối hệ thống nội bộ:** Với doanh nghiệp vừa và lớn đã có phần mềm quản lý ERP, kho vận WMS – chúng ta cung cấp **cổng tích hợp trực tiếp**. Dữ liệu truy xuất nguồn gốc tự động đẩy lên hệ thống, không cần nhân viên kê khai lại.
 
-**Cấp độ 3 – Tự động hóa 100% IoT:** Với các nhà máy sản xuất lớn, muốn ghi nhận tự động từng sự kiện trên dây chuyền – chúng ta hỗ trợ tích hợp thiết bị IoT như thẻ từ RFID, cân điện tử, camera AI. Mọi sự kiện ghi nhận tự động theo chuẩn **EPCIS 2.0**, không cần nhân công nhập liệu.
+**Cấp độ 3 – Sử dụng thiết bị IoT:** Với các nhà máy sản xuất lớn, muốn ghi nhận tự động từng sự kiện trên dây chuyền – chúng ta hỗ trợ tích hợp thiết bị IoT như thẻ từ RFID, cảm biến, cân điện tử, camera AI. Mọi sự kiện ghi nhận tự động theo chuẩn quốc tế **EPCIS 2.0**, không cần nhân công nhập liệu.
+
 
 `[chỉ vào phần vai trò đại lý]`
 
@@ -124,7 +127,8 @@ Về **mã định danh sản phẩm** – với doanh nghiệp chưa có mã GT
 ## 📊 SLIDE 8 – KẾT QUẢ ĐẠT ĐƯỢC – ĐIỂM MỚI SO VỚI HỆ THỐNG CŨ
 *(~2 phút – đây là phần thuyết phục lãnh đạo)*
 
-Thưa các anh chị, cuối cùng tôi muốn so sánh **hệ thống mới và hệ thống cũ** một cách thẳng thắn.
+Thưa các anh chị, cuối cùng là phần so sánh **hệ thống mới và hệ thống cũ**.
+
 
 `[chỉ vào bảng so sánh]`
 
@@ -140,7 +144,8 @@ Thưa các anh chị, cuối cùng tôi muốn so sánh **hệ thống mới và
 
 `[nhìn thẳng vào lãnh đạo]`
 
-Tóm lại, đây không chỉ là nâng cấp – đây là **hệ thống hoàn toàn mới**, với công nghệ ở tầm quốc tế, phù hợp với định hướng **chuyển đổi số và hội nhập kinh tế toàn cầu** của Việt Nam.
+Tóm lại, đây là một hệ thống có rất nhiều điểm mới, công nghệ tầm quốc tế, phù hợp định hướng **chuyển đổi số và hội nhập kinh tế toàn cầu** của Việt Nam.
+
 
 ---
 
@@ -151,7 +156,8 @@ Kính thưa các anh chị Lãnh đạo,
 
 Trên đây là toàn bộ nội dung tôi muốn báo cáo về **Hệ thống Truy xuất nguồn gốc sản phẩm công nghiệp của Bộ Công Thương**.
 
-Hệ thống đang được triển khai theo đúng lộ trình, **bám sát các văn bản chỉ đạo của Chính phủ** và kế thừa tốt nhất kinh nghiệm từ các hệ thống trước.
+Hệ thống đang được triển khai theo đúng lộ trình, **bám sát các văn bản chỉ đạo của Chính phủ** và kế thừa tốt nhất kinh nghiệm từ quốc tế.
+
 
 Kính mong Lãnh đạo ghi nhận và tiếp tục **chỉ đạo, hỗ trợ** để chúng tôi có thể hoàn thành nhiệm vụ được giao.
 
