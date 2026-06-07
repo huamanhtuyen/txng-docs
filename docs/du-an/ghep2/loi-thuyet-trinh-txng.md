@@ -29,18 +29,18 @@ Ngoài ra, em có chuẩn bị thêm phần **Phụ lục kỹ thuật** phục 
 ## 🎯 SLIDE 3 – MỤC TIÊU CỦA HỆ THỐNG
 
 Đây là một hệ thống hiệu năng cao được xây dựng nhằm đáp ứng được các yêu cầu về triển khai mạnh mẽ, cụ thể:
-- Đáp ứng được doanh nghiệp sản xuất tốc độ cao
-- Truy xuất toàn chuỗi cung ứng, ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng, theo 6 chiều thông tin:
+- **Thứ nhất**, đáp ứng được doanh nghiệp sản xuất tốc độ cao
+- **Thứ hai**, truy xuất toàn chuỗi cung ứng, ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng, theo 6 chiều thông tin:
   - **What** – Hàng hoá gì?
   - **When** – Thời điểm nào?
   - **Where** – Ở địa điểm nào?
   - **Who** – Ai thực hiện?
   - **Why** – Lý do / mục đích gì?
   - **How** – Thực hiện bằng phương thức nào?
-- Công nghệ AI phòng chống hàng giả hàng nhái
-- Kết nối liên thông
-- Phân tích cảnh báo rủi ro
-- Bảo đảm toàn vẹn dữ liệu
+- **Thứ ba**, công nghệ AI phòng chống hàng giả hàng nhái
+- **Thứ tư**, kết nối liên thông
+- **Thứ năm**, phân tích cảnh báo rủi ro
+- **Thứ sáu**, bảo đảm toàn vẹn dữ liệu
 
 ---
 
@@ -52,7 +52,8 @@ Về mặt kiến trúc, hệ thống được tổ chức theo **5 lớp**. T�
 
 - **Lớp tiếp nhận dữ liệu** – gồm các ứng dụng cho doanh nghiệp kê khai , và cổng tiếp nhận dữ liệu để kết nối với hệ thống nội bộ của doanh nghiệp như ERP hay kho vận. Với các nhà máy muốn tự động hóa cao, chúng ta có thể tiếp nhận dữ liệu **trực tiếp từ thiết bị IoT**.
 
-- **Lớp xử lý** – là trục tích hợp, có khả năng xử lý **hàng triệu sự kiện mỗi giây**, đảm bảo hệ thống không bị nghẽn dù có hàng nghìn doanh nghiệp kết nối đồng thời.
+- **Lớp xử lý** – sử dụng trục tích hợp, có khả năng xử lý **hàng triệu sự kiện mỗi giây**, đảm bảo hệ thống không bị nghẽn dù có hàng nghìn doanh nghiệp kết nối đồng thời.
+
 
 - **Lớp AI** – đây là điểm nhấn của hệ thống. **AI chuyên dụng** của chúng ta có khả năng phát hiện hàng giả, phát hiện tuyến phân phối bất thường, giám sát điều kiện vận chuyển, và chấm điểm rủi ro cho từng lô hàng, từng nhà cung cấp.
 
@@ -65,12 +66,15 @@ Về mặt kiến trúc, hệ thống được tổ chức theo **5 lớp**. T�
 ## ☁️ SLIDE 5 – HẠ TẦNG CNTT ĐƯỢC ĐẦU TƯ
 Thưa Lãnh đạo, để vận hành được hệ thống này, **Bộ Công Thương đã đầu tư một hạ tầng CNTT rất đáng kể**.
 
-**Điểm nhấn đầu tiên** là **máy chủ AI chuyên dụng NVIDIA H100** – đây là dòng chip AI tiên tiến nhất hiện nay, cùng thế hệ với các hệ thống AI nổi tiếng như ChatGPT. Với 3 GPU H100, hệ thống của chúng ta có khả năng xử lý và phân tích dữ liệu truy xuất nguồn gốc theo thời gian thực, phát hiện hàng giả và gian lận **ngay lập tức**.
-
-**Điểm nhấn thứ hai** là **hệ thống đám mây riêng – Private Cloud BCT**. Toàn bộ dữ liệu của hệ thống nằm **hoàn toàn trong hạ tầng Nhà nước**, không phụ thuộc vào nước ngoài. Đây là đảm bảo **chủ quyền số quốc gia** cho dữ liệu truy xuất nguồn gốc hàng hóa Việt Nam.
+**Điểm nhấn đầu tiên** là **máy chủ AI chuyên dụng NVIDIA H100** – cùng thế hệ với máy chủ ChatGPT. Cho phép xử lý & phân tích dữ liệu truy xuất nguồn gốc theo thời gian thực, phát hiện hàng giả và gian lận **ngay lập tức**.
 
 
-Ngoài ra, hệ thống được bảo vệ đạt **Cấp độ bảo mật cấp 3** – tiêu chuẩn cao nhất theo quy định của Nhà nước, với giám sát an toàn thông tin 24/7. Dữ liệu được lưu trữ trên Blockchain bất biến và hệ thống có khả năng phục hồi tự động – đảm bảo **ổn định 99.9%**.
+**Điểm nhấn thứ hai** là sử dụng công nghệ **điện toán đám mây riêng**. Toàn bộ dữ liệu của hệ thống nằm **hoàn toàn trong hạ tầng Nhà nước**, không phụ thuộc vào nước ngoài, tăng cường **chủ quyền số quốc gia** cho dữ liệu truy xuất nguồn gốc hàng hóa Việt Nam.
+
+
+
+Hệ thống bảo mật đạt **Cấp độ 3** là cấp độ cao nhất, với giám sát an toàn thông tin 24/7. Dữ liệu được lưu trữ trên Blockchain bất biến và hệ thống có khả năng phục hồi tự động – đảm bảo **ổn định 99.9%**.
+
 
 *(Nếu có câu hỏi về thông số kỹ thuật, tôi có phần chi tiết đầy đủ – xin nhấn vào "Chi tiết kỹ thuật đầy đủ".)*
 
@@ -105,14 +109,16 @@ Câu trả lời là: **tùy theo quy mô và năng lực của doanh nghiệp**
 
 **Cấp độ 1 – Sử dụng phần mềm miễn phí:** Doanh nghiệp chỉ cần một chiếc điện thoại hoặc máy tính có kết nối Internet, đăng nhập vào cổng **verigoods.vn** và bắt đầu kê khai. **Hoàn toàn miễn phí.** Phù hợp với các cơ sở sản xuất nhỏ, hộ kinh doanh.
 
-**Cấp độ 2 – Kết nối hệ thống nội bộ:** Với doanh nghiệp vừa và lớn đã có phần mềm quản lý ERP, kho vận WMS – chúng ta cung cấp **cổng tích hợp trực tiếp**. Dữ liệu truy xuất nguồn gốc tự động đẩy lên hệ thống, không cần nhân viên kê khai lại.
+**Cấp độ 2 – Sử dụng cổng tiếp nhận:** Với doanh nghiệp vừa và lớn đã có phần mềm nội bộ – chúng ta cung cấp **cổng tiếp nhận** để kết nối trực tiếp. Dữ liệu truy xuất nguồn gốc tự động đẩy lên hệ thống, không cần nhân viên kê khai lại.
+
 
 **Cấp độ 3 – Sử dụng thiết bị IoT:** Với các nhà máy sản xuất lớn, muốn ghi nhận tự động từng sự kiện trên dây chuyền – chúng ta hỗ trợ tích hợp thiết bị IoT như thẻ từ RFID, cảm biến, cân điện tử, camera AI. Mọi sự kiện ghi nhận tự động theo chuẩn quốc tế **EPCIS 2.0**, không cần nhân công nhập liệu.
 
 
 `[chỉ vào phần vai trò đại lý]`
 
-Một điểm mới **rất quan trọng** là chúng ta có **mạng lưới Đại lý TXNG**. Đây là các đơn vị được Bộ ủy quyền, đến **tận nơi hỗ trợ doanh nghiệp nhỏ** đăng ký, cài đặt, đào tạo. Điều này giải quyết bài toán lớn nhất của hệ thống cũ là: doanh nghiệp nhỏ không biết làm và không có người hỗ trợ.
+Một điểm mới **rất quan trọng** là chúng ta có **mạng lưới Đại lý TXNG**. Đây là các đơn vị được ủy quyền, đến **tận nơi hỗ trợ doanh nghiệp** đăng ký, cài đặt, đào tạo và hỗ trợ vận hành.
+
 
 `[chỉ vào phần các bước tham gia]`
 
