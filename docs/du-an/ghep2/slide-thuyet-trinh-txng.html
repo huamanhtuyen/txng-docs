@@ -984,6 +984,38 @@
       filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.06));
     }
 
+    /* Popup xổ sang phải */
+    .hover-card-popup-right {
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 12px);
+      transform: translateX(-6px) translateY(-50%);
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      width: 320px;
+      box-shadow: 0 8px 32px rgba(26, 86, 219, 0.15);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 1000;
+    }
+    .hover-card-wrapper:hover .hover-card-popup-right {
+      opacity: 1;
+      transform: translateX(0) translateY(-50%);
+    }
+    .hover-card-popup-right::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      border: 7px solid transparent;
+      border-right-color: white;
+      filter: drop-shadow(-2px 0 2px rgba(0, 0, 0, 0.06));
+    }
+
     /* PAGE NUMBERS – numbered buttons */
     .slide-dots {
       display: flex;
@@ -1790,22 +1822,123 @@
             <div class="section-label">Đáp ứng pháp lý & quy định</div>
             <div class="law-list">
 
-              <div class="law-item">
-                <span class="law-badge">NĐ 37/2026</span>
-                Nghị định 37/2026/NĐ-CP: Định danh, xác thực và truy xuất nguồn gốc sản phẩm, hàng hóa
+              <!-- NQ 57 -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">NQ 57-NQ/TW</span>
+                  Nghị quyết 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 NQ 57-NQ/TW – Bộ Chính trị (22/12/2024)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#dbeafe;">🎯</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Nội dung:</strong> Đột phá phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số quốc gia. Mục tiêu Việt Nam vào nhóm 3 ASEAN về đổi mới sáng tạo đến 2030.</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#dbeafe;">🔗</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Liên quan TXNG:</strong> Yêu cầu xây dựng hạ tầng số, nền tảng dữ liệu quốc gia – cơ sở pháp lý nền tảng cho hệ thống này.</div>
+                  </div>
+                </div>
               </div>
-              <div class="law-item">
-                <span class="law-badge">TT 02/2024</span>
-                Thông tư 02/2024/TT-BKHCN: Quản lý truy xuất nguồn gốc sản phẩm, hàng hóa
+
+              <!-- NQ 03 -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">NQ 03/NQ-CP</span>
+                  Nghị quyết 03/NQ-CP ngày 09/01/2025 của Chính phủ ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 NQ 03/NQ-CP – Chính phủ (09/01/2025)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#dcfce7;">📋</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Nội dung:</strong> Chương trình hành động của Chính phủ thực hiện Nghị quyết 57-NQ/TW về đột phá phát triển KHCN, đổi mới sáng tạo và chuyển đổi số quốc gia.</div>
+                  </div>
+                </div>
               </div>
-              <div class="law-item">
-                <span class="law-badge">NĐ 278/2025</span>
-                Nghị định 278/2025/NĐ-CP: Kết nối, chia sẻ dữ liệu bắt buộc giữa các cơ quan
+
+              <!-- NQ 71 -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">NQ 71/NQ-CP</span>
+                  Nghị quyết 71/NQ-CP ngày 01/04/2025 của Chính phủ ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 NQ 71/NQ-CP – Chính phủ (01/04/2025)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#dcfce7;">🔄</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Nội dung:</strong> Sửa đổi, bổ sung Chương trình hành động của Chính phủ thực hiện NQ 57-NQ/TW về đột phá phát triển KHCN, đổi mới sáng tạo và chuyển đổi số quốc gia.</div>
+                  </div>
+                </div>
               </div>
-              <div class="law-item">
-                <span class="law-badge">QĐ 11/2026</span>
-                BCT chủ trì xây dựng, vận hành hệ thống TXNG các lĩnh vực CN ưu tiên
+
+              <!-- NĐ 37 -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">NĐ 37/2026</span>
+                  Nghị định 37/2026/NĐ-CP: Định danh, xác thực và truy xuất nguồn gốc ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 NĐ 37/2026/NĐ-CP – Chính phủ</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#fef9c3;">⚖️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Nội dung:</strong> Quy định về định danh, xác thực và truy xuất nguồn gốc sản phẩm, hàng hóa. Cơ sở pháp lý trực tiếp cho việc triển khai hệ thống TXNG.</div>
+                  </div>
+                </div>
               </div>
+
+              <!-- QĐ 11/BCĐCP -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">QĐ 11/BCĐCP</span>
+                  Quyết định 11/QĐ-BCĐCP ngày 27/02/2026: Giao BCT chủ trì TXNG ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 QĐ 11/QĐ-BCĐCP – Ban Chỉ đạo Chính phủ (27/02/2026)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#fef9c3;">🏛️</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Ban hành bởi:</strong> Ban Chỉ đạo của Chính phủ về phát triển KHCN, đổi mới sáng tạo, chuyển đổi số và Đề án 06.</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#fef9c3;">📌</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Giao BCT:</strong> Chủ trì xây dựng, vận hành hệ thống TXNG các lĩnh vực CN ưu tiên; công nghiệp thực phẩm; hàng hóa rủi ro cao. Tích hợp với Cổng TXNG Quốc gia.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TT 02/2024 -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help;">
+                  <span class="law-badge">TT 02/2024</span>
+                  Thông tư 02/2024/TT-BKHCN: Quản lý truy xuất nguồn gốc sản phẩm, hàng hóa ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📜 TT 02/2024/TT-BKHCN – Bộ KHCN (hiệu lực 01/06/2024)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ede9fe;">📋</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Nội dung:</strong> Quy định về quản lý truy xuất nguồn gốc sản phẩm, hàng hóa. Yêu cầu mã truy vết và vật mang dữ liệu phải phù hợp TCVN.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dự thảo NĐ mới -->
+              <div class="hover-card-wrapper" style="display:block;">
+                <div class="law-item" style="cursor:help; border-style:dashed; opacity:0.85;">
+                  <span class="law-badge" style="background:#f97316; color:white;">Dự thảo NĐ</span>
+                  Dự thảo NĐ: Quy định về định danh, xác thực, truy xuất nguồn gốc sản phẩm, hàng hóa ℹ️
+                </div>
+                <div class="hover-card-popup-right">
+                  <div class="hcp-title">📋 Dự thảo Nghị định – Chính phủ (đang soạn thảo)</div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ffedd5;">📝</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Tên đầy đủ:</strong> "Quy định về hoạt động định danh, xác thực, truy xuất nguồn gốc sản phẩm, hàng hoá".</div>
+                  </div>
+                  <div class="hcp-item">
+                    <div class="hcp-dot" style="background:#ffedd5;">⏳</div>
+                    <div style="font-size:12px; color:var(--text-mid); line-height:1.6;"><strong>Tình trạng:</strong> Đang trong quá trình soạn thảo. Khi ban hành sẽ thay thế/bổ sung cho NĐ 37/2026 và các quy định hiện hành.</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
