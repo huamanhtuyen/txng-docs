@@ -1,11 +1,11 @@
 
 ## 🖼️ SLIDE 1 – TRANG BÌA
 
-Kính thưa anh Linh, Cục Trưởng. Kính thưa các anh chị Lãnh đạo.
+Kính thưa anh Linh, Lãnh đạo Cục. Kính thưa các anh chị Lãnh đạo. Kính thưa toàn thể các anh chị.
 
 Hôm nay em xin được trình bày về **Hệ thống Truy xuất nguồn gốc sản phẩm công nghiệp** – một trong những nhiệm vụ trọng tâm mà **Bộ Công Thương** đang triển khai, theo phân công Chính phủ.
 
-Đây là hệ thống mà chúng ta đã và đang xây dựng từng bước, và hôm nay em sẽ báo cáo tổng quan từ bối cảnh, giải pháp, đến kế hoạch triển khai thực tế.
+Đây là hệ thống mà chúng ta đã và đang xây dựng từng bước, và hôm nay em sẽ báo cáo tổng quan từ mục tiêu, giải pháp, đến kế hoạch triển khai thực tế.
 
 ---
 
@@ -28,13 +28,19 @@ Ngoài ra, em có chuẩn bị thêm phần **Phụ lục kỹ thuật** phục 
 
 ## 🎯 SLIDE 3 – MỤC TIÊU CỦA HỆ THỐNG
 
-Dây là một hệ thống được xây dựng với hiệu năng cao nhằm đáp ứng được các yêu cầu về triển khai mạnh mẽ, cụ thể:
+Đây là một hệ thống hiệu năng cao được xây dựng nhằm đáp ứng được các yêu cầu về triển khai mạnh mẽ, cụ thể:
 - Đáp ứng được doanh nghiệp sản xuất tốc độ cao
-- truy xuất toàn chuỗi cung cứng
-- công nghệ AI phòng chống hàng giả hàng nhái
-- kết nối liên thông 
-- phân tích cản báo rủi ro
-- bảo đảm toàn vẹn dữ liệu  
+- Truy xuất toàn chuỗi cung ứng, ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng, theo 6 chiều thông tin:
+  - **What** – Hàng hoá gì?
+  - **When** – Thời điểm nào?
+  - **Where** – Ở địa điểm nào?
+  - **Who** – Ai thực hiện?
+  - **Why** – Lý do / mục đích gì?
+  - **How** – Thực hiện bằng phương thức nào?
+- Công nghệ AI phòng chống hàng giả hàng nhái
+- Kết nối liên thông
+- Phân tích cảnh báo rủi ro
+- Bảo đảm toàn vẹn dữ liệu
 
 ---
 

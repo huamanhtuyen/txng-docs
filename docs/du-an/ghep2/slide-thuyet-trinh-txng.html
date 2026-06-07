@@ -2925,18 +2925,44 @@
       document.getElementById('prevBtn').disabled = currentSlide === 1;
       document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
       window.scrollTo({ top: 64, behavior: 'smooth' });
+      // Broadcast tới Presenter View
+      if (typeof bc !== 'undefined') bc.postMessage({ type: 'slide-change', slide: currentSlide, total: totalSlides });
     }
 
     function changeSlide(dir) {
       goToSlide(currentSlide + dir);
     }
 
-    // Keyboard navigation
+    // Keyboard navigation (Arrow keys + PageDown/PageUp for Logitech clicker)
     document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') changeSlide(1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') changeSlide(-1);
       if (e.key === 'h' || e.key === 'H') toggleNav();
+      if (e.key === 'p' || e.key === 'P') openPresenterView();
     });
+
+    // BroadcastChannel – đồng bộ với cửa sổ Presenter View
+    const bc = new BroadcastChannel('txng-presenter');
+
+    // Nhận lệnh điều hướng từ Presenter View
+    bc.onmessage = (ev) => {
+      if (ev.data.type === 'nav') changeSlide(ev.data.dir);
+    };
+
+    // Mở cửa sổ Presenter View
+    function openPresenterView() {
+      const presenterUrl = window.location.href.replace('slide-thuyet-trinh-txng.html', 'presenter-view.html');
+      window.open(presenterUrl, 'PresenterView', 'width=1000,height=680,left=100,top=80');
+    }
+
+    // Nút Presenter trên navbar
+    const presBtn = document.createElement('button');
+    presBtn.id = 'presenterBtn';
+    presBtn.title = 'Mở Presenter View (phím P)';
+    presBtn.innerHTML = '🎤 Presenter';
+    presBtn.style.cssText = 'background:linear-gradient(135deg,#7c3aed,#5b21b6);color:white;border:none;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;margin-left:8px;';
+    presBtn.onclick = openPresenterView;
+    document.getElementById('collapseBtn').parentNode.insertBefore(presBtn, document.getElementById('collapseBtn').nextSibling);
 
     // Navbar collapse toggle
     function toggleNav() {
