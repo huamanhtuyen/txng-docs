@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>🎤 Presenter View – TXNG BCT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #263244;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ═══ TOP BAR ═══ */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      flex-shrink: 0;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 16px; }
+    .topbar-title { font-size: 13px; font-weight: 700; color: var(--accent-light); letter-spacing: 0.5px; }
+
+    /* Slide counter */
+    .slide-counter {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 4px 14px;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    /* Timer */
+    .timer {
+      font-size: 22px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--green);
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 4px 14px;
+      cursor: pointer;
+      min-width: 90px;
+      text-align: center;
+    }
+    .timer.warn { color: var(--yellow); }
+    .timer.danger { color: var(--red); animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0.4; } }
+
+    .timer-label { font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 2px; }
+
+    /* Nav buttons */
+    .nav-btns { display: flex; gap: 8px; }
+    .nav-btn {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 18px;
+      width: 38px; height: 38px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .nav-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    /* ═══ MAIN BODY ═══ */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 0;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ═══ NOTES PANEL ═══ */
+    .notes-panel {
+      padding: 20px 24px;
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+    }
+    .notes-panel::-webkit-scrollbar { width: 6px; }
+    .notes-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .slide-title-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .slide-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .slide-title-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    /* Notes text */
+    .notes-content {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.85;
+    }
+    .notes-content p { margin-bottom: 12px; }
+    .notes-content strong { color: #fbbf24; font-weight: 700; }
+    .notes-content em { color: var(--accent-light); font-style: normal; }
+    .notes-content .cue {
+      display: inline-block;
+      background: #292524;
+      color: #fb923c;
+      border: 1px solid #78350f;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 4px 0;
+    }
+    .notes-content ul { padding-left: 20px; margin-bottom: 12px; }
+    .notes-content li { margin-bottom: 6px; }
+    .notes-content .sep {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 16px 0;
+    }
+
+    /* ═══ RIGHT SIDEBAR ═══ */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-bar-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+    .progress-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    /* Slide list */
+    .slide-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 8px;
+    }
+    .slide-list::-webkit-scrollbar { width: 4px; }
+    .slide-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .slide-list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-bottom: 2px;
+    }
+    .slide-list-item:hover { background: var(--surface2); }
+    .slide-list-item.current { background: rgba(124,58,237,0.2); border-left: 3px solid var(--accent); padding-left: 8px; }
+    .slide-list-item.done { opacity: 0.45; }
+
+    .slide-list-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 20px;
+      padding-top: 2px;
+    }
+    .slide-list-item.current .slide-list-num { color: var(--accent-light); }
+
+    .slide-list-info {}
+    .slide-list-main { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .slide-list-item.current .slide-list-main { color: var(--accent-light); }
+    .slide-list-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
+
+    /* ═══ NEXT SLIDE PREVIEW ═══ */
+    .next-panel {
+      padding: 12px 16px 14px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .next-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; }
+    .next-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+    /* Connection status */
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .status-dot.connected { background: var(--green); }
+    .status-text { font-size: 11px; color: var(--text-muted); }
+
+    /* Responsive font size buttons */
+    .font-controls { display: flex; gap: 4px; }
+    .font-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .font-btn:hover { color: var(--text); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-title">🎤 PRESENTER VIEW – TXNG BCT</div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div class="status-dot" id="statusDot"></div>
+      <div class="status-text" id="statusText">Đang kết nối...</div>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <div class="font-controls">
+      <button class="font-btn" onclick="changeFontSize(-1)" title="Chữ nhỏ hơn">A−</button>
+      <button class="font-btn" onclick="changeFontSize(1)" title="Chữ lớn hơn">A+</button>
+    </div>
+    <div>
+      <div class="slide-counter" id="slideCounter">1 / 11</div>
+    </div>
+    <div>
+      <div class="timer" id="timer" onclick="resetTimer()" title="Nhấn để đặt lại đồng hồ">00:00</div>
+      <div class="timer-label">nhấn để reset</div>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn" id="prevBtn" onclick="sendNav(-1)" title="Trang trước (←)">◀</button>
+      <button class="nav-btn" id="nextBtn" onclick="sendNav(1)" title="Trang tiếp (→)">▶</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- NOTES -->
+  <div class="notes-panel">
+    <div class="slide-title-bar">
+      <span class="slide-badge" id="slideBadge">Slide 1</span>
+      <span class="slide-title-text" id="slideHeading">Trang bìa</span>
+    </div>
+    <div class="notes-content" id="notesContent">
+      <!-- filled by JS -->
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBar" style="width:9%"></div>
+      </div>
+      <div class="progress-text" id="progressText">1 / 11 trang</div>
+    </div>
+
+    <!-- Slide list -->
+    <div class="slide-list" id="slideList">
+      <!-- filled by JS -->
+    </div>
+
+    <!-- Next slide -->
+    <div class="next-panel" id="nextPanel">
+      <div class="next-label">▶ Slide tiếp theo</div>
+      <div class="next-title" id="nextSlideTitle">–</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ════════════════════════════════════
+  //  DỮ LIỆU SLIDE & LỜI THUYẾT TRÌNH
+  // ════════════════════════════════════
+  const SLIDES = [
+    {
+      title: 'Trang bìa',
+      sub: 'Hệ thống TXNG – BCT',
+      notes: `<p>Kính thưa anh Linh, Lãnh đạo Cục. Kính thưa các anh chị Lãnh đạo. Kính thưa toàn thể các anh chị.</p>
+<p>Hôm nay em xin được trình bày về <strong>Hệ thống Truy xuất nguồn gốc sản phẩm công nghiệp</strong> – một trong những nhiệm vụ trọng tâm mà <strong>Bộ Công Thương</strong> đang triển khai, theo phân công Chính phủ.</p>
+<p>Đây là hệ thống mà chúng ta đã và đang xây dựng từng bước, và hôm nay em sẽ báo cáo tổng quan từ mục tiêu, giải pháp, đến kế hoạch triển khai thực tế.</p>`
+    },
+    {
+      title: 'Mục lục',
+      sub: 'Nội dung trình bày',
+      notes: `<p>Về nội dung trình bày. Hôm nay em sẽ đi theo <strong>4 nhóm nội dung chính</strong>:</p>
+<ul>
+  <li><strong>Mục tiêu của hệ thống</strong> – chúng ta đang giải quyết vấn đề gì.</li>
+  <li><strong>Giới thiệu giải pháp</strong> – chúng ta sẽ xây dựng cái gì, mô hình công nghệ như thế nào.</li>
+  <li><strong>Phương án triển khai</strong> – doanh nghiệp tham gia ra sao, hệ thống vận hành thế nào.</li>
+  <li><strong>Kết quả đạt được</strong> – hệ thống mới tiến bộ hơn hệ thống cũ ở những điểm cụ thể nào.</li>
+</ul>
+<p>Ngoài ra, em có chuẩn bị thêm phần <strong>Phụ lục kỹ thuật</strong> phục vụ trao đổi chuyên sâu hơn khi cần thiết.</p>`
+    },
+    {
+      title: 'Mục tiêu của hệ thống',
+      sub: 'Hệ thống giải quyết những vấn đề gì?',
+      notes: `<p>Về Mục tiêu của hệ thống.</p>
+<p>Đây là một hệ thống hiệu năng cao được xây dựng nhằm đáp ứng các yêu cầu triển khai mạnh mẽ, cụ thể:</p>
+<ul>
+  <li><strong>Thứ nhất</strong>, đáp ứng được doanh nghiệp sản xuất <strong>tốc độ cao</strong></li>
+  <li><strong>Thứ hai</strong>, <strong>truy xuất toàn chuỗi cung ứng</strong> – ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng, theo <strong>6 chiều thông tin (5W+1H)</strong>:
+    <ul style="margin-top:6px; margin-bottom:6px;">
+      <li><strong style="color:#fbbf24;">What</strong> – Hàng hoá gì?</li>
+      <li><strong style="color:#fbbf24;">When</strong> – Thời điểm nào?</li>
+      <li><strong style="color:#fbbf24;">Where</strong> – Ở địa điểm nào?</li>
+      <li><strong style="color:#fbbf24;">Who</strong> – Ai thực hiện?</li>
+      <li><strong style="color:#fbbf24;">Why</strong> – Lý do / mục đích gì?</li>
+      <li><strong style="color:#fbbf24;">How</strong> – Thực hiện bằng phương thức nào?</li>
+    </ul>
+  </li>
+  <li><strong>Thứ ba</strong>, công nghệ <strong>AI phòng chống hàng giả hàng nhái</strong></li>
+  <li><strong>Thứ tư</strong>, kết nối <strong>liên thông</strong></li>
+  <li><strong>Thứ năm</strong>, phân tích <strong>cảnh báo rủi ro</strong></li>
+  <li><strong>Thứ sáu</strong>, bảo đảm <strong>toàn vẹn dữ liệu</strong></li>
+</ul>
+<hr class="sep">
+<p>Về <strong>cơ sở pháp lý</strong> – Quyết định số 11 của Ban Chỉ đạo Chính phủ ngày 27/02/2026 giao Bộ Công Thương chủ trì xây dựng và vận hành hệ thống TXNG.</p>`
+    },
+    {
+      title: 'Giới thiệu giải pháp',
+      sub: 'Mô hình tổng thể',
+      notes: `<p><span class="cue">Chỉ vào sơ đồ kiến trúc</span></p>
+<p>Thưa các anh chị, để đạt được mục tiêu như trên thì chúng ta cần <strong>một giải pháp mới</strong>.</p>
+<p>Về mặt kiến trúc, hệ thống được tổ chức theo <strong>5 lớp</strong>. Từ dưới lên:</p>
+<ul>
+  <li><strong>Lớp tiếp nhận dữ liệu</strong> – ứng dụng kê khai, cổng tiếp nhận dữ liệu phần mềm nội bộ và kho vận, và dữ liệu <strong>trực tiếp từ thiết bị IoT</strong>.</li>
+  <li><strong>Lớp xử lý</strong> – sử dụng trục tích hợp, xử lý <strong>hàng triệu sự kiện mỗi giây</strong>.</li>
+  <li><strong>Lớp AI</strong> – phát hiện hàng giả, tuyến bất thường, giám sát vận chuyển, chấm điểm rủi ro, trợ lý tra cứu AI.</li>
+  <li><strong>Lớp Blockchain</strong> – mọi sự kiện được <strong>niêm phong, không thể sửa đổi</strong>.</li>
+  <li><strong>Lớp kết nối</strong> – Nền tảng QG về định danh & TXNG, <strong>GS1 Việt Nam</strong>.</li>
+</ul>
+<p>Và đặc biệt, trong giải pháp này, chúng em đề xuất sử dụng <strong>chuẩn dữ liệu quốc tế GS1 EPCIS 2.0</strong> – cho phép tự động hoá 100% việc ghi nhận sự kiện trên toàn chuỗi cung ứng.</p>`
+    },
+    {
+      title: 'Giới thiệu giải pháp',
+      sub: 'Hạ tầng CNTT được đầu tư',
+      notes: `<p>Để vận hành được hệ thống này, <strong>Bộ Công Thương đã đầu tư một hạ tầng CNTT rất đáng kể</strong>.</p>
+<p><span class="cue">Chỉ vào 2 ô lớn ở trên</span></p>
+<p><strong>Điểm nhấn đầu tiên:</strong> Máy chủ AI <strong>NVIDIA H100</strong> – cùng thế hệ với máy chủ ChatGPT. Cho phép xử lý &amp; phân tích dữ liệu TXNG theo thời gian thực, phát hiện hàng giả <strong>ngay lập tức</strong>.</p>
+<p><strong>Điểm nhấn thứ hai:</strong> là sử dụng công nghệ điện toán đám mây riêng, dữ liệu hoàn toàn trong hạ tầng Nhà nước, không phụ thuộc nước ngoài, tăng cường <strong>chủ quyền số quốc gia</strong>.</p>
+<p><span class="cue">Chỉ vào 3 ô nhỏ ở giữa</span></p>
+<p>Hệ thống bảo mật đạt <strong>Cấp độ 3</strong> là cấp độ cao nhất, giám sát an toàn thông tin <strong>24/7</strong>, Blockchain bất biến, duy trì ổn định <strong>99.9%</strong>.</p>
+<p><em>💡 Nếu hỏi về thông số kỹ thuật → mở phần "Chi tiết kỹ thuật đầy đủ" trên slide</em></p>`
+    },
+    {
+      title: 'Phương án triển khai',
+      sub: 'Tập trung hay phân tán?',
+      notes: `<p>Về phương án triển khai, một câu hỏi quan trọng: <strong>các phương án triển khai như thế nào?</strong></p>
+<p>Chúng em đã cân nhắc kỹ và <strong>chọn mô hình cài đặt tập trung tại Bộ Công Thương</strong>. Lý do:</p>
+<ul>
+  <li><strong>Bộ hoàn toàn kiểm soát</strong> hạ tầng, bảo mật, và chất lượng dữ liệu.</li>
+  <li>Doanh nghiệp không cần tự mua máy chủ, không cần thuê đội IT – <strong>chi phí cho DN bằng không</strong>.</li>
+  <li>Cập nhật nâng cấp <strong>một lần duy nhất ở trung tâm</strong> – tất cả DN hưởng lợi ngay.</li>
+</ul>
+<p>Tuy nhiên, chúng tôi cũng dự phòng mô hình <strong>lai (hybrid)</strong> nếu DN muốn vận hành nội bộ vì lý do bảo mật dữ liệu kinh doanh.</p>
+<p>Như vậy, với phương án triển khai này, vừa <strong>đảm bảo quản lý Nhà nước</strong> vừa <strong>linh hoạt cho doanh nghiệp</strong>.</p>`
+    },
+    {
+      title: 'Phương án triển khai',
+      sub: 'Doanh nghiệp cần làm gì để tham gia?',
+      notes: `<p>Vậy: <strong>Doanh nghiệp muốn tham gia thì cần làm gì?</strong></p>
+<p><span class="cue">Chỉ vào 3 ô cấp độ ở trên</span></p>
+<p><strong>Cấp 1 – Miễn phí:</strong> Điện thoại/máy tính + Internet → đăng nhập <strong>verigoods.vn</strong> → kê khai. Hoàn toàn miễn phí. Phù hợp cơ sở nhỏ.</p>
+<p><strong>Cấp 2 – sử dụng cổng tiếp nhận:</strong> DN có phần mềm nội bộ → kết nối cổng tiếp nhận → dữ liệu TXNG tự đồng bộ, không cần kê khai lại.</p>
+<p><strong>Cấp độ 3 – Sử dụng thiết bị IoT:</strong> Gắn thẻ từ RFID, cảm biến, cân điện tử, camera AI vào dây chuyền → ghi nhận tự động theo chuẩn quốc tế <strong>EPCIS 2.0</strong>.</p>
+<p><span class="cue">Chỉ vào phần vai trò đại lý</span></p>
+<p>Điểm mới quan trọng: <strong>mạng lưới Đại lý TXNG</strong> – được ủy quyền, đến tận nơi hỗ trợ DN đăng ký, cài đặt, đào tạo và hỗ trợ vận hành.</p>
+<p><span class="cue">Chỉ vào phần GTIN</span></p>
+<p>Về <strong>mã định danh</strong>: khuyến nghị đăng ký <strong>GTIN qua GS1 Việt Nam</strong> (~1–3 triệu/năm). Chưa có GTIN → BCT cấp <strong>mã tạm theo MST</strong>, dùng ngay.</p>`
+    },
+    {
+      title: 'Kết quả đạt được',
+      sub: 'Điểm mới so với hệ thống cũ',
+      notes: `<p>Thưa các anh chị, cuối cùng là phần so sánh <strong>hệ thống mới và hệ thống cũ</strong>.</p>
+<p><span class="cue">Chỉ vào bảng so sánh</span></p>
+<ul>
+  <li><strong>Chuẩn dữ liệu:</strong> Cũ ❌ tự định nghĩa. Mới ✅ <strong>GS1 EPCIS 2.0</strong> – tương thích Mỹ, Châu Âu, EVFTA, CPTPP.</li>
+  <li><strong>Mô hình triển khai:</strong> Cũ ❌ không trung gian, khó tiếp cận DN nhỏ. Mới ✅ <strong>mạng lưới Đại lý TXNG</strong> phủ toàn quốc.</li>
+  <li><strong>IoT:</strong> Cũ ❌ chỉ nhận khai báo thủ công. Mới ✅ tiếp nhận <strong>dữ liệu IoT trực tiếp</strong> (nhiệt độ, GPS, độ ẩm...).</li>
+  <li><strong>Blockchain:</strong> Cũ ❌ không có chống giả mạo. Mới ✅ <strong>Hyperledger Fabric</strong> – mọi sự kiện bất biến.</li>
+  <li><strong>AI:</strong> Cũ ❌ không có AI. Mới ✅ <strong>AI chuyên dụng</strong> – serial trùng, tuyến bất thường, chấm điểm rủi ro.</li>
+</ul>
+<p><span class="cue">Nhìn thẳng vào lãnh đạo</span></p>
+<p>Tóm lại, đây là một hệ thống có rất nhiều điểm mới, công nghệ tầm quốc tế, phù hợp định hướng <strong>chuyển đổi số và hội nhập kinh tế toàn cầu</strong>.</p>`
+    },
+    {
+      title: 'Cảm ơn & Kết thúc',
+      sub: '',
+      notes: `<p>Kính thưa các anh chị Lãnh đạo,</p>
+<p>Trên đây là toàn bộ nội dung em muốn báo cáo về <strong>Hệ thống Truy xuất nguồn gốc sản phẩm công nghiệp của Bộ Công Thương</strong>.</p>
+<p>Hệ thống đang được triển khai theo đúng lộ trình, <strong>bám sát các văn bản chỉ đạo của Chính phủ</strong> và kế thừa tốt nhất kinh nghiệm từ quốc tế.</p>
+<p>Kính mong Lãnh đạo ghi nhận và tiếp tục <strong>chỉ đạo, hỗ trợ</strong> để chúng em có thể hoàn thành nhiệm vụ được giao.</p>
+<p>Em xin trân trọng cảm ơn và <strong>sẵn sàng trả lời mọi câu hỏi</strong>.</p>
+<hr class="sep">
+<p><strong>📎 Phụ lục nếu được hỏi về IoT:</strong> Cảm biến trên xe lạnh ghi nhiệt độ liên tục. Vượt ngưỡng 60 phút → AI cảnh báo ngay, xác định chính xác pallet nào cần thu hồi.</p>
+<p><strong>📎 Nếu hỏi về mã QR:</strong> Chuẩn <strong>GS1 Digital Link</strong> – nhúng GTIN, số lô, hạn dùng. Quét bằng camera thường, không cần app.</p>
+<p><strong>📎 Thời gian onboarding:</strong> Cấp 1: <strong>30 phút</strong>. Cấp 2 (API): <strong>1–2 tuần</strong>. Đại lý TXNG hỗ trợ toàn bộ.</p>`
+    },
+    {
+      title: 'Phụ lục: IoT tự động 100%',
+      sub: 'EPCIS 2.0 – không kê khai thủ công',
+      notes: `<p>Slide phụ lục về <strong>IoT tự động 100%</strong>. Chỉ dùng khi có câu hỏi chuyên sâu.</p>
+<p>Hệ thống tiếp nhận dữ liệu cảm biến trực tiếp theo chuẩn <strong>EPCIS 2.0 Sensor Element</strong>: nhiệt độ, độ ẩm, GPS, ánh sáng, áp suất...</p>`
+    },
+    {
+      title: 'Phụ lục: Mã định danh quốc tế',
+      sub: 'GS1 Digital Link QR – hỗ trợ đa chuẩn',
+      notes: `<p>Slide phụ lục về <strong>các loại mã định danh quốc tế GS1</strong>. Chỉ dùng khi có câu hỏi chuyên sâu.</p>
+<p>Hệ thống hỗ trợ GTIN, GLN, SSCC, GRAI, GSRN theo chuẩn GS1 Digital Link.</p>`
+    },
+  ];
+
+  // ════════════════════════════════════
+  //  STATE
+  // ════════════════════════════════════
+  let currentSlide = 1;
+  const totalSlides = SLIDES.length;
+  let fontSize = 15;
+
+  // ════════════════════════════════════
+  //  BROADCASTCHANNEL
+  // ════════════════════════════════════
+  const bc = new BroadcastChannel('txng-presenter');
+
+  bc.onmessage = (ev) => {
+    if (ev.data.type === 'slide-change') {
+      updateSlide(ev.data.slide);
+      setConnected(true);
+    }
+  };
+
+  function sendNav(dir) {
+    bc.postMessage({ type: 'nav', dir });
+    // Cũng tự cập nhật local nếu chưa nhận phản hồi
+    updateSlide(Math.max(1, Math.min(currentSlide + dir, totalSlides)));
+  }
+
+  // ════════════════════════════════════
+  //  UI UPDATE
+  // ════════════════════════════════════
+  function updateSlide(n) {
+    currentSlide = Math.max(1, Math.min(n, totalSlides));
+    const s = SLIDES[currentSlide - 1];
+
+    document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+    document.getElementById('slideBadge').textContent = 'Slide ' + currentSlide;
+    document.getElementById('slideHeading').textContent = s.title + (s.sub ? ' – ' + s.sub : '');
+    document.getElementById('notesContent').innerHTML = s.notes;
+    document.getElementById('notesContent').style.fontSize = fontSize + 'px';
+
+    // Progress
+    const pct = Math.round((currentSlide / totalSlides) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = currentSlide + ' / ' + totalSlides + ' trang';
+
+    // Next slide
+    if (currentSlide < totalSlides) {
+      const next = SLIDES[currentSlide];
+      document.getElementById('nextSlideTitle').textContent = (currentSlide + 1) + '. ' + next.title + (next.sub ? ' – ' + next.sub : '');
+    } else {
+      document.getElementById('nextSlideTitle').textContent = '(Hết bài trình bày)';
+    }
+
+    // Buttons
+    document.getElementById('prevBtn').disabled = currentSlide === 1;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+
+    // Slide list highlight
+    document.querySelectorAll('.slide-list-item').forEach((el, i) => {
+      el.classList.toggle('current', i === currentSlide - 1);
+      el.classList.toggle('done', i < currentSlide - 1);
+    });
+    // Scroll list item into view
+    const activeItem = document.querySelectorAll('.slide-list-item')[currentSlide - 1];
+    if (activeItem) activeItem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+    // Scroll notes to top
+    document.querySelector('.notes-panel').scrollTop = 0;
+  }
+
+  function setConnected(yes) {
+    document.getElementById('statusDot').className = 'status-dot' + (yes ? ' connected' : '');
+    document.getElementById('statusText').textContent = yes ? 'Đã kết nối với slide' : 'Đang kết nối...';
+  }
+
+  // ════════════════════════════════════
+  //  BUILD SLIDE LIST
+  // ════════════════════════════════════
+  const list = document.getElementById('slideList');
+  SLIDES.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'slide-list-item' + (i === 0 ? ' current' : '');
+    item.onclick = () => sendNav(i + 1 - currentSlide);
+    item.innerHTML = `<span class="slide-list-num">${i + 1}</span>
+      <div class="slide-list-info">
+        <div class="slide-list-main">${s.title}</div>
+        ${s.sub ? `<div class="slide-list-sub">${s.sub}</div>` : ''}
+      </div>`;
+    list.appendChild(item);
+  });
+
+  // ════════════════════════════════════
+  //  TIMER
+  // ════════════════════════════════════
+  let elapsed = 0;
+  let timerRunning = false;
+  const timerEl = document.getElementById('timer');
+
+  function startTimer() {
+    if (!timerRunning) {
+      timerRunning = true;
+      setInterval(() => {
+        elapsed++;
+        const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+        const s = String(elapsed % 60).padStart(2, '0');
+        timerEl.textContent = m + ':' + s;
+        if (elapsed >= 900) timerEl.className = 'timer danger';
+        else if (elapsed >= 720) timerEl.className = 'timer warn';
+        else timerEl.className = 'timer';
+      }, 1000);
+    }
+  }
+
+  function resetTimer() {
+    elapsed = 0;
+    timerEl.textContent = '00:00';
+    timerEl.className = 'timer';
+  }
+
+  // ════════════════════════════════════
+  //  FONT SIZE
+  // ════════════════════════════════════
+  function changeFontSize(delta) {
+    fontSize = Math.max(11, Math.min(22, fontSize + delta));
+    document.getElementById('notesContent').style.fontSize = fontSize + 'px';
+  }
+
+  // ════════════════════════════════════
+  //  KEYBOARD
+  // ════════════════════════════════════
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') sendNav(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') sendNav(-1);
+  });
+
+  // ════════════════════════════════════
+  //  INIT
+  // ════════════════════════════════════
+  updateSlide(1);
+  startTimer();
+
+  // Try ping the slide window
+  setTimeout(() => {
+    bc.postMessage({ type: 'ping' });
+  }, 500);
+</script>
+</body>
+</html>
