@@ -1,7 +1,7 @@
-
 ## 🖼️ SLIDE 1 – TRANG BÌA
 
 Kính thưa anh Linh, Lãnh đạo Cục. Kính thưa các anh chị Lãnh đạo. Kính thưa toàn thể các anh chị.
+
 
 Hôm nay em xin được trình bày về **Hệ thống Truy xuất nguồn gốc sản phẩm công nghiệp** – một trong những nhiệm vụ trọng tâm mà **Bộ Công Thương** đang triển khai, theo phân công Chính phủ.
 
