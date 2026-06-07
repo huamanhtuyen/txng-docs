@@ -11,7 +11,8 @@ Hôm nay em xin được trình bày về **Hệ thống Truy xuất nguồn g�
 
 ## 📋 SLIDE 2 – MỤC LỤC
 
-Hôm nay em sẽ đi theo **4 nhóm nội dung chính**
+Về nội dung trình bày. Hôm nay em sẽ đi theo **4 nhóm nội dung chính**:
+
 
 
 Một là, **Mục tiêu của hệ thống** – chúng ta đang giải quyết vấn đề gì.
@@ -28,7 +29,10 @@ Ngoài ra, em có chuẩn bị thêm phần **Phụ lục kỹ thuật** phục 
 
 ## 🎯 SLIDE 3 – MỤC TIÊU CỦA HỆ THỐNG
 
+Về Mục tiêu của hệ thống.
+
 Đây là một hệ thống hiệu năng cao được xây dựng nhằm đáp ứng được các yêu cầu về triển khai mạnh mẽ, cụ thể:
+
 - **Thứ nhất**, đáp ứng được doanh nghiệp sản xuất tốc độ cao
 - **Thứ hai**, truy xuất toàn chuỗi cung ứng, ghi nhận đầy đủ từ nguyên liệu → sản xuất → đóng gói → vận chuyển → phân phối → tiêu dùng, theo 6 chiều thông tin:
   - **What** – Hàng hoá gì?
@@ -68,7 +72,8 @@ Và đặc biệt, trong giải pháp này, chúng em đề xuất sử dụng *
 ---
 
 ## ☁️ SLIDE 5 – HẠ TẦNG CNTT ĐƯỢC ĐẦU TƯ
-Thưa Lãnh đạo, để vận hành được hệ thống này, **Bộ Công Thương đã đầu tư một hạ tầng CNTT rất đáng kể**.
+Để vận hành được hệ thống này, **Bộ Công Thương đã đầu tư một hạ tầng CNTT rất đáng kể**.
+
 
 **Điểm nhấn đầu tiên** là **máy chủ AI chuyên dụng NVIDIA H100** – cùng thế hệ với máy chủ ChatGPT. Cho phép xử lý & phân tích dữ liệu truy xuất nguồn gốc theo thời gian thực, phát hiện hàng giả và gian lận **ngay lập tức**.
 
@@ -86,7 +91,8 @@ Hệ thống bảo mật đạt **Cấp độ 3** là cấp độ cao nhất, v�
 
 ## 🚀 SLIDE 6 – PHƯƠNG ÁN TRIỂN KHAI 
 
-Thưa các anh chị, một câu hỏi quan trọng khi nữa là: **các phương án triển khai như thế nào?**
+Về phương án triển khai, một câu hỏi quan trọng: **các phương án triển khai như thế nào?**
+
 
 Chúng em đã cân nhắc kỹ và **chọn mô hình cài đặt tập trung tại Bộ Công Thương**. Lý do là:
 
@@ -105,7 +111,8 @@ Như vậy, với phương án triển khai này, vừa **đảm bảo quản l�
 ---
 
 ## 🏭 SLIDE 7 – DOANH NGHIỆP CẦN LÀM GÌ ĐỂ THAM GIA?
-Thưa các anh chị, một câu hỏi thực tế nhất là: **Doanh nghiệp muốn tham gia thì cần làm gì?**
+Vậy: **Doanh nghiệp muốn tham gia thì cần làm gì?**
+
 
 `[chỉ vào 3 ô cấp độ ở trên]`
 
