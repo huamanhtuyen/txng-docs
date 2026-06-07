@@ -62,6 +62,9 @@ Về mặt kiến trúc, hệ thống được tổ chức theo **5 lớp**. T�
 
 - **Lớp kết nối** – hệ thống của chúng ta kết nối với **Nền tảng Quốc gia về định danh và truy xuất nguồn gốc**, với **GS1 Việt Nam** để đảm bảo mã hàng hóa được công nhận quốc tế.
 
+Và đặc biệt, trong giải pháp này, chúng em đề xuất sử dụng **chuẩn dữ liệu quốc tế GS1 EPCIS 2.0** – cho phép tự động hoá 100% việc ghi nhận sự kiện trên toàn chuỗi cung ứng.
+
+
 ---
 
 ## ☁️ SLIDE 5 – HẠ TẦNG CNTT ĐƯỢC ĐẦU TƯ
