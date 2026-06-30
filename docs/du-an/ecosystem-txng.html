@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mô hình Tổng thể Các bên Tham gia – VeriGoods++ TXNG</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .canvas {
+    width: 1020px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 22px 36px 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  /* ── Title ── */
+  .title-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #e2e8f0;
+  }
+  .title-left .suptitle {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #3182ce;
+    margin-bottom: 4px;
+  }
+  .title-left h1 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1.2;
+  }
+  .title-left h1 span { color: #3182ce; }
+  .title-badge {
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2b6cb0;
+    white-space: nowrap;
+  }
+
+  /* ── Ecosystem grid ── */
+  .ecosystem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* ── Each layer ── */
+  .layer {
+    border-radius: 12px;
+    padding: 9px 16px;
+    border: 1.5px solid transparent;
+    position: relative;
+  }
+
+  /* Colors */
+  .layer-bca  { background: #faf5ff; border-color: #d6bcfa; }
+  .layer-bct  { background: #ebf8ff; border-color: #90cdf4; }
+  .layer-dn   { background: #f0fff4; border-color: #9ae6b4; }
+  .layer-kn   { background: #fffaf0; border-color: #fbd38d; }
+  .layer-ntd  { background: #fff5f5; border-color: #feb2b2; }
+
+  /* ── Header ── */
+  .layer-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .lh-icon {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .icon-bca { background: #e9d8fd; }
+  .icon-bct { background: #bee3f8; }
+  .icon-dn  { background: #c6f6d5; }
+  .icon-kn  { background: #feebc8; }
+  .icon-ntd { background: #fed7d7; }
+
+  .lh-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+  .col-bca { color: #6b46c1; }
+  .col-bct { color: #2b6cb0; }
+  .col-dn  { color: #276749; }
+  .col-kn  { color: #c05621; }
+  .col-ntd { color: #c53030; }
+
+  .lh-sub {
+    margin-left: auto;
+    font-size: 10.5px;
+    color: #718096;
+    font-style: italic;
+  }
+
+  /* ── Pills ── */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-left: 34px;
+  }
+  .pill {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .p-purple { background: #e9d8fd; color: #553c9a; }
+  .p-blue   { background: #bee3f8; color: #2c5282; }
+  .p-green  { background: #c6f6d5; color: #22543d; }
+  .p-orange { background: #feebc8; color: #7b341e; }
+  .p-red    { background: #fed7d7; color: #742a2a; }
+
+  /* ── BCT modules ── */
+  .bct-body {
+    display: flex;
+    gap: 8px;
+    padding-left: 34px;
+    margin-top: 5px;
+  }
+  .mod {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #bee3f8;
+    border-radius: 9px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .mod-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .mod-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2b6cb0;
+    margin-bottom: 2px;
+  }
+  .mod-desc {
+    font-size: 10px;
+    color: #718096;
+    line-height: 1.5;
+  }
+
+  /* ── Mid row ── */
+  .mid-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 8px;
+  }
+
+  /* ── DN inner ── */
+  .dn-inner {
+    display: flex;
+    gap: 10px;
+    padding-left: 34px;
+    margin-top: 5px;
+  }
+  .dn-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 2;
+  }
+  .dn-method {
+    background: #fff;
+    border: 1px solid #c6f6d5;
+    border-radius: 7px;
+    padding: 4px 10px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #2d3748;
+  }
+  .m-num {
+    width: 18px; height: 18px;
+    background: #276749;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .dn-types-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    justify-content: center;
+  }
+  .dn-type-tag {
+    background: #c6f6d5;
+    color: #22543d;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ── Kết nối inner ── */
+  .kn-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 34px;
+    margin-top: 5px;
+  }
+  .kn-item {
+    background: #fff;
+    border: 1px solid #fbd38d;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 11.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2d3748;
+  }
+
+  /* ── Arrows ── */
+  .arrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    position: relative;
+  }
+  .arrow-row::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 1px;
+    background: transparent;
+  }
+  .arrow-badge {
+    background: #fff;
+    border: 1px solid #cbd5e0;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .arr { color: #3182ce; font-size: 13px; }
+
+  /* NTD inner */
+  .ntd-inner {
+    display: flex;
+    gap: 8px;
+    padding-left: 34px;
+    margin-top: 5px;
+  }
+  .ntd-action {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #feb2b2;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 10.5px;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ntd-em { font-size: 15px; }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: #718096;
+  }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .footer-copy {
+    font-size: 10px;
+    color: #a0aec0;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- Title -->
+  <div class="title-block">
+    <div class="title-left">
+      <div class="suptitle">Mô hình Ecosystem · VeriGoods++ · Bộ Công Thương</div>
+      <h1>Mô hình Tổng thể <span>Các bên Tham gia</span> Hệ thống TXNG Quốc gia</h1>
+    </div>
+    <div class="title-badge">EPCIS 2.0 · GS1 Digital Link · NDA Trace UID</div>
+  </div>
+
+  <div class="ecosystem">
+
+    <!-- ████ LAYER 1: BCA ████ -->
+    <div class="layer layer-bca">
+      <div class="layer-header">
+        <div class="lh-icon icon-bca">🏛️</div>
+        <span class="lh-title col-bca">BỘ CÔNG AN – Trung tâm Dữ liệu Quốc gia (C12 / NDOP)</span>
+        <span class="lh-sub">Hạ tầng định danh số quốc gia</span>
+      </div>
+      <div class="pills">
+        <span class="pill p-purple">🔑 Cấp UID / DID cho sản phẩm &amp; doanh nghiệp</span>
+        <span class="pill p-purple">⛓️ NDAChain – Blockchain 49 nút PoA</span>
+        <span class="pill p-purple">🔐 PKI · Chứng thư số</span>
+        <span class="pill p-purple">📡 NDOP – Nền tảng điều phối dữ liệu liên ngành</span>
+      </div>
+    </div>
+
+    <!-- Arrow 1 -->
+    <div class="arrow-row">
+      <div class="arrow-badge">
+        <span class="arr">⇅</span> AgentNode · MPLS / TSLCD · Ký số XML
+      </div>
+    </div>
+
+    <!-- ████ LAYER 2: BCT ████ -->
+    <div class="layer layer-bct">
+      <div class="layer-header">
+        <div class="lh-icon icon-bct">🏢</div>
+        <span class="lh-title col-bct">BỘ CÔNG THƯƠNG – Cục CQL&PTTTTN · VeriGoods++</span>
+        <span class="lh-sub">Chủ đầu tư · Vận hành · Giám sát thị trường</span>
+      </div>
+      <div class="bct-body">
+        <div class="mod">
+          <div class="mod-icon">🌐</div>
+          <div>
+            <div class="mod-title">Portal Web / App</div>
+            <div class="mod-desc">Đăng ký DN · Khai báo sản phẩm · Tra cứu công khai</div>
+          </div>
+        </div>
+        <div class="mod">
+          <div class="mod-icon">⚡</div>
+          <div>
+            <div class="mod-title">API Gateway</div>
+            <div class="mod-desc">Tích hợp ERP nội bộ DN · EPCIS 2.0 · Rate limit</div>
+          </div>
+        </div>
+        <div class="mod">
+          <div class="mod-icon">📊</div>
+          <div>
+            <div class="mod-title">Dashboard QLTT</div>
+            <div class="mod-desc">Risk Engine · Cảnh báo · Hậu kiểm · Thu hồi sản phẩm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 2 -->
+    <div class="arrow-row">
+      <div class="arrow-badge">
+        <span class="arr">⇅</span> Khai báo sự kiện EPCIS · Đồng bộ dữ liệu chuỗi cung ứng
+      </div>
+    </div>
+
+    <!-- ████ MID ROW: DN + KẾT NỐI ████ -->
+    <div class="mid-row">
+
+      <!-- DN -->
+      <div class="layer layer-dn">
+        <div class="layer-header">
+          <div class="lh-icon icon-dn">🏭</div>
+          <span class="lh-title col-dn">DOANH NGHIỆP – Chủ thể dữ liệu TXNG</span>
+        </div>
+        <div class="dn-inner">
+          <div class="dn-methods">
+            <div class="dn-method">
+              <div class="m-num">1</div>
+              Tự kết nối <strong>Portal</strong> – nhập liệu / upload file
+            </div>
+            <div class="dn-method">
+              <div class="m-num">2</div>
+              Tích hợp <strong>API</strong> với hệ thống ERP nội bộ
+            </div>
+            <div class="dn-method">
+              <div class="m-num">3</div>
+              Thông qua <strong>Đại lý TXNG</strong> được cấp phép
+            </div>
+          </div>
+          <div class="dn-types-col">
+            <div class="dn-type-tag">🏗️ Sản xuất</div>
+            <div class="dn-type-tag">📦 Nhập khẩu</div>
+            <div class="dn-type-tag">🚛 Logistics</div>
+            <div class="dn-type-tag">🏪 Phân phối</div>
+            <div class="dn-type-tag">🛒 Bán lẻ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KẾT NỐI -->
+      <div class="layer layer-kn">
+        <div class="layer-header">
+          <div class="lh-icon icon-kn">🔗</div>
+          <span class="lh-title col-kn">KẾT NỐI</span>
+        </div>
+        <div class="kn-inner">
+          <div class="kn-item">
+            <span style="font-size:16px">🔄</span>
+            <div>
+              <div style="font-weight:600;font-size:11px;color:#7b341e;margin-bottom:2px">Kết nối dữ liệu qua LGSP / NGSP</div>
+              <div style="font-size:10px;color:#718096">Nếu cần thiết</div>
+            </div>
+          </div>
+          <div class="kn-item">
+            <span style="font-size:16px">🏷️</span>
+            <div>
+              <div style="font-weight:600;font-size:11px;color:#7b341e;margin-bottom:2px">GS1 Việt Nam</div>
+              <div style="font-size:10px;color:#718096">Chuẩn định danh GTIN · GS1 Digital Link · EPCIS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Arrow 3 -->
+    <div class="arrow-row">
+      <div class="arrow-badge">
+        <span class="arr">↓</span> QR Code · App VeriGoods · Kết quả xác thực &lt; 2 giây
+      </div>
+    </div>
+
+    <!-- ████ LAYER 4: NTD ████ -->
+    <div class="layer layer-ntd">
+      <div class="layer-header">
+        <div class="lh-icon icon-ntd">👤</div>
+        <span class="lh-title col-ntd">NGƯỜI TIÊU DÙNG</span>
+        <span class="lh-sub">Tiếp cận miễn phí · Không cần đăng nhập</span>
+      </div>
+      <div class="ntd-inner">
+        <div class="ntd-action">
+          <span class="ntd-em">📲</span> Scan mã QR trên sản phẩm
+        </div>
+        <div class="ntd-action">
+          <span class="ntd-em">🔍</span> Tra cứu hành trình sản phẩm
+        </div>
+        <div class="ntd-action">
+          <span class="ntd-em">✅</span> Xác thực Thật / Giả ngay lập tức
+        </div>
+        <div class="ntd-action">
+          <span class="ntd-em">⚠️</span> Phản ánh vi phạm / hàng giả
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ecosystem -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#9f7aea"></div> Hạ tầng quốc gia (BCA)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4299e1"></div> Cơ quan quản lý (BCT)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#48bb78"></div> Doanh nghiệp</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ed8936"></div> Kết nối</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#fc8181"></div> Người tiêu dùng</div>
+    </div>
+    <div class="footer-copy">Cục CQL&PTTTTN · Bộ Công Thương · 2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
